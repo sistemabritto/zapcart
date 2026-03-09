@@ -1,6 +1,6 @@
 {
   "$schema": "https://json.schemastore.org/package.json",
-  "name": "evo-method",
+  "name": "@evoapi/evo-method",
   "version": "1.0.0",
   "description": "Evolve, Validate, Orchestrate — AI-driven Agile Development Method",
   "keywords": [
