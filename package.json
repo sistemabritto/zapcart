@@ -24,13 +24,13 @@
     "evo-method": "tools/evo-npx-wrapper.js"
   },
   "scripts": {
-    "evo:install": "node tools/cli/evo-cli.js install",
-    "evo:uninstall": "node tools/cli/evo-cli.js uninstall",
     "docs:build": "node tools/build-docs.mjs",
     "docs:dev": "astro dev --root website",
     "docs:fix-links": "node tools/fix-doc-links.js",
     "docs:preview": "astro preview --root website",
     "docs:validate-links": "node tools/validate-doc-links.js",
+    "evo:install": "node tools/cli/evo-cli.js install",
+    "evo:uninstall": "node tools/cli/evo-cli.js uninstall",
     "format:check": "prettier --check \"**/*.{js,cjs,mjs,json,yaml}\"",
     "format:fix": "prettier --write \"**/*.{js,cjs,mjs,json,yaml}\"",
     "format:fix:staged": "prettier --write",
