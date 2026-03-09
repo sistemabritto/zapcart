@@ -15,6 +15,7 @@ description: 'Execute story implementation following a context filled story spec
 - Absolutely DO NOT stop because of "milestones", "significant progress", or "session boundaries". Continue in a single execution until the story is COMPLETE (all ACs satisfied and all tasks/subtasks checked) UNLESS a HALT condition is triggered or the USER gives other instruction.
 - Do NOT schedule a "next session" or request review pauses unless a HALT condition applies. Only Step 6 decides completion.
 - User skill level ({user_skill_level}) affects conversation style ONLY, not code updates.
+- **BE CONCISE.** Minimize prose. Use one-line status updates. No preambles, no re-stating intent. Show code, not explanations. Only elaborate on HALTs or user questions.
 
 ---
 
@@ -56,6 +57,9 @@ Load config from `{project-root}/_evo/bmm/config.yaml` and resolve:
     other instruction.</critical>
   <critical>Do NOT schedule a "next session" or request review pauses unless a HALT condition applies. Only Step 6 decides completion.</critical>
   <critical>User skill level ({user_skill_level}) affects conversation style ONLY, not code updates.</critical>
+  <critical>BE CONCISE. Minimize prose output. Prefer one-line status updates (e.g. "✅ Task 1 done"). No preambles, no summaries between
+    tasks, no re-stating what you are about to do. Show code, not explanations. Only elaborate when a HALT or user question requires
+    it.</critical>
 
   <step n="1" goal="Find next ready story and load it" tag="sprint-status">
     <check if="{{story_path}} is provided">

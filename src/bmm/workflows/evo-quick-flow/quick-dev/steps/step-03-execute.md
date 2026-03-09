@@ -11,6 +11,8 @@ nextStepFile: './step-04-self-check.md'
 
 **Critical:** Continue through ALL tasks without stopping for milestones.
 
+**Output style:** Be concise. One-line updates only (e.g. "✅ Task 1", "🔨 Task 2"). No explanation unless blocked. Ship code.
+
 ---
 
 ## AVAILABLE STATE
