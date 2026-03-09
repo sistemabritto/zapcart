@@ -5,19 +5,19 @@ sidebar:
   order: 4
 ---
 
-BMad extends through official modules that you select during installation. These add-on modules provide specialized agents, workflows, and tasks for specific domains beyond the built-in core and BMM (Agile suite).
+EVO extends through official modules that you select during installation. These add-on modules provide specialized agents, workflows, and tasks for specific domains beyond the built-in core and BMM (Agile suite).
 
 :::tip[Installing Modules]
-Run `npx bmad-method install` and select the modules you want. The installer handles downloading, configuration, and IDE integration automatically.
+Run `npx evo-method install` and select the modules you want. The installer handles downloading, configuration, and IDE integration automatically.
 :::
 
-## BMad Builder
+## EVO Builder
 
-Create custom agents, workflows, and domain-specific modules with guided assistance. BMad Builder is the meta-module for extending the framework itself.
+Create custom agents, workflows, and domain-specific modules with guided assistance. EVO Builder is the meta-module for extending the framework itself.
 
 - **Code:** `bmb`
-- **npm:** [`bmad-builder`](https://www.npmjs.com/package/bmad-builder)
-- **GitHub:** [bmad-code-org/bmad-builder](https://github.com/bmad-code-org/bmad-builder)
+- **npm:** [`evo-builder`](https://www.npmjs.com/package/evo-builder)
+- **GitHub:** [evo-code-org/evo-builder](https://github.com/evo-code-org/evo-builder)
 
 **Provides:**
 
@@ -31,8 +31,8 @@ Create custom agents, workflows, and domain-specific modules with guided assista
 AI-powered tools for structured creativity, ideation, and innovation during early-stage development. The suite provides multiple agents that facilitate brainstorming, design thinking, and problem-solving using proven frameworks.
 
 - **Code:** `cis`
-- **npm:** [`bmad-creative-intelligence-suite`](https://www.npmjs.com/package/bmad-creative-intelligence-suite)
-- **GitHub:** [bmad-code-org/bmad-module-creative-intelligence-suite](https://github.com/bmad-code-org/bmad-module-creative-intelligence-suite)
+- **npm:** [`evo-creative-intelligence-suite`](https://www.npmjs.com/package/evo-creative-intelligence-suite)
+- **GitHub:** [evo-code-org/evo-module-creative-intelligence-suite](https://github.com/evo-code-org/evo-module-creative-intelligence-suite)
 
 **Provides:**
 
@@ -46,8 +46,8 @@ AI-powered tools for structured creativity, ideation, and innovation during earl
 Structured game development workflows adapted for Unity, Unreal, Godot, and custom engines. Supports rapid prototyping through Quick Flow and full-scale production with epic-driven sprints.
 
 - **Code:** `gds`
-- **npm:** [`bmad-game-dev-studio`](https://www.npmjs.com/package/bmad-game-dev-studio)
-- **GitHub:** [bmad-code-org/bmad-module-game-dev-studio](https://github.com/bmad-code-org/bmad-module-game-dev-studio)
+- **npm:** [`evo-game-dev-studio`](https://www.npmjs.com/package/evo-game-dev-studio)
+- **GitHub:** [evo-code-org/evo-module-game-dev-studio](https://github.com/evo-code-org/evo-module-game-dev-studio)
 
 **Provides:**
 
@@ -61,8 +61,8 @@ Structured game development workflows adapted for Unity, Unreal, Godot, and cust
 Enterprise-grade test strategy, automation guidance, and release gate decisions through an expert agent and nine structured workflows. TEA goes well beyond the built-in QA agent with risk-based prioritization and requirements traceability.
 
 - **Code:** `tea`
-- **npm:** [`bmad-method-test-architecture-enterprise`](https://www.npmjs.com/package/bmad-method-test-architecture-enterprise)
-- **GitHub:** [bmad-code-org/bmad-method-test-architecture-enterprise](https://github.com/bmad-code-org/bmad-method-test-architecture-enterprise)
+- **npm:** [`evo-method-test-architecture-enterprise`](https://www.npmjs.com/package/evo-method-test-architecture-enterprise)
+- **GitHub:** [evo-code-org/evo-method-test-architecture-enterprise](https://github.com/evo-code-org/evo-method-test-architecture-enterprise)
 
 **Provides:**
 
@@ -73,4 +73,4 @@ Enterprise-grade test strategy, automation guidance, and release gate decisions 
 
 ## Community Modules
 
-Community modules and a module marketplace are coming. Check the [BMad GitHub organization](https://github.com/bmad-code-org) for updates.
+Community modules and a module marketplace are coming. Check the [EVO GitHub organization](https://github.com/evo-code-org) for updates.

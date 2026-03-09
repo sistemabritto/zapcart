@@ -19,7 +19,7 @@ A clear and concise description of what you expected to happen.
 **Environment (if relevant)**
 - Model(s) used:
 - Agentic IDE used:
-- BMad version:
+- EVO version:
 - Project language:
 
 **Screenshots or links**

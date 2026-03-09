@@ -9,15 +9,15 @@ const yaml = require('yaml');
 const chalk = require('chalk');
 
 /**
- * Find BMAD directory in project
+ * Find EVO directory in project
  */
-function findBmadDir(projectDir = process.cwd()) {
-  const possibleNames = ['_bmad'];
+function findEvoDir(projectDir = process.cwd()) {
+  const possibleNames = ['_evo'];
 
   for (const name of possibleNames) {
-    const bmadDir = path.join(projectDir, name);
-    if (fs.existsSync(bmadDir)) {
-      return bmadDir;
+    const evoDir = path.join(projectDir, name);
+    if (fs.existsSync(evoDir)) {
+      return evoDir;
     }
   }
 
@@ -84,18 +84,18 @@ async function updateManifest(manifestPath, projectRoot) {
  */
 async function migrate(directory) {
   const projectRoot = path.resolve(directory || process.cwd());
-  const bmadDir = findBmadDir(projectRoot);
+  const evoDir = findEvoDir(projectRoot);
 
-  if (!bmadDir) {
-    console.error(chalk.red('✗ No BMAD installation found in directory'));
+  if (!evoDir) {
+    console.error(chalk.red('✗ No EVO installation found in directory'));
     process.exit(1);
   }
 
-  console.log(chalk.blue.bold('🔄 BMAD Custom Module Path Migration'));
+  console.log(chalk.blue.bold('🔄 EVO Custom Module Path Migration'));
   console.log(chalk.dim(`Project: ${projectRoot}`));
-  console.log(chalk.dim(`BMAD Directory: ${bmadDir}`));
+  console.log(chalk.dim(`EVO Directory: ${evoDir}`));
 
-  const manifestPath = path.join(bmadDir, '_config', 'manifest.yaml');
+  const manifestPath = path.join(evoDir, '_config', 'manifest.yaml');
 
   if (!fs.existsSync(manifestPath)) {
     console.error(chalk.red('✗ No manifest.yaml found'));

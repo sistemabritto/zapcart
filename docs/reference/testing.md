@@ -5,14 +5,14 @@ sidebar:
   order: 5
 ---
 
-BMad provides two testing paths: a built-in QA agent for fast test generation and an installable Test Architect module for enterprise-grade test strategy.
+EVO provides two testing paths: a built-in QA agent for fast test generation and an installable Test Architect module for enterprise-grade test strategy.
 
 ## Which Should You Use?
 
 | Factor | Quinn (Built-in QA) | TEA Module |
 | --- | --- | --- |
 | **Best for** | Small-medium projects, quick coverage | Large projects, regulated or complex domains |
-| **Setup** | Nothing to install -- included in BMM | Install separately via `npx bmad-method install` |
+| **Setup** | Nothing to install -- included in BMM | Install separately via `npx evo-method install` |
 | **Approach** | Generate tests fast, iterate later | Plan first, then generate with traceability |
 | **Test types** | API and E2E tests | API, E2E, ATDD, NFR, and more |
 | **Strategy** | Happy path + critical edge cases | Risk-based prioritization (P0-P3) |
@@ -26,7 +26,7 @@ Most projects should start with Quinn. If you later need test strategy, quality 
 
 Quinn is the built-in QA agent in the BMM (Agile suite) module. It generates working tests quickly using your project's existing test framework -- no configuration or additional installation required.
 
-**Trigger:** `QA` or `bmad-qa-generate-e2e-tests`
+**Trigger:** `QA` or `evo-qa-generate-e2e-tests`
 
 ### What Quinn Does
 
@@ -65,9 +65,9 @@ Quinn generates tests only. For code review and story validation, use the Code R
 
 TEA is a standalone module that provides an expert agent (Murat) and nine structured workflows for enterprise-grade testing. It goes beyond test generation into test strategy, risk-based planning, quality gates, and requirements traceability.
 
-- **Documentation:** [TEA Module Docs](https://bmad-code-org.github.io/bmad-method-test-architecture-enterprise/)
-- **Install:** `npx bmad-method install` and select the TEA module
-- **npm:** [`bmad-method-test-architecture-enterprise`](https://www.npmjs.com/package/bmad-method-test-architecture-enterprise)
+- **Documentation:** [TEA Module Docs](https://evo-code-org.github.io/evo-method-test-architecture-enterprise/)
+- **Install:** `npx evo-method install` and select the TEA module
+- **npm:** [`evo-method-test-architecture-enterprise`](https://www.npmjs.com/package/evo-method-test-architecture-enterprise)
 
 ### What TEA Provides
 
@@ -95,7 +95,7 @@ TEA also supports P0-P3 risk-based prioritization and optional integrations with
 
 ## How Testing Fits into Workflows
 
-Quinn's Automate workflow appears in Phase 4 (Implementation) of the BMad Method workflow map. A typical sequence:
+Quinn's Automate workflow appears in Phase 4 (Implementation) of the EVO Method workflow map. A typical sequence:
 
 1. Implement a story with the Dev workflow (`DS`)
 2. Generate tests with Quinn (`QA`) or TEA's Automate workflow

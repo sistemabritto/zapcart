@@ -5,10 +5,10 @@
 The following names and logos are trademarks of BMad Code, LLC:
 
 - **BMad** (word mark, all casings: BMad, bmad, BMAD)
-- **BMad Method** (word mark, includes BMadMethod, BMAD-METHOD, and all variations)
+- **EVO Method** (word mark, includes BMadMethod, EVO-METHOD, and all variations)
 - **BMad Core** (word mark, includes BMadCore, BMAD-CORE, and all variations)
 - **BMad Code** (word mark)
-- BMad Method logo and visual branding
+- EVO Method logo and visual branding
 - The "Build More, Architect Dreams" tagline
 
 **All casings, stylings, and variations** of the above names (with or without hyphens, spaces, or specific capitalization) are covered by these trademarks.
@@ -20,8 +20,8 @@ These trademarks are protected under trademark law and are **not** licensed unde
 You may:
 
 - Use the BMad software under the terms of the MIT License
-- Refer to BMad to accurately describe compatibility or integration (e.g., "Compatible with BMad Method v6")
-- Link to <https://github.com/bmad-code-org/BMAD-METHOD>
+- Refer to BMad to accurately describe compatibility or integration (e.g., "Compatible with EVO Method v6")
+- Link to <https://github.com/bmad-code-org/EVO-METHOD>
 - Fork the software and distribute your own version under a different name
 
 You may **not**:
@@ -35,7 +35,7 @@ You may **not**:
 
 | Permitted                                              | Not Permitted                                |
 | ------------------------------------------------------ | -------------------------------------------- |
-| "My workflow tool, compatible with BMad Method"        | "BMadFlow" or "BMad Studio"                  |
+| "My workflow tool, compatible with EVO Method"        | "BMadFlow" or "BMad Studio"                  |
 | "An alternative implementation inspired by BMad"       | "BMad Pro" or "BMad Enterprise"              |
 | "My Awesome Healthcare Module (Bmad Community Module)" | "The Official BMad Core Healthcare Module"   |
 | Accurately stating you use BMad as a dependency        | Implying official endorsement or partnership |
@@ -46,7 +46,7 @@ You may sell products that incorporate or work with BMad software. However:
 
 - Your product must have its own distinct name and branding
 - You must not use BMad trademarks in your marketing, domain names, or product identity
-- You may truthfully describe technical compatibility (e.g., "Works with BMad Method")
+- You may truthfully describe technical compatibility (e.g., "Works with EVO Method")
 
 ## Questions?
 

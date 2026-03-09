@@ -170,7 +170,7 @@ class YamlXmlBuilder {
 
     if (buildMetadata.forWebBundle) {
       // Web bundle: keep existing format
-      xml += '<!-- Powered by BMAD-CORE™ -->\n\n';
+      xml += '<!-- Powered by EVO-CORE™ -->\n\n';
       xml += `# ${metadata.title || 'Agent'}\n\n`;
     } else {
       // Installation: use YAML frontmatter + instruction
@@ -182,7 +182,7 @@ class YamlXmlBuilder {
 
       xml += '---\n';
       xml += `name: "${nameFromFile}"\n`;
-      xml += `description: "${metadata.title || 'BMAD Agent'}"\n`;
+      xml += `description: "${metadata.title || 'EVO Agent'}"\n`;
       xml += '---\n\n';
       xml +=
         "You must fully embody this agent's persona and follow all activation instructions exactly as specified. NEVER break character until given an exit command.\n\n";
@@ -494,22 +494,22 @@ class YamlXmlBuilder {
     const customizeHash = customizeYamlPath ? await this.calculateFileHash(customizeYamlPath) : null;
 
     // Extract module from path (e.g., /path/to/modules/bmm/agents/pm.yaml -> bmm)
-    // or /path/to/bmad/bmm/agents/pm.yaml -> bmm
+    // or /path/to/evo/bmm/agents/pm.yaml -> bmm
     // or /path/to/src/bmm/agents/pm.yaml -> bmm
     let module = 'core'; // default to core
     const pathParts = agentYamlPath.split(path.sep);
 
     // Look for module indicators in the path
     const modulesIndex = pathParts.indexOf('modules');
-    const bmadIndex = pathParts.indexOf('bmad');
+    const evoIndex = pathParts.indexOf('evo');
     const srcIndex = pathParts.indexOf('src');
 
     if (modulesIndex !== -1 && pathParts[modulesIndex + 1]) {
       // Path contains /modules/{module}/
       module = pathParts[modulesIndex + 1];
-    } else if (bmadIndex !== -1 && pathParts[bmadIndex + 1]) {
-      // Path contains /bmad/{module}/
-      const potentialModule = pathParts[bmadIndex + 1];
+    } else if (evoIndex !== -1 && pathParts[evoIndex + 1]) {
+      // Path contains /evo/{module}/
+      const potentialModule = pathParts[evoIndex + 1];
       // Check if it's a known module, not 'agents' or '_config'
       if (['bmm', 'bmb', 'cis', 'core'].includes(potentialModule)) {
         module = potentialModule;

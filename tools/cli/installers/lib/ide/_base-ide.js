@@ -3,7 +3,7 @@ const fs = require('fs-extra');
 const { XmlHandler } = require('../../../lib/xml-handler');
 const prompts = require('../../../lib/prompts');
 const { getSourcePath } = require('../../../lib/project-root');
-const { BMAD_FOLDER_NAME } = require('./shared/path-utils');
+const { EVO_FOLDER_NAME } = require('./shared/path-utils');
 
 /**
  * Base class for IDE-specific setup
@@ -19,15 +19,15 @@ class BaseIdeSetup {
     this.configFile = null; // Override in subclasses when detection is file-based
     this.detectionPaths = []; // Additional paths that indicate the IDE is configured
     this.xmlHandler = new XmlHandler();
-    this.bmadFolderName = BMAD_FOLDER_NAME; // Default, can be overridden
+    this.evoFolderName = EVO_FOLDER_NAME; // Default, can be overridden
   }
 
   /**
-   * Set the bmad folder name for placeholder replacement
-   * @param {string} bmadFolderName - The bmad folder name
+   * Set the evo folder name for placeholder replacement
+   * @param {string} evoFolderName - The evo folder name
    */
-  setBmadFolderName(bmadFolderName) {
-    this.bmadFolderName = bmadFolderName;
+  setEvoFolderName(evoFolderName) {
+    this.evoFolderName = evoFolderName;
   }
 
   /**
@@ -42,10 +42,10 @@ class BaseIdeSetup {
   /**
    * Main setup method - must be implemented by subclasses
    * @param {string} projectDir - Project directory
-   * @param {string} bmadDir - BMAD installation directory
+   * @param {string} evoDir - EVO installation directory
    * @param {Object} options - Setup options
    */
-  async setup(projectDir, bmadDir, options = {}) {
+  async setup(projectDir, evoDir, options = {}) {
     throw new Error(`setup() must be implemented by ${this.name} handler`);
   }
 
@@ -58,10 +58,10 @@ class BaseIdeSetup {
     if (this.configDir) {
       const configPath = path.join(projectDir, this.configDir);
       if (await fs.pathExists(configPath)) {
-        const bmadRulesPath = path.join(configPath, BMAD_FOLDER_NAME);
-        if (await fs.pathExists(bmadRulesPath)) {
-          await fs.remove(bmadRulesPath);
-          if (!options.silent) await prompts.log.message(`Removed ${this.name} BMAD configuration`);
+        const evoRulesPath = path.join(configPath, EVO_FOLDER_NAME);
+        if (await fs.pathExists(evoRulesPath)) {
+          await fs.remove(evoRulesPath);
+          if (!options.silent) await prompts.log.message(`Removed ${this.name} EVO configuration`);
         }
       }
     }
@@ -115,15 +115,15 @@ class BaseIdeSetup {
   }
 
   /**
-   * Get list of agents from BMAD installation
-   * @param {string} bmadDir - BMAD installation directory
+   * Get list of agents from EVO installation
+   * @param {string} evoDir - EVO installation directory
    * @returns {Array} List of agent files
    */
-  async getAgents(bmadDir) {
+  async getAgents(evoDir) {
     const agents = [];
 
     // Get core agents
-    const coreAgentsPath = path.join(bmadDir, 'core', 'agents');
+    const coreAgentsPath = path.join(evoDir, 'core', 'agents');
     if (await fs.pathExists(coreAgentsPath)) {
       const coreAgents = await this.scanDirectory(coreAgentsPath, '.md');
       agents.push(
@@ -135,10 +135,10 @@ class BaseIdeSetup {
     }
 
     // Get module agents
-    const entries = await fs.readdir(bmadDir, { withFileTypes: true });
+    const entries = await fs.readdir(evoDir, { withFileTypes: true });
     for (const entry of entries) {
       if (entry.isDirectory() && entry.name !== 'core' && entry.name !== '_config' && entry.name !== 'agents') {
-        const moduleAgentsPath = path.join(bmadDir, entry.name, 'agents');
+        const moduleAgentsPath = path.join(evoDir, entry.name, 'agents');
         if (await fs.pathExists(moduleAgentsPath)) {
           const moduleAgents = await this.scanDirectory(moduleAgentsPath, '.md');
           agents.push(
@@ -151,8 +151,8 @@ class BaseIdeSetup {
       }
     }
 
-    // Get standalone agents from bmad/agents/ directory
-    const standaloneAgentsDir = path.join(bmadDir, 'agents');
+    // Get standalone agents from evo/agents/ directory
+    const standaloneAgentsDir = path.join(evoDir, 'agents');
     if (await fs.pathExists(standaloneAgentsDir)) {
       const agentDirs = await fs.readdir(standaloneAgentsDir, { withFileTypes: true });
 
@@ -186,16 +186,16 @@ class BaseIdeSetup {
   }
 
   /**
-   * Get list of tasks from BMAD installation
-   * @param {string} bmadDir - BMAD installation directory
+   * Get list of tasks from EVO installation
+   * @param {string} evoDir - EVO installation directory
    * @param {boolean} standaloneOnly - If true, only return standalone tasks
    * @returns {Array} List of task files
    */
-  async getTasks(bmadDir, standaloneOnly = false) {
+  async getTasks(evoDir, standaloneOnly = false) {
     const tasks = [];
 
     // Get core tasks (scan for both .md and .xml)
-    const coreTasksPath = path.join(bmadDir, 'core', 'tasks');
+    const coreTasksPath = path.join(evoDir, 'core', 'tasks');
     if (await fs.pathExists(coreTasksPath)) {
       const coreTasks = await this.scanDirectoryWithStandalone(coreTasksPath, ['.md', '.xml']);
       tasks.push(
@@ -207,10 +207,10 @@ class BaseIdeSetup {
     }
 
     // Get module tasks
-    const entries = await fs.readdir(bmadDir, { withFileTypes: true });
+    const entries = await fs.readdir(evoDir, { withFileTypes: true });
     for (const entry of entries) {
       if (entry.isDirectory() && entry.name !== 'core' && entry.name !== '_config' && entry.name !== 'agents') {
-        const moduleTasksPath = path.join(bmadDir, entry.name, 'tasks');
+        const moduleTasksPath = path.join(evoDir, entry.name, 'tasks');
         if (await fs.pathExists(moduleTasksPath)) {
           const moduleTasks = await this.scanDirectoryWithStandalone(moduleTasksPath, ['.md', '.xml']);
           tasks.push(
@@ -232,16 +232,16 @@ class BaseIdeSetup {
   }
 
   /**
-   * Get list of tools from BMAD installation
-   * @param {string} bmadDir - BMAD installation directory
+   * Get list of tools from EVO installation
+   * @param {string} evoDir - EVO installation directory
    * @param {boolean} standaloneOnly - If true, only return standalone tools
    * @returns {Array} List of tool files
    */
-  async getTools(bmadDir, standaloneOnly = false) {
+  async getTools(evoDir, standaloneOnly = false) {
     const tools = [];
 
     // Get core tools (scan for both .md and .xml)
-    const coreToolsPath = path.join(bmadDir, 'core', 'tools');
+    const coreToolsPath = path.join(evoDir, 'core', 'tools');
     if (await fs.pathExists(coreToolsPath)) {
       const coreTools = await this.scanDirectoryWithStandalone(coreToolsPath, ['.md', '.xml']);
       tools.push(
@@ -253,10 +253,10 @@ class BaseIdeSetup {
     }
 
     // Get module tools
-    const entries = await fs.readdir(bmadDir, { withFileTypes: true });
+    const entries = await fs.readdir(evoDir, { withFileTypes: true });
     for (const entry of entries) {
       if (entry.isDirectory() && entry.name !== 'core' && entry.name !== '_config' && entry.name !== 'agents') {
-        const moduleToolsPath = path.join(bmadDir, entry.name, 'tools');
+        const moduleToolsPath = path.join(evoDir, entry.name, 'tools');
         if (await fs.pathExists(moduleToolsPath)) {
           const moduleTools = await this.scanDirectoryWithStandalone(moduleToolsPath, ['.md', '.xml']);
           tools.push(
@@ -278,16 +278,16 @@ class BaseIdeSetup {
   }
 
   /**
-   * Get list of workflows from BMAD installation
-   * @param {string} bmadDir - BMAD installation directory
+   * Get list of workflows from EVO installation
+   * @param {string} evoDir - EVO installation directory
    * @param {boolean} standaloneOnly - If true, only return standalone workflows
    * @returns {Array} List of workflow files
    */
-  async getWorkflows(bmadDir, standaloneOnly = false) {
+  async getWorkflows(evoDir, standaloneOnly = false) {
     const workflows = [];
 
     // Get core workflows
-    const coreWorkflowsPath = path.join(bmadDir, 'core', 'workflows');
+    const coreWorkflowsPath = path.join(evoDir, 'core', 'workflows');
     if (await fs.pathExists(coreWorkflowsPath)) {
       const coreWorkflows = await this.findWorkflowFiles(coreWorkflowsPath);
       workflows.push(
@@ -299,10 +299,10 @@ class BaseIdeSetup {
     }
 
     // Get module workflows
-    const entries = await fs.readdir(bmadDir, { withFileTypes: true });
+    const entries = await fs.readdir(evoDir, { withFileTypes: true });
     for (const entry of entries) {
       if (entry.isDirectory() && entry.name !== 'core' && entry.name !== '_config' && entry.name !== 'agents') {
-        const moduleWorkflowsPath = path.join(bmadDir, entry.name, 'workflows');
+        const moduleWorkflowsPath = path.join(evoDir, entry.name, 'workflows');
         if (await fs.pathExists(moduleWorkflowsPath)) {
           const moduleWorkflows = await this.findWorkflowFiles(moduleWorkflowsPath);
           workflows.push(
@@ -539,26 +539,26 @@ class BaseIdeSetup {
   }
 
   /**
-   * Write file with content (replaces _bmad placeholder)
+   * Write file with content (replaces _evo placeholder)
    * @param {string} filePath - File path
    * @param {string} content - File content
    */
   async writeFile(filePath, content) {
-    // Replace _bmad placeholder if present
-    if (typeof content === 'string' && content.includes('_bmad')) {
-      content = content.replaceAll('_bmad', this.bmadFolderName);
+    // Replace _evo placeholder if present
+    if (typeof content === 'string' && content.includes('_evo')) {
+      content = content.replaceAll('_evo', this.evoFolderName);
     }
 
-    // Replace escape sequence _bmad with literal _bmad
-    if (typeof content === 'string' && content.includes('_bmad')) {
-      content = content.replaceAll('_bmad', '_bmad');
+    // Replace escape sequence _evo with literal _evo
+    if (typeof content === 'string' && content.includes('_evo')) {
+      content = content.replaceAll('_evo', '_evo');
     }
     await this.ensureDir(path.dirname(filePath));
     await fs.writeFile(filePath, content, 'utf8');
   }
 
   /**
-   * Copy file from source to destination (replaces _bmad placeholder in text files)
+   * Copy file from source to destination (replaces _evo placeholder in text files)
    * @param {string} source - Source file path
    * @param {string} dest - Destination file path
    */
@@ -575,14 +575,14 @@ class BaseIdeSetup {
         // Read the file content
         let content = await fs.readFile(source, 'utf8');
 
-        // Replace _bmad placeholder with actual folder name
-        if (content.includes('_bmad')) {
-          content = content.replaceAll('_bmad', this.bmadFolderName);
+        // Replace _evo placeholder with actual folder name
+        if (content.includes('_evo')) {
+          content = content.replaceAll('_evo', this.evoFolderName);
         }
 
-        // Replace escape sequence _bmad with literal _bmad
-        if (content.includes('_bmad')) {
-          content = content.replaceAll('_bmad', '_bmad');
+        // Replace escape sequence _evo with literal _evo
+        if (content.includes('_evo')) {
+          content = content.replaceAll('_evo', '_evo');
         }
 
         // Write to dest with replaced content
@@ -639,23 +639,23 @@ class BaseIdeSetup {
   /**
    * Flatten a relative path to a single filename for flat slash command naming
    * @deprecated Use toColonPath() or toDashPath() from shared/path-utils.js instead
-   * Example: 'module/agents/name.md' -> 'bmad-module-agents-name.md'
+   * Example: 'module/agents/name.md' -> 'evo-module-agents-name.md'
    * Used by IDEs that ignore directory structure for slash commands (e.g., Antigravity, Codex)
    * @param {string} relativePath - Relative path to flatten
-   * @returns {string} Flattened filename with 'bmad-' prefix
+   * @returns {string} Flattened filename with 'evo-' prefix
    */
   flattenFilename(relativePath) {
     const sanitized = relativePath.replaceAll(/[/\\]/g, '-');
-    return `bmad-${sanitized}`;
+    return `evo-${sanitized}`;
   }
 
   /**
    * Create agent configuration file
-   * @param {string} bmadDir - BMAD installation directory
+   * @param {string} evoDir - EVO installation directory
    * @param {Object} agent - Agent information
    */
-  async createAgentConfig(bmadDir, agent) {
-    const agentConfigDir = path.join(bmadDir, '_config', 'agents');
+  async createAgentConfig(evoDir, agent) {
+    const agentConfigDir = path.join(evoDir, '_config', 'agents');
     await this.ensureDir(agentConfigDir);
 
     // Load agent config template

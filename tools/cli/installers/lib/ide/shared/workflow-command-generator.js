@@ -1,18 +1,18 @@
 const path = require('node:path');
 const fs = require('fs-extra');
 const csv = require('csv-parse/sync');
-const { BMAD_FOLDER_NAME } = require('./path-utils');
+const { EVO_FOLDER_NAME } = require('./path-utils');
 
 /**
  * Generates command files for each workflow in the manifest
  */
 class WorkflowCommandGenerator {
-  constructor(bmadFolderName = BMAD_FOLDER_NAME) {
-    this.bmadFolderName = bmadFolderName;
+  constructor(evoFolderName = EVO_FOLDER_NAME) {
+    this.evoFolderName = evoFolderName;
   }
 
-  async collectWorkflowArtifacts(bmadDir) {
-    const workflows = await this.loadWorkflowManifest(bmadDir);
+  async collectWorkflowArtifacts(evoDir) {
+    const workflows = await this.loadWorkflowManifest(evoDir);
 
     if (!workflows) {
       return { artifacts: [], counts: { commands: 0, launchers: 0 } };
@@ -28,10 +28,10 @@ class WorkflowCommandGenerator {
       let workflowRelPath = workflow.path || '';
       // Normalize path separators for cross-platform compatibility
       workflowRelPath = workflowRelPath.replaceAll('\\', '/');
-      // Remove _bmad/ prefix if present to get relative path from project root
-      // Handle both absolute paths (/path/to/_bmad/...) and relative paths (_bmad/...)
-      if (workflowRelPath.includes('_bmad/')) {
-        const parts = workflowRelPath.split(/_bmad\//);
+      // Remove _evo/ prefix if present to get relative path from project root
+      // Handle both absolute paths (/path/to/_evo/...) and relative paths (_evo/...)
+      if (workflowRelPath.includes('_evo/')) {
+        const parts = workflowRelPath.split(/_evo\//);
         if (parts.length > 1) {
           workflowRelPath = parts.slice(1).join('/');
         }
@@ -149,20 +149,20 @@ When running any workflow:
     if (workflowPath.includes('/src/bmm/')) {
       const match = workflowPath.match(/\/src\/bmm\/(.+)/);
       if (match) {
-        transformed = `{project-root}/${this.bmadFolderName}/bmm/${match[1]}`;
+        transformed = `{project-root}/${this.evoFolderName}/bmm/${match[1]}`;
       }
     } else if (workflowPath.includes('/src/core/')) {
       const match = workflowPath.match(/\/src\/core\/(.+)/);
       if (match) {
-        transformed = `{project-root}/${this.bmadFolderName}/core/${match[1]}`;
+        transformed = `{project-root}/${this.evoFolderName}/core/${match[1]}`;
       }
     }
 
     return transformed;
   }
 
-  async loadWorkflowManifest(bmadDir) {
-    const manifestPath = path.join(bmadDir, '_config', 'workflow-manifest.csv');
+  async loadWorkflowManifest(evoDir) {
+    const manifestPath = path.join(evoDir, '_config', 'workflow-manifest.csv');
 
     if (!(await fs.pathExists(manifestPath))) {
       return null;

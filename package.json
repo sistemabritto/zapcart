@@ -1,8 +1,8 @@
 {
   "$schema": "https://json.schemastore.org/package.json",
-  "name": "bmad-method",
-  "version": "6.0.4",
-  "description": "Breakthrough Method of Agile AI-driven Development",
+  "name": "evo-method",
+  "version": "1.0.0",
+  "description": "Evolve, Validate, Orchestrate — AI-driven Agile Development Method",
   "keywords": [
     "agile",
     "ai",
@@ -10,22 +10,22 @@
     "development",
     "methodology",
     "agents",
-    "bmad"
+    "evo-method"
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/bmad-code-org/BMAD-METHOD.git"
+    "url": "git+https://github.com/etus-0104/EVO-METHOD.git"
   },
   "license": "MIT",
-  "author": "Brian (BMad) Madison",
-  "main": "tools/cli/bmad-cli.js",
+  "author": "etus-0104",
+  "main": "tools/cli/evo-cli.js",
   "bin": {
-    "bmad": "tools/bmad-npx-wrapper.js",
-    "bmad-method": "tools/bmad-npx-wrapper.js"
+    "evo": "tools/evo-npx-wrapper.js",
+    "evo-method": "tools/evo-npx-wrapper.js"
   },
   "scripts": {
-    "bmad:install": "node tools/cli/bmad-cli.js install",
-    "bmad:uninstall": "node tools/cli/bmad-cli.js uninstall",
+    "evo:install": "node tools/cli/evo-cli.js install",
+    "evo:uninstall": "node tools/cli/evo-cli.js uninstall",
     "docs:build": "node tools/build-docs.mjs",
     "docs:dev": "astro dev --root website",
     "docs:fix-links": "node tools/fix-doc-links.js",
@@ -34,7 +34,7 @@
     "format:check": "prettier --check \"**/*.{js,cjs,mjs,json,yaml}\"",
     "format:fix": "prettier --write \"**/*.{js,cjs,mjs,json,yaml}\"",
     "format:fix:staged": "prettier --write",
-    "install:bmad": "node tools/cli/bmad-cli.js install",
+    "install:evo": "node tools/cli/evo-cli.js install",
     "lint": "eslint . --ext .js,.cjs,.mjs,.yaml --max-warnings=0",
     "lint:fix": "eslint . --ext .js,.cjs,.mjs,.yaml --fix",
     "lint:md": "markdownlint-cli2 \"**/*.md\"",

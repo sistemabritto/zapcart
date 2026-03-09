@@ -4,9 +4,9 @@ test/fixtures/**
 # Contributor Covenant (external standard)
 CODE_OF_CONDUCT.md
 
-# BMAD runtime folders (user-specific, not in repo)
-_bmad/
-_bmad*/
+# EVO runtime folders (user-specific, not in repo)
+_evo/
+_evo*/
 
 # IDE integration folders (user-specific, not in repo)
 .junie/

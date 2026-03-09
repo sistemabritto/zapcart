@@ -2,21 +2,21 @@ const path = require('node:path');
 const fs = require('fs-extra');
 
 /**
- * Find the BMAD project root directory by looking for package.json
- * or specific BMAD markers
+ * Find the EVO project root directory by looking for package.json
+ * or specific EVO markers
  */
 function findProjectRoot(startPath = __dirname) {
   let currentPath = path.resolve(startPath);
 
-  // Keep going up until we find package.json with bmad-method
+  // Keep going up until we find package.json with evo-method
   while (currentPath !== path.dirname(currentPath)) {
     const packagePath = path.join(currentPath, 'package.json');
 
     if (fs.existsSync(packagePath)) {
       try {
         const pkg = fs.readJsonSync(packagePath);
-        // Check if this is the BMAD project
-        if (pkg.name === 'bmad-method' || fs.existsSync(path.join(currentPath, 'src', 'core'))) {
+        // Check if this is the EVO project
+        if (pkg.name === 'evo-method' || fs.existsSync(path.join(currentPath, 'src', 'core'))) {
           return currentPath;
         }
       } catch {

@@ -75,8 +75,8 @@ Show in "What You've Accomplished" sections:
 ````md
 ```
 your-project/
-├── _bmad/                                   # BMad configuration
-├── _bmad-output/
+├── _evo/                                   # EVO configuration
+├── _evo-output/
 │   ├── planning-artifacts/
 │   │   └── PRD.md                           # Your requirements document
 │   ├── implementation-artifacts/
@@ -325,7 +325,7 @@ Starlight generates right-side "On this page" navigation from headers:
 Add italic context at definition start for limited-scope terms:
 
 - `*Quick Flow only.*`
-- `*BMad Method/Enterprise.*`
+- `*EVO Method/Enterprise.*`
 - `*Phase N.*`
 - `*BMGD.*`
 - `*Established projects.*`
@@ -349,7 +349,7 @@ Add italic context at definition start for limited-scope terms:
 
 ### Do I always need architecture?
 
-Only for BMad Method and Enterprise tracks. Quick Flow skips to implementation.
+Only for EVO Method and Enterprise tracks. Quick Flow skips to implementation.
 
 ### Can I change my plan later?
 

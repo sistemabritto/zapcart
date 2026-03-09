@@ -5,7 +5,7 @@ description: 'Edit & Update - Apply changes to PRD following approved change pla
 # File references (ONLY variables used in this step)
 nextStepFile: './step-e-04-complete.md'
 prdFile: '{prd_file_path}'
-prdPurpose: '{project-root}/_bmad/bmm/workflows/2-plan-workflows/create-prd/data/prd-purpose.md'
+prdPurpose: '{project-root}/_evo/bmm/workflows/2-plan-workflows/create-prd/data/prd-purpose.md'
 ---
 
 # Step E-3: Edit & Update
@@ -82,12 +82,12 @@ Display: "**Starting PRD Edits**
 - Section to edit: {section_name}
 - Current content: {existing content}
 - Changes needed: {specific changes from plan}
-- BMAD PRD standards: Load from prd-purpose.md
+- EVO PRD standards: Load from prd-purpose.md
 
 **Tasks:**
 1. Read current PRD section
 2. Apply specified changes
-3. Ensure BMAD PRD principles compliance:
+3. Ensure EVO PRD principles compliance:
    - High information density (no filler)
    - Measurable requirements
    - Clear structure
@@ -112,7 +112,7 @@ Apply changes and return updated section."
 - Additions: Create new sections with proper content
 - Updates: Modify existing content per plan
 - Removals: Remove specified content
-- Restructuring: Reformat content to BMAD standard
+- Restructuring: Reformat content to EVO standard
 
 **c) Update PRD file**
 - Apply changes to PRD
@@ -129,12 +129,12 @@ Changes: {brief summary}
 **If conversion mode is "Full restructuring" or "Both":**
 
 **For restructuring:**
-- Reorganize PRD to BMAD standard structure
+- Reorganize PRD to EVO standard structure
 - Ensure proper ## Level 2 headers
 - Reorder sections logically
-- Update PRD frontmatter to match BMAD format
+- Update PRD frontmatter to match EVO format
 
-**Follow BMAD PRD structure:**
+**Follow EVO PRD structure:**
 1. Executive Summary
 2. Success Criteria
 3. Product Scope
@@ -146,7 +146,7 @@ Changes: {brief summary}
 9. Non-Functional Requirements
 
 Display: "**PRD Restructured**
-BMAD standard structure applied.
+EVO standard structure applied.
 {Sections added/reordered}"
 
 ### 5. Update PRD Frontmatter

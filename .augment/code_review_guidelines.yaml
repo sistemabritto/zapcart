@@ -1,4 +1,4 @@
-# Augment Code Review Guidelines for BMAD-METHOD
+# Augment Code Review Guidelines for EVO-METHOD
 # https://docs.augmentcode.com/codereview/overview
 # Focus: Workflow validation and quality
 
@@ -27,7 +27,7 @@ file_paths_to_ignore:
   - "test/template-test-generator/**"
   - "tools/template-test-generator/test-scenarios/**"
   # --- Shared baseline: non-project dirs ---
-  - "_bmad*/**"
+  - "_evo*/**"
   - "website/**"
   - "z*/**"
   - "sample-project/**"
