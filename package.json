@@ -14,10 +14,10 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/etus-0104/EVO-METHOD.git"
+    "url": "git+https://github.com/EvolutionAPI/EVO-METHOD.git"
   },
   "license": "MIT",
-  "author": "etus-0104",
+  "author": "EvolutionAPI",
   "main": "tools/cli/evo-cli.js",
   "bin": {
     "evo": "tools/evo-npx-wrapper.js",
