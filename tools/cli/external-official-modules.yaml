@@ -1,53 +1,55 @@
-# This file allows these modules under evo-code-org to also be installed with the evo method installer, while
-# allowing us to keep the source of these projects in separate repos.
+# This file allows additional modules to be installed with the evo method installer,
+# keeping their source in separate repos.
+#
+# NOTE: These modules are maintained by the upstream bmad-code-org project.
 
 modules:
-  evo-builder:
-    url: https://github.com/evo-code-org/evo-builder
+  bmad-builder:
+    url: https://github.com/bmad-code-org/bmad-builder
     module-definition: src/module.yaml
     code: bmb
-    name: "EVO Builder"
+    name: "BMad Builder"
     description: "Agent, Workflow and Module Builder"
     defaultSelected: false
-    type: evo-org
-    npmPackage: evo-builder
+    type: bmad-org
+    npmPackage: bmad-builder
 
-  evo-creative-intelligence-suite:
-    url: https://github.com/evo-code-org/evo-module-creative-intelligence-suite
+  bmad-creative-intelligence-suite:
+    url: https://github.com/bmad-code-org/bmad-module-creative-intelligence-suite
     module-definition: src/module.yaml
     code: cis
-    name: "EVO Creative Intelligence Suite"
+    name: "BMad Creative Intelligence Suite"
     description: "Creative tools for writing, brainstorming, and more"
     defaultSelected: false
-    type: evo-org
-    npmPackage: evo-creative-intelligence-suite
+    type: bmad-org
+    npmPackage: bmad-creative-intelligence-suite
 
-  evo-game-dev-studio:
-    url: https://github.com/evo-code-org/evo-module-game-dev-studio.git
+  bmad-game-dev-studio:
+    url: https://github.com/bmad-code-org/bmad-module-game-dev-studio.git
     module-definition: src/module.yaml
     code: gds
-    name: "EVO Game Dev Studio"
+    name: "BMad Game Dev Studio"
     description: "Game development agents and workflows"
     defaultSelected: false
-    type: evo-org
-    npmPackage: evo-game-dev-studio
+    type: bmad-org
+    npmPackage: bmad-game-dev-studio
 
-  evo-method-test-architecture-enterprise:
-    url: https://github.com/evo-code-org/evo-method-test-architecture-enterprise
+  bmad-method-test-architecture-enterprise:
+    url: https://github.com/bmad-code-org/bmad-method-test-architecture-enterprise
     module-definition: src/module.yaml
     code: tea
     name: "Test Architect"
     description: "Master Test Architect for quality strategy, test automation, and release gates"
     defaultSelected: false
-    type: evo-org
-    npmPackage: evo-method-test-architecture-enterprise
+    type: bmad-org
+    npmPackage: bmad-method-test-architecture-enterprise
 
   # whiteport-design-system:
-  #   url: https://github.com/evo-code-org/evo-method-wds-expansion
+  #   url: https://github.com/bmad-code-org/bmad-method-wds-expansion
   #   module-definition: src/module.yaml
   #   code: wds
   #   name: "Whiteport UX Design System"
   #   description: "UX design framework with Figma integration"
   #   defaultSelected: false
   #   type: community
-  #   npmPackage: evo-method-wds-expansion
+  #   npmPackage: bmad-method-wds-expansion
