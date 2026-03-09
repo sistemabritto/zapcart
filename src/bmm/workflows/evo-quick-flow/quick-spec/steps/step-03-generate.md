@@ -2,7 +2,7 @@
 name: 'step-03-generate'
 description: 'Build the implementation plan based on the technical mapping of constraints'
 
-wipFile: '{implementation_artifacts}/tech-spec-wip.md'
+wipFile: '{implementation_artifacts}/{active_feature}/tech-spec-wip.md'
 ---
 
 # Step 3: Generate Implementation Plan

@@ -4,7 +4,7 @@ description: 'Generate and append the Executive Summary section to the PRD docum
 
 # File References
 nextStepFile: '{project-root}/_evo/bmm/workflows/2-plan-workflows/create-prd/steps-c/step-03-success.md'
-outputFile: '{planning_artifacts}/prd.md'
+outputFile: '{planning_artifacts}/{active_feature}/prd.md'
 
 # Task References
 advancedElicitationTask: '{project-root}/_evo/core/workflows/advanced-elicitation/workflow.md'

@@ -280,7 +280,7 @@ Show the generated decisions content and present choices:
 
 #### If 'C' (Continue):
 
-- Append the final content to `{planning_artifacts}/architecture.md`
+- Append the final content to `{planning_artifacts}/{active_feature}/architecture.md`
 - Update frontmatter: `stepsCompleted: [1, 2, 3, 4]`
 - Load `{project-root}/_evo/bmm/workflows/3-solutioning/create-architecture/steps/step-05-patterns.md`
 

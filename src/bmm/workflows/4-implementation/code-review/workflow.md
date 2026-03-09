@@ -36,7 +36,7 @@ Load config from `{project-root}/_evo/bmm/config.yaml` and resolve:
 ### Paths
 
 - `installed_path` = `{project-root}/_evo/bmm/workflows/4-implementation/code-review`
-- `sprint_status` = `{implementation_artifacts}/sprint-status.yaml`
+- `sprint_status` = `{implementation_artifacts}/{active_feature}/sprint-status.yaml`
 - `validation` = `{installed_path}/checklist.md`
 
 ### Input Files

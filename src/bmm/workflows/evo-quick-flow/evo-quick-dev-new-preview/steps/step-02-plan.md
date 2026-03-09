@@ -3,8 +3,8 @@ name: 'step-02-plan'
 description: 'Investigate, generate spec, present for approval'
 
 templateFile: '../tech-spec-template.md'
-wipFile: '{implementation_artifacts}/tech-spec-wip.md'
-deferred_work_file: '{implementation_artifacts}/deferred-work.md'
+wipFile: '{implementation_artifacts}/{active_feature}/tech-spec-wip.md'
+deferred_work_file: '{implementation_artifacts}/{active_feature}/deferred-work.md'
 ---
 
 # Step 2: Plan

@@ -147,7 +147,7 @@ function generateLlmsTxt(outputDir) {
   const content = [
     '# EVO Method Documentation',
     '',
-    '> AI-driven agile development with specialized agents and workflows that scale from bug fixes to enterprise platforms.',
+    '> Context engineering for AI-powered development',
     '',
     `Documentation: ${siteUrl}`,
     `Repository: ${REPO_URL}`,

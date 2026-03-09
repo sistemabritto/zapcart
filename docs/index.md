@@ -1,6 +1,6 @@
 ---
 title: Welcome to the EVO Method
-description: AI-driven development framework with specialized agents, guided workflows, and intelligent planning
+description: Context engineering for AI-powered development
 ---
 
 The EVO Method (**B**uild **M**ore **A**rchitect **D**reams) is an AI-driven development framework module within the EVO Method Ecosystem that helps you build software through the whole process from ideation and planning all the way through agentic implementation. It provides specialized AI agents, guided workflows, and intelligent planning that adapts to your project's complexity, whether you're fixing a bug or building an enterprise platform.

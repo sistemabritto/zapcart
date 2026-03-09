@@ -3,7 +3,7 @@ name: 'step-02-prd-analysis'
 description: 'Read and analyze PRD to extract all FRs and NFRs for coverage validation'
 
 nextStepFile: './step-03-epic-coverage-validation.md'
-outputFile: '{planning_artifacts}/implementation-readiness-report-{{date}}.md'
+outputFile: '{planning_artifacts}/{active_feature}/implementation-readiness-report.md'
 epicsFile: '{planning_artifacts}/*epic*.md' # Will be resolved to actual file
 ---
 

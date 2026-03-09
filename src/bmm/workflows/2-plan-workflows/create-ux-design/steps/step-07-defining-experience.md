@@ -215,7 +215,7 @@ Show the generated defining experience content and present choices:
 
 #### If 'C' (Continue):
 
-- Append the final content to `{planning_artifacts}/ux-design-specification.md`
+- Append the final content to `{planning_artifacts}/{active_feature}/ux-design-specification.md`
 - Update frontmatter: append step to end of stepsCompleted array
 - Load `{project-root}/_evo/bmm/workflows/2-plan-workflows/create-ux-design/steps/step-08-visual-foundation.md`
 

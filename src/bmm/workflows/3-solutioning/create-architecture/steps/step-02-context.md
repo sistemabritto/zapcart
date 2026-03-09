@@ -186,7 +186,7 @@ Show the generated content and present choices:
 
 #### If 'C' (Continue):
 
-- Append the final content to `{planning_artifacts}/architecture.md`
+- Append the final content to `{planning_artifacts}/{active_feature}/architecture.md`
 - Update frontmatter: `stepsCompleted: [1, 2]`
 - Load `{project-root}/_evo/bmm/workflows/3-solutioning/create-architecture/steps/step-03-starter.md`
 

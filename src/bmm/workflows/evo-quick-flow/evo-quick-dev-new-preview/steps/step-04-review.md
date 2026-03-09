@@ -2,7 +2,7 @@
 name: 'step-04-review'
 description: 'Adversarial review, classify findings, optional spec loop'
 
-deferred_work_file: '{implementation_artifacts}/deferred-work.md'
+deferred_work_file: '{implementation_artifacts}/{active_feature}/deferred-work.md'
 specLoopIteration: 1
 ---
 

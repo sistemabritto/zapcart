@@ -9,7 +9,7 @@ workflow_path: '{project-root}/_evo/bmm/workflows/3-solutioning/create-epics-and
 thisStepFile: './step-02-design-epics.md'
 nextStepFile: './step-03-create-stories.md'
 workflowFile: '{workflow_path}/workflow.md'
-outputFile: '{planning_artifacts}/epics.md'
+outputFile: '{planning_artifacts}/{active_feature}/epics.md'
 
 # Task References
 advancedElicitationTask: '{project-root}/_evo/core/workflows/advanced-elicitation/workflow.md'

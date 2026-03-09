@@ -34,7 +34,7 @@ Load config from `{project-root}/_evo/bmm/config.yaml` and resolve:
 
 - `installed_path` = `{project-root}/_evo/bmm/workflows/2-plan-workflows/create-ux-design`
 - `template_path` = `{installed_path}/ux-design-template.md`
-- `default_output_file` = `{planning_artifacts}/ux-design-specification.md`
+- `default_output_file` = `{planning_artifacts}/{active_feature}/ux-design-specification.md`
 
 ## EXECUTION
 

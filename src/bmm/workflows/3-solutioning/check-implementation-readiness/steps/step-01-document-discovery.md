@@ -3,7 +3,7 @@ name: 'step-01-document-discovery'
 description: 'Discover and inventory all project documents, handling duplicates and organizing file structure'
 
 nextStepFile: './step-02-prd-analysis.md'
-outputFile: '{planning_artifacts}/implementation-readiness-report-{{date}}.md'
+outputFile: '{planning_artifacts}/{active_feature}/implementation-readiness-report.md'
 templateFile: '../templates/readiness-report-template.md'
 ---
 

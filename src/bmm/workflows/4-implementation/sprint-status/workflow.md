@@ -26,7 +26,7 @@ Load config from `{project-root}/_evo/bmm/config.yaml` and resolve:
 ### Paths
 
 - `installed_path` = `{project-root}/_evo/bmm/workflows/4-implementation/sprint-status`
-- `sprint_status_file` = `{implementation_artifacts}/sprint-status.yaml`
+- `sprint_status_file` = `{implementation_artifacts}/{active_feature}/sprint-status.yaml`
 
 ### Input Files
 

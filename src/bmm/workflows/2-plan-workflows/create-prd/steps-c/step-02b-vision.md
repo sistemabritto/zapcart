@@ -4,7 +4,7 @@ description: 'Discover the product vision and differentiator through collaborati
 
 # File References
 nextStepFile: '{project-root}/_evo/bmm/workflows/2-plan-workflows/create-prd/steps-c/step-02c-executive-summary.md'
-outputFile: '{planning_artifacts}/prd.md'
+outputFile: '{planning_artifacts}/{active_feature}/prd.md'
 
 # Task References
 advancedElicitationTask: '{project-root}/_evo/core/workflows/advanced-elicitation/workflow.md'

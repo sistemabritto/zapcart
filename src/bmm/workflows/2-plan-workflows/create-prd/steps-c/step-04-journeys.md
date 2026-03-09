@@ -4,7 +4,7 @@ description: 'Map ALL user types that interact with the system with narrative st
 
 # File References
 nextStepFile: '{project-root}/_evo/bmm/workflows/2-plan-workflows/create-prd/steps-c/step-05-domain.md'
-outputFile: '{planning_artifacts}/prd.md'
+outputFile: '{planning_artifacts}/{active_feature}/prd.md'
 
 # Task References
 advancedElicitationTask: '{project-root}/_evo/core/workflows/advanced-elicitation/workflow.md'

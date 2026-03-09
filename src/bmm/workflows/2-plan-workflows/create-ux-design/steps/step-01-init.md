@@ -32,11 +32,24 @@ Initialize the UX design workflow by detecting continuation state and setting up
 
 ## INITIALIZATION SEQUENCE:
 
+### 0. Validate Active Feature
+
+Before any other action, check if `{active_feature}` is set (non-empty) in the loaded config.
+
+**If `{active_feature}` is empty:**
+- Inform the user: "No active feature is set. Please provide a feature slug (e.g. `admin-panel`, `auth-refactor`) to organize artifacts into a subfolder."
+- Wait for user input
+- Update `{project-root}/_evo/bmm/config.yaml`: set `active_feature` to the provided slug
+- Create subfolders: `{planning_artifacts}/{{active_feature}}/` and `{implementation_artifacts}/{{active_feature}}/`
+- Confirm: "Active feature set to **{{active_feature}}**. Artifacts will be saved to `{planning_artifacts}/{{active_feature}}/`."
+
+**If `{active_feature}` is already set:** proceed directly to the next step.
+
 ### 1. Check for Existing Workflow
 
 First, check if the output document already exists:
 
-- Look for file at `{planning_artifacts}/*ux-design-specification*.md`
+- Look for file at `{planning_artifacts}/{active_feature}/*ux-design-specification*.md`
 - If exists, read the complete file including frontmatter
 - If not exists, this is a fresh workflow
 
@@ -80,7 +93,7 @@ Try to discover the following:
 
 #### B. Create Initial Document
 
-Copy the template from `{installed_path}/ux-design-template.md` to `{planning_artifacts}/ux-design-specification.md`
+Copy the template from `{installed_path}/ux-design-template.md` to `{planning_artifacts}/{active_feature}/ux-design-specification.md`
 Initialize frontmatter in the template.
 
 #### C. Complete Initialization and Report
@@ -89,7 +102,7 @@ Complete setup and report to user:
 
 **Document Setup:**
 
-- Created: `{planning_artifacts}/ux-design-specification.md` from template
+- Created: `{planning_artifacts}/{active_feature}/ux-design-specification.md` from template
 - Initialized frontmatter with workflow state
 
 **Input Documents Discovered:**
@@ -110,7 +123,7 @@ Do you have any other documents you'd like me to include, or shall we continue t
 
 ## NEXT STEP:
 
-After user selects [C] to continue, ensure the file `{planning_artifacts}/ux-design-specification.md` has been created and saved, and then load `{project-root}/_evo/bmm/workflows/2-plan-workflows/create-ux-design/steps/step-02-discovery.md` to begin the UX discovery phase.
+After user selects [C] to continue, ensure the file `{planning_artifacts}/{active_feature}/ux-design-specification.md` has been created and saved, and then load `{project-root}/_evo/bmm/workflows/2-plan-workflows/create-ux-design/steps/step-02-discovery.md` to begin the UX discovery phase.
 
 Remember: Do NOT proceed to step-02 until output file has been updated and user explicitly selects [C] to continue!
 

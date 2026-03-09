@@ -29,7 +29,7 @@ Load config from `{project-root}/_evo/bmm/config.yaml` and resolve:
 - `checklist` = `{installed_path}/checklist.md`
 - `test_dir` = `{project-root}/tests`
 - `source_dir` = `{project-root}`
-- `default_output_file` = `{implementation_artifacts}/tests/test-summary.md`
+- `default_output_file` = `{implementation_artifacts}/{active_feature}/tests/test-summary.md`
 
 ### Context
 

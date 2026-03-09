@@ -3,7 +3,7 @@ name: 'step-05-epic-quality-review'
 description: 'Validate epics and stories against create-epics-and-stories best practices'
 
 nextStepFile: './step-06-final-assessment.md'
-outputFile: '{planning_artifacts}/implementation-readiness-report-{{date}}.md'
+outputFile: '{planning_artifacts}/{active_feature}/implementation-readiness-report.md'
 ---
 
 # Step 5: Epic Quality Review

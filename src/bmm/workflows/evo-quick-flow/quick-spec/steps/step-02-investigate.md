@@ -2,7 +2,7 @@
 name: 'step-02-investigate'
 description: 'Map technical constraints and anchor points within the codebase'
 
-wipFile: '{implementation_artifacts}/tech-spec-wip.md'
+wipFile: '{implementation_artifacts}/{active_feature}/tech-spec-wip.md'
 ---
 
 # Step 2: Map Technical Constraints & Anchor Points

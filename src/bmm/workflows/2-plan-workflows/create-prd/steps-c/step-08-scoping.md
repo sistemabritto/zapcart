@@ -4,7 +4,7 @@ description: 'Define MVP boundaries and prioritize features across development p
 
 # File References
 nextStepFile: '{project-root}/_evo/bmm/workflows/2-plan-workflows/create-prd/steps-c/step-09-functional.md'
-outputFile: '{planning_artifacts}/prd.md'
+outputFile: '{planning_artifacts}/{active_feature}/prd.md'
 
 # Task References
 advancedElicitationTask: '{project-root}/_evo/core/workflows/advanced-elicitation/workflow.md'

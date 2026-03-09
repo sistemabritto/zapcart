@@ -2,8 +2,8 @@
 name: 'step-01-clarify-and-route'
 description: 'Capture intent, route to execution path'
 
-wipFile: '{implementation_artifacts}/tech-spec-wip.md'
-deferred_work_file: '{implementation_artifacts}/deferred-work.md'
+wipFile: '{implementation_artifacts}/{active_feature}/tech-spec-wip.md'
+deferred_work_file: '{implementation_artifacts}/{active_feature}/deferred-work.md'
 spec_file: '' # set at runtime before leaving this step
 ---
 
@@ -40,8 +40,8 @@ spec_file: '' # set at runtime before leaving this step
    - On **K**: Proceed as-is.
 5. Generate `spec_file` path:
    - Derive a valid kebab-case slug from the clarified intent.
-   - If `{implementation_artifacts}/tech-spec-{slug}.md` already exists, append `-2`, `-3`, etc.
-   - Set `spec_file` = `{implementation_artifacts}/tech-spec-{slug}.md`.
+   - If `{implementation_artifacts}/{active_feature}/tech-spec-{slug}.md` already exists, append `-2`, `-3`, etc.
+   - Set `spec_file` = `{implementation_artifacts}/{active_feature}/tech-spec-{slug}.md`.
 6. Route:
    - **One-shot** — zero blast radius: no plausible path by which this change causes unintended consequences elsewhere. Clear intent, no architectural decisions. `execution_mode = "one-shot"`. → Step 3.
    - **Plan-code-review** — everything else. `execution_mode = "plan-code-review"`. → Step 2.

@@ -35,14 +35,14 @@ Load config from `{project-root}/_evo/bmm/config.yaml` and resolve:
 - `installed_path` = `{project-root}/_evo/bmm/workflows/4-implementation/create-story`
 - `template` = `{installed_path}/template.md`
 - `validation` = `{installed_path}/checklist.md`
-- `sprint_status` = `{implementation_artifacts}/sprint-status.yaml`
+- `sprint_status` = `{implementation_artifacts}/{active_feature}/sprint-status.yaml`
 - `epics_file` = `{planning_artifacts}/epics.md`
 - `prd_file` = `{planning_artifacts}/prd.md`
 - `architecture_file` = `{planning_artifacts}/architecture.md`
 - `ux_file` = `{planning_artifacts}/*ux*.md`
 - `story_title` = "" (will be elicited if not derivable)
 - `project_context` = `**/project-context.md` (load if exists)
-- `default_output_file` = `{implementation_artifacts}/{{story_key}}.md`
+- `default_output_file` = `{implementation_artifacts}/{active_feature}/{{story_key}}.md`
 
 ### Input Files
 
@@ -234,7 +234,7 @@ Load config from `{project-root}/_evo/bmm/config.yaml` and resolve:
   Business context and value - Success criteria <!-- Previous story analysis for context continuity -->
   <check if="story_num > 1">
     <action>Find {{previous_story_num}}: scan {implementation_artifacts} for the story file in epic {{epic_num}} with the highest story number less than {{story_num}}</action>
-    <action>Load previous story file: {implementation_artifacts}/{{epic_num}}-{{previous_story_num}}-*.md</action> **PREVIOUS STORY INTELLIGENCE:** -
+    <action>Load previous story file: {implementation_artifacts}/{active_feature}/{{epic_num}}-{{previous_story_num}}-*.md</action> **PREVIOUS STORY INTELLIGENCE:** -
   Dev notes and learnings from previous story - Review feedback and corrections needed - Files that were created/modified and their
   patterns - Testing approaches that worked/didn't work - Problems encountered and solutions found - Code patterns established <action>Extract
   all learnings that could impact current story implementation</action>

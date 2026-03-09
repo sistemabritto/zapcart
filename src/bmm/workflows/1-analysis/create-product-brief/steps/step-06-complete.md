@@ -3,7 +3,7 @@ name: 'step-06-complete'
 description: 'Complete the product brief workflow, update status files, and suggest next steps for the project'
 
 # File References
-outputFile: '{planning_artifacts}/product-brief-{{project_name}}-{{date}}.md'
+outputFile: '{planning_artifacts}/{active_feature}/product-brief-{{project_name}}.md'
 ---
 
 # Step 6: Product Brief Completion

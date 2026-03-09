@@ -8,7 +8,7 @@ workflow_path: '{project-root}/_evo/bmm/workflows/3-solutioning/create-epics-and
 # File References
 thisStepFile: './step-04-final-validation.md'
 workflowFile: '{workflow_path}/workflow.md'
-outputFile: '{planning_artifacts}/epics.md'
+outputFile: '{planning_artifacts}/{active_feature}/epics.md'
 
 # Task References
 advancedElicitationTask: '{project-root}/_evo/core/workflows/advanced-elicitation/workflow.md'

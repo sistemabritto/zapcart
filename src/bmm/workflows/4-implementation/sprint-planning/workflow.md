@@ -35,7 +35,7 @@ Load config from `{project-root}/_evo/bmm/config.yaml` and resolve:
 - `story_location_absolute` = `{implementation_artifacts}`
 - `epics_location` = `{planning_artifacts}`
 - `epics_pattern` = `*epic*.md`
-- `status_file` = `{implementation_artifacts}/sprint-status.yaml`
+- `status_file` = `{implementation_artifacts}/{active_feature}/sprint-status.yaml`
 
 ### Input Files
 

@@ -43,6 +43,11 @@ project_knowledge: # Artifacts from research, document-project output, other lon
   default: "docs"
   result: "{project-root}/{value}"
 
+active_feature: # Current feature/implementation context — used as subfolder inside planning/implementation artifacts
+  prompt: "What is the active feature slug? (e.g. admin-panel, auth-refactor) — used as subfolder inside planning and implementation artifacts"
+  default: ""
+  result: "{value}"
+
 # Directories to create during installation (declarative, no code execution)
 directories:
   - "{planning_artifacts}"

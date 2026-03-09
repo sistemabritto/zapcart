@@ -4,7 +4,7 @@ description: 'Define target users with rich personas and map their key interacti
 
 # File References
 nextStepFile: '{project-root}/_evo/bmm/workflows/1-analysis/create-product-brief/steps/step-04-metrics.md'
-outputFile: '{planning_artifacts}/product-brief-{{project_name}}-{{date}}.md'
+outputFile: '{planning_artifacts}/{active_feature}/product-brief-{{project_name}}.md'
 
 # Task References
 advancedElicitationTask: '{project-root}/_evo/core/workflows/advanced-elicitation/workflow.md'

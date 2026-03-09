@@ -2,7 +2,7 @@
 name: 'step-04-review'
 description: 'Review and finalize the tech-spec'
 
-wipFile: '{implementation_artifacts}/tech-spec-wip.md'
+wipFile: '{implementation_artifacts}/{active_feature}/tech-spec-wip.md'
 ---
 
 # Step 4: Review & Finalize
@@ -98,7 +98,7 @@ a) Update `{wipFile}` frontmatter:
 
 b) **Rename WIP file to final filename:**
    - Using the `slug` extracted in Section 1
-   - Rename `{wipFile}` → `{implementation_artifacts}/tech-spec-{slug}.md`
+   - Rename `{wipFile}` → `{implementation_artifacts}/{active_feature}/tech-spec-{slug}.md`
    - Store this as `finalFile` for use in menus below
 
 ### 4. Present Final Menu

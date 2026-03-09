@@ -3,7 +3,7 @@ name: 'step-01-understand'
 description: 'Analyze the requirement delta between current state and what user wants to build'
 
 templateFile: '../tech-spec-template.md'
-wipFile: '{implementation_artifacts}/tech-spec-wip.md'
+wipFile: '{implementation_artifacts}/{active_feature}/tech-spec-wip.md'
 ---
 
 # Step 1: Analyze Requirement Delta
@@ -58,7 +58,7 @@ a) **Menu Handling:**
     - `[1, 2]` → Read fully and follow: `{project-root}/_evo/bmm/workflows/evo-quick-flow/quick-spec/steps/step-03-generate.md` (Step 3)
     - `[1, 2, 3]` → Read fully and follow: `{project-root}/_evo/bmm/workflows/evo-quick-flow/quick-spec/steps/step-04-review.md` (Step 4)
 - **[N] Archive and start fresh:**
-  - Rename `{wipFile}` to `{implementation_artifacts}/tech-spec-{slug}-archived-{date}.md`
+  - Rename `{wipFile}` to `{implementation_artifacts}/{active_feature}/tech-spec-{slug}-archived-{date}.md`
 
 ### 1. Greet and Ask for Initial Request
 

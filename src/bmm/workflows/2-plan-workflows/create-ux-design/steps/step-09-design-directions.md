@@ -66,7 +66,7 @@ Each mockup will show a complete vision for {{project_name}} with all our design
 Generate interactive visual exploration:
 "🎨 Design Direction Mockups Generated!
 
-I'm creating a comprehensive HTML design direction showcase at `{planning_artifacts}/ux-design-directions.html`
+I'm creating a comprehensive HTML design direction showcase at `{planning_artifacts}/{active_feature}/ux-design-directions.html`
 
 **What you'll see:**
 
@@ -185,7 +185,7 @@ Show the generated design direction content and present choices:
 
 #### If 'C' (Continue):
 
-- Append the final content to `{planning_artifacts}/ux-design-specification.md`
+- Append the final content to `{planning_artifacts}/{active_feature}/ux-design-specification.md`
 - Update frontmatter: append step to end of stepsCompleted array
 - Load `{project-root}/_evo/bmm/workflows/2-plan-workflows/create-ux-design/steps/step-10-user-journeys.md`
 

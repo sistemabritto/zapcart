@@ -4,7 +4,7 @@ description: 'Define comprehensive success metrics that include user success, bu
 
 # File References
 nextStepFile: '{project-root}/_evo/bmm/workflows/1-analysis/create-product-brief/steps/step-05-scope.md'
-outputFile: '{planning_artifacts}/product-brief-{{project_name}}-{{date}}.md'
+outputFile: '{planning_artifacts}/{active_feature}/product-brief-{{project_name}}.md'
 
 # Task References
 advancedElicitationTask: '{project-root}/_evo/core/workflows/advanced-elicitation/workflow.md'

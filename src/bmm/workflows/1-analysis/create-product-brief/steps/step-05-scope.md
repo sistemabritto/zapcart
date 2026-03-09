@@ -4,7 +4,7 @@ description: 'Define MVP scope with clear boundaries and outline future vision w
 
 # File References
 nextStepFile: '{project-root}/_evo/bmm/workflows/1-analysis/create-product-brief/steps/step-06-complete.md'
-outputFile: '{planning_artifacts}/product-brief-{{project_name}}-{{date}}.md'
+outputFile: '{planning_artifacts}/{active_feature}/product-brief-{{project_name}}.md'
 
 # Task References
 advancedElicitationTask: '{project-root}/_evo/core/workflows/advanced-elicitation/workflow.md'

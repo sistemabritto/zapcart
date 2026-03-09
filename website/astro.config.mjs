@@ -42,8 +42,8 @@ export default defineConfig({
       filter: (page) => !/\/404(\/|$)/.test(new URL(page).pathname),
     }),
     starlight({
-      title: 'EVO Method',
-      tagline: 'AI-driven agile development with specialized agents and workflows that scale from bug fixes to enterprise platforms.',
+      title: 'EVO Method — Evolve, Validate, Orchestrate',
+      tagline: 'Context engineering for AI-powered development',
 
       // i18n: English as root (no URL prefix), Chinese at /zh-cn/
       defaultLocale: 'root',

@@ -32,11 +32,24 @@ Initialize the Architecture workflow by detecting continuation state, discoverin
 
 ## INITIALIZATION SEQUENCE:
 
+### 0. Validate Active Feature
+
+Before any other action, check if `{active_feature}` is set (non-empty) in the loaded config.
+
+**If `{active_feature}` is empty:**
+- Inform the user: "No active feature is set. Please provide a feature slug (e.g. `admin-panel`, `auth-refactor`) to organize artifacts into a subfolder."
+- Wait for user input
+- Update `{project-root}/_evo/bmm/config.yaml`: set `active_feature` to the provided slug
+- Create subfolders: `{planning_artifacts}/{{active_feature}}/` and `{implementation_artifacts}/{{active_feature}}/`
+- Confirm: "Active feature set to **{{active_feature}}**. Artifacts will be saved to `{planning_artifacts}/{{active_feature}}/`."
+
+**If `{active_feature}` is already set:** proceed directly to the next step.
+
 ### 1. Check for Existing Workflow
 
 First, check if the output document already exists:
 
-- Look for existing {planning_artifacts}/`*architecture*.md`
+- Look for existing {planning_artifacts}/{active_feature}/`*architecture*.md`
 - If exists, read the complete file(s) including frontmatter
 - If not exists, this is a fresh workflow
 
@@ -95,7 +108,7 @@ Before proceeding, verify we have the essential inputs:
 
 #### C. Create Initial Document
 
-Copy the template from `{installed_path}/architecture-decision-template.md` to `{planning_artifacts}/architecture.md`
+Copy the template from `{installed_path}/architecture-decision-template.md` to `{planning_artifacts}/{active_feature}/architecture.md`
 
 #### D. Complete Initialization and Report
 
@@ -103,7 +116,7 @@ Complete setup and report to user:
 
 **Document Setup:**
 
-- Created: `{planning_artifacts}/architecture.md` from template
+- Created: `{planning_artifacts}/{active_feature}/architecture.md` from template
 - Initialized frontmatter with workflow state
 
 **Input Documents Discovered:**

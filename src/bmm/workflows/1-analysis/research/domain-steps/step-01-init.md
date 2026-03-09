@@ -34,6 +34,19 @@ Confirm domain research scope and approach for **{{research_topic}}** with the u
 
 ## DOMAIN SCOPE CONFIRMATION:
 
+### 0. Validate Active Feature
+
+Before any other action, check if `{active_feature}` is set (non-empty) in the loaded config.
+
+**If `{active_feature}` is empty:**
+- Inform the user: "No active feature is set. Please provide a feature slug (e.g. `admin-panel`, `auth-refactor`) to organize artifacts into a subfolder."
+- Wait for user input
+- Update `{project-root}/_evo/bmm/config.yaml`: set `active_feature` to the provided slug
+- Create subfolders: `{planning_artifacts}/{{active_feature}}/` and `{implementation_artifacts}/{{active_feature}}/`
+- Confirm: "Active feature set to **{{active_feature}}**. Artifacts will be saved to `{planning_artifacts}/{{active_feature}}/`."
+
+**If `{active_feature}` is already set:** proceed directly to the next step.
+
 ### 1. Begin Scope Confirmation
 
 Start with domain scope understanding:

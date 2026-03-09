@@ -4,7 +4,7 @@ description: 'Initialize the product brief workflow by detecting continuation st
 
 # File References
 nextStepFile: '{project-root}/_evo/bmm/workflows/1-analysis/create-product-brief/steps/step-02-vision.md'
-outputFile: '{planning_artifacts}/product-brief-{{project_name}}-{{date}}.md'
+outputFile: '{planning_artifacts}/{active_feature}/product-brief-{{project_name}}.md'
 
 # Template References
 productBriefTemplate: '../product-brief.template.md'
@@ -56,6 +56,19 @@ Initialize the product brief workflow by detecting continuation state and settin
 - Dependencies: Configuration loaded from workflow.md initialization
 
 ## Sequence of Instructions (Do not deviate, skip, or optimize)
+
+### 0. Validate Active Feature
+
+Before any other action, check if `{active_feature}` is set (non-empty) in the loaded config.
+
+**If `{active_feature}` is empty:**
+- Inform the user: "No active feature is set. Please provide a feature slug (e.g. `admin-panel`, `auth-refactor`) to organize artifacts into a subfolder."
+- Wait for user input
+- Update `{project-root}/_evo/bmm/config.yaml`: set `active_feature` to the provided slug
+- Create subfolders: `{planning_artifacts}/{{active_feature}}/` and `{implementation_artifacts}/{{active_feature}}/`
+- Confirm: "Active feature set to **{{active_feature}}**. Artifacts will be saved to `{planning_artifacts}/{{active_feature}}/`."
+
+**If `{active_feature}` is already set:** proceed directly to the next step.
 
 ### 1. Check for Existing Workflow State
 

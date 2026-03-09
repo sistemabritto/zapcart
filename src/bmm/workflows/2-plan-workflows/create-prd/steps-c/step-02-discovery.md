@@ -4,7 +4,7 @@ description: 'Discover project type, domain, and context through collaborative d
 
 # File References
 nextStepFile: '{project-root}/_evo/bmm/workflows/2-plan-workflows/create-prd/steps-c/step-02b-vision.md'
-outputFile: '{planning_artifacts}/prd.md'
+outputFile: '{planning_artifacts}/{active_feature}/prd.md'
 
 # Data Files
 projectTypesCSV: '../data/project-types.csv'

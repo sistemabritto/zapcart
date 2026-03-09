@@ -4,7 +4,7 @@ description: 'Explore domain-specific requirements for complex domains (optional
 
 # File References
 nextStepFile: '{project-root}/_evo/bmm/workflows/2-plan-workflows/create-prd/steps-c/step-06-innovation.md'
-outputFile: '{planning_artifacts}/prd.md'
+outputFile: '{planning_artifacts}/{active_feature}/prd.md'
 domainComplexityCSV: '{project-root}/_evo/bmm/workflows/2-plan-workflows/create-prd/data/domain-complexity.csv'
 
 # Task References
