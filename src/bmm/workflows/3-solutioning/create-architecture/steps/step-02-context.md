@@ -16,24 +16,24 @@
 ## EXECUTION PROTOCOLS:
 
 - 🎯 Show your analysis before taking any action
-- ⚠️ Present A/P/C menu after generating project context analysis
-- 💾 ONLY save when user chooses C (Continue)
+- 💾 Write content directly to output file after generation
 - 📖 Update frontmatter `stepsCompleted: [1, 2]` before loading next step
-- 🚫 FORBIDDEN to load next step until C is selected
+- ⚠️ Present A/P/C/R menu after writing to file
 
-## COLLABORATION MENUS (A/P/C):
+## COLLABORATION MENUS (A/P/C/R):
 
 This step will generate content and present choices:
 
 - **A (Advanced Elicitation)**: Use discovery protocols to develop deeper insights about project context and architectural implications
 - **P (Party Mode)**: Bring multiple perspectives to analyze project requirements from different architectural angles
-- **C (Continue)**: Save the content to the document and proceed to next step
+- **C (Continue)**: Accept the content and proceed to next step
+- **R (Rewrite)**: Rewrite this section from scratch based on user feedback
 
 ## PROTOCOL INTEGRATION:
 
 - When 'A' selected: Read fully and follow: {project-root}/_evo/core/workflows/advanced-elicitation/workflow.md
 - When 'P' selected: Read fully and follow: {project-root}/_evo/core/workflows/party-mode/workflow.md
-- PROTOCOLS always return to display this step's A/P/C menu after the A or P have completed
+- PROTOCOLS always return to display this step's A/P/C/R menu after the A or P have completed
 - User accepts/rejects protocol changes before proceeding
 
 ## CONTEXT BOUNDARIES:
@@ -118,11 +118,13 @@ This analysis will help me guide you through the architectural decisions needed 
 
 Does this match your understanding of the project scope and requirements?"
 
-### 4. Generate Project Context Content
+### 4. Generate Project Context Content and Write to File
 
-Prepare the content to append to the document:
+Generate the content and immediately append to the document:
 
 #### Content Structure:
+
+After generation, immediately append this content to the output file (before presenting the menu):
 
 ```markdown
 ## Project Context Analysis
@@ -151,20 +153,17 @@ Prepare the content to append to the document:
 {{concerns_that_will_affect_multiple_components}}
 ```
 
-### 5. Present Content and Menu
+### 5. Present Menu
 
-Show the generated content and present choices:
+Content has been written to the document. Present choices:
 
-"I've drafted the Project Context Analysis based on your requirements. This sets the foundation for our architectural decisions.
-
-**Here's what I'll add to the document:**
-
-[Show the complete markdown content from step 4]
+"I've drafted the Project Context Analysis based on your requirements and written it to the document. This sets the foundation for our architectural decisions.
 
 **What would you like to do?**
 [A] Advanced Elicitation - Let's dive deeper into architectural implications
 [P] Party Mode - Bring different perspectives to analyze requirements
-[C] Continue - Save this analysis and begin architectural decisions"
+[C] Continue - Begin architectural decisions
+[R] Rewrite - Rewrite this section from scratch based on feedback"
 
 ### 6. Handle Menu Selection
 
@@ -173,26 +172,29 @@ Show the generated content and present choices:
 - Read fully and follow: {project-root}/_evo/core/workflows/advanced-elicitation/workflow.md with the current context analysis
 - Process the enhanced architectural insights that come back
 - Ask user: "Accept these enhancements to the project context analysis? (y/n)"
-- If yes: Update content with improvements, then return to A/P/C menu
-- If no: Keep original content, then return to A/P/C menu
+- If yes: Update content with improvements and overwrite in file, then return to A/P/C/R menu
+- If no: Keep original content, then return to A/P/C/R menu
 
 #### If 'P' (Party Mode):
 
 - Read fully and follow: {project-root}/_evo/core/workflows/party-mode/workflow.md with the current project context
 - Process the collaborative improvements to architectural understanding
 - Ask user: "Accept these changes to the project context analysis? (y/n)"
-- If yes: Update content with improvements, then return to A/P/C menu
-- If no: Keep original content, then return to A/P/C menu
+- If yes: Update content with improvements and overwrite in file, then return to A/P/C/R menu
+- If no: Keep original content, then return to A/P/C/R menu
 
 #### If 'C' (Continue):
 
-- Append the final content to `{planning_artifacts}/{active_feature}/architecture.md`
 - Update frontmatter: `stepsCompleted: [1, 2]`
 - Load `{project-root}/_evo/bmm/workflows/3-solutioning/create-architecture/steps/step-03-starter.md`
 
+#### If 'R' (Rewrite):
+
+- Rewrite the section from scratch based on user feedback, overwrite in file, then redisplay menu
+
 ## APPEND TO DOCUMENT:
 
-When user selects 'C', append the content directly to the document using the structure from step 4.
+After generation, immediately append the content to the document using the structure from step 4 (before presenting the menu).
 
 ## SUCCESS METRICS:
 
@@ -201,8 +203,8 @@ When user selects 'C', append the content directly to the document using the str
 ✅ Technical constraints and dependencies identified
 ✅ Cross-cutting concerns mapped for architectural planning
 ✅ User confirmation of project understanding
-✅ A/P/C menu presented and handled correctly
-✅ Content properly appended to document when C selected
+✅ Content written to document immediately after generation
+✅ A/P/C/R menu presented and handled correctly
 
 ## FAILURE MODES:
 
@@ -211,7 +213,7 @@ When user selects 'C', append the content directly to the document using the str
 ❌ Not validating project understanding with user
 ❌ Underestimating complexity indicators
 ❌ Generating content without real analysis of loaded documents
-❌ Not presenting A/P/C menu after content generation
+❌ Not presenting A/P/C/R menu after writing content to file
 
 ❌ **CRITICAL**: Reading only partial step file - leads to incomplete understanding and poor decisions
 ❌ **CRITICAL**: Proceeding with 'C' without fully reading and understanding the next step file
@@ -219,6 +221,6 @@ When user selects 'C', append the content directly to the document using the str
 
 ## NEXT STEP:
 
-After user selects 'C' and content is saved to document, load `{project-root}/_evo/bmm/workflows/3-solutioning/create-architecture/steps/step-03-starter.md` to evaluate starter template options.
+Write content to file immediately after generation. Load `{project-root}/_evo/bmm/workflows/3-solutioning/create-architecture/steps/step-03-starter.md` to evaluate starter template options.
 
-Remember: Do NOT proceed to step-03 until user explicitly selects 'C' from the A/P/C menu and content is saved!
+Remember: Write content to file immediately after generation. Do NOT proceed to step-03 until user explicitly selects 'C' from the menu.

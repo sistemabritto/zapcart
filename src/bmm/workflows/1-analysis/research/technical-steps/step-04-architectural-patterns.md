@@ -16,11 +16,9 @@
 ## EXECUTION PROTOCOLS:
 
 - 🎯 Show web search analysis before presenting findings
-- ⚠️ Present [C] continue option after architectural patterns content generation
 - 📝 WRITE ARCHITECTURAL PATTERNS ANALYSIS TO DOCUMENT IMMEDIATELY
-- 💾 ONLY proceed when user chooses C (Continue)
 - 📖 Update frontmatter `stepsCompleted: [1, 2, 3, 4]` before loading next step
-- 🚫 FORBIDDEN to load next step until C is selected
+- ⚠️ Present [C] continue option after writing content to document
 
 ## CONTEXT BOUNDARIES:
 
@@ -154,13 +152,13 @@ Show the generated architectural patterns and present continue option:
 
 #### If 'C' (Continue):
 
-- Append the final content to the research document
+- **CONTENT ALREADY WRITTEN TO DOCUMENT**
 - Update frontmatter: `stepsCompleted: [1, 2, 3, 4]`
 - Load: `{project-root}/_evo/bmm/workflows/1-analysis/research/technical-steps/step-05-implementation-research.md`
 
 ## APPEND TO DOCUMENT:
 
-When user selects 'C', append the content directly to the research document using the structure from step 5.
+Content is already written to document when generated. No additional append needed.
 
 ## SUCCESS METRICS:
 
@@ -169,8 +167,8 @@ When user selects 'C', append the content directly to the research document usin
 ✅ Scalability and performance patterns thoroughly mapped
 ✅ Integration and communication patterns captured
 ✅ Security and data architecture considerations analyzed
+✅ Content written immediately to document
 ✅ [C] continue option presented and handled correctly
-✅ Content properly appended to document when C selected
 ✅ Proper routing to implementation research step
 
 ## FAILURE MODES:
@@ -180,8 +178,8 @@ When user selects 'C', append the content directly to the research document usin
 ❌ Missing critical system architecture patterns
 ❌ Not analyzing design trade-offs and considerations
 ❌ Incomplete scalability or performance patterns analysis
+❌ Not writing content immediately to document
 ❌ Not presenting [C] continue option after content generation
-❌ Appending content without user selecting 'C'
 
 ❌ **CRITICAL**: Reading only partial step file - leads to incomplete understanding and poor decisions
 ❌ **CRITICAL**: Proceeding with 'C' without fully reading and understanding the next step file

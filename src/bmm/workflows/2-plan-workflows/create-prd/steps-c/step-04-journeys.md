@@ -30,10 +30,9 @@ partyModeWorkflow: '{project-root}/_evo/core/workflows/party-mode/workflow.md'
 ## EXECUTION PROTOCOLS:
 
 - 🎯 Show your analysis before taking any action
-- ⚠️ Present A/P/C menu after generating journey content
-- 💾 ONLY save when user chooses C (Continue)
+- 💾 Write content directly to {outputFile} after generation
 - 📖 Update output file frontmatter, adding this step name to the end of the list of stepsCompleted
-- 🚫 FORBIDDEN to load next step until C is selected
+- ⚠️ Present A/P/C/R menu after writing to file
 
 ## CONTEXT BOUNDARIES:
 
@@ -144,20 +143,22 @@ When saving to document, append these Level 2 and Level 3 sections:
 [Summary of capabilities revealed by journeys based on conversation]
 ```
 
-### 7. Present MENU OPTIONS
+### 7. Write to File and Present Menu
 
-Present the user journey content for review, then display menu:
-- Show the mapped user journeys (using structure from section 6)
-- Highlight how each journey reveals different capabilities
-- Ask if they'd like to refine further, get other perspectives, or proceed
-- Present menu options naturally as part of conversation
+After generating the user journey content:
 
-Display: "**Select:** [A] Advanced Elicitation [P] Party Mode [C] Continue to Domain Requirements (Step 5 of 11)"
+1. Append the content to `{outputFile}` using the structure from section 6
+2. Update frontmatter by adding this step name to the end of the stepsCompleted array
+
+Then display menu:
+
+Display: "**Select:** [A] Advanced Elicitation [P] Party Mode [C] Continue to Domain Requirements (Step 5 of 11) [R] Rewrite this section"
 
 #### Menu Handling Logic:
-- IF A: Read fully and follow: {advancedElicitationTask} with the current journey content, process the enhanced journey insights that come back, ask user "Accept these improvements to the user journeys? (y/n)", if yes update content with improvements then redisplay menu, if no keep original content then redisplay menu
-- IF P: Read fully and follow: {partyModeWorkflow} with the current journeys, process the collaborative journey improvements and additions, ask user "Accept these changes to the user journeys? (y/n)", if yes update content with improvements then redisplay menu, if no keep original content then redisplay menu
-- IF C: Append the final content to {outputFile}, update frontmatter by adding this step name to the end of the stepsCompleted array, then read fully and follow: {nextStepFile}
+- IF A: Read fully and follow: {advancedElicitationTask} with the current journey content, process the enhanced journey insights that come back, ask user "Accept these improvements? (y/n)", if yes overwrite section in {outputFile} with improvements then redisplay menu, if no keep original then redisplay menu
+- IF P: Read fully and follow: {partyModeWorkflow} with the current journeys, process the collaborative journey improvements, ask user "Accept these changes? (y/n)", if yes overwrite section in {outputFile} with improvements then redisplay menu, if no keep original then redisplay menu
+- IF C: Read fully and follow: {nextStepFile}
+- IF R: Rewrite the section from scratch based on user feedback, overwrite in {outputFile}, then redisplay menu
 - IF Any other: help user respond, then redisplay menu
 
 #### EXECUTION RULES:
@@ -167,7 +168,7 @@ Display: "**Select:** [A] Advanced Elicitation [P] Party Mode [C] Continue to Do
 
 ## APPEND TO DOCUMENT:
 
-When user selects 'C', append the content directly to the document using the structure from step 6.
+After generation, immediately append the content directly to the document using the structure from step 6 (before presenting the menu).
 
 ## SUCCESS METRICS:
 
@@ -189,8 +190,7 @@ When user selects 'C', append the content directly to the document using the str
 ❌ Missing critical decision points and failure scenarios
 ❌ Not connecting journeys to required capabilities
 ❌ Not having enough journey diversity (admin, support, API, etc.)
-❌ Not presenting A/P/C menu after content generation
-❌ Appending content without user selecting 'C'
+❌ Not presenting A/P/C/R menu after writing content to file
 
 ❌ **CRITICAL**: Reading only partial step file - leads to incomplete understanding and poor decisions
 ❌ **CRITICAL**: Proceeding with 'C' without fully reading and understanding the next step file
@@ -210,4 +210,4 @@ When user selects 'C', append the content directly to the document using the str
 
 After user selects 'C' and content is saved to document, load `{project-root}/_evo/bmm/workflows/2-plan-workflows/create-prd/steps-c/step-05-domain.md`.
 
-Remember: Do NOT proceed to step-05 until user explicitly selects 'C' from the A/P/C menu and content is saved!
+Remember: Write content to file immediately after generation. Do NOT proceed to step-05 until user explicitly selects 'C' from the menu.

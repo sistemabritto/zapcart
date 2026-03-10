@@ -33,8 +33,8 @@ partyModeWorkflow: '{project-root}/_evo/core/workflows/party-mode/workflow.md'
 - 📝 Review for flow and coherence issues
 - ✂️ Reduce duplication while preserving essential info
 - 📖 Ensure proper ## Level 2 headers throughout
-- 💾 Save optimized document
-- ⚠️ Present A/P/C menu after polish
+- 💾 Write polished document directly to {outputFile}
+- ⚠️ Present A/P/C/R menu after writing to file
 - 🚫 DO NOT skip review steps
 
 ## CONTEXT BOUNDARIES:
@@ -158,20 +158,22 @@ Create the polished version:
 4. Verify improvements enhance readability
 5. Prepare optimized version for review
 
-### 6. Present MENU OPTIONS
+### 6. Write to File and Present Menu
 
-Present the polished document for review, then display menu:
-- Show what changed in the polish
-- Highlight improvements made (flow, duplication, headers)
-- Ask if they'd like to refine further, get other perspectives, or proceed
-- Present menu options naturally as part of conversation
+After generating the polished document:
 
-Display: "**Select:** [A] Advanced Elicitation [P] Party Mode [C] Continue to Complete PRD (Step 12 of 12)"
+1. Save (replace) the polished document to `{outputFile}`
+2. Update frontmatter by adding this step name to the end of the stepsCompleted array
+
+Then display menu:
+
+Display: "**Select:** [A] Advanced Elicitation [P] Party Mode [C] Continue to Complete PRD (Step 12 of 12) [R] Redo the polish"
 
 #### Menu Handling Logic:
-- IF A: Read fully and follow: {advancedElicitationTask} with the polished document, process the enhanced refinements that come back, ask user "Accept these polish improvements? (y/n)", if yes update content with improvements then redisplay menu, if no keep original polish then redisplay menu
-- IF P: Read fully and follow: {partyModeWorkflow} with the polished document, process the collaborative refinements to flow and coherence, ask user "Accept these polish changes? (y/n)", if yes update content with improvements then redisplay menu, if no keep original polish then redisplay menu
-- IF C: Save the polished document to {outputFile}, update frontmatter by adding this step name to the end of the stepsCompleted array, then read fully and follow: {nextStepFile}
+- IF A: Read fully and follow: {advancedElicitationTask} with the polished document, process the enhanced refinements, ask user "Accept these polish improvements? (y/n)", if yes overwrite {outputFile} with improvements then redisplay menu, if no keep original polish then redisplay menu
+- IF P: Read fully and follow: {partyModeWorkflow} with the polished document, process the collaborative refinements, ask user "Accept these polish changes? (y/n)", if yes overwrite {outputFile} with improvements then redisplay menu, if no keep original polish then redisplay menu
+- IF C: Read fully and follow: {nextStepFile}
+- IF R: Redo the polish pass from scratch, overwrite {outputFile}, then redisplay menu
 - IF Any other: help user respond, then redisplay menu
 
 #### EXECUTION RULES:
@@ -179,9 +181,9 @@ Display: "**Select:** [A] Advanced Elicitation [P] Party Mode [C] Continue to Co
 - ONLY proceed to next step when user selects 'C'
 - After other menu items execution, return to this menu
 
-## APPEND TO DOCUMENT:
+## WRITE TO DOCUMENT:
 
-When user selects 'C', replace the entire document content with the polished version.
+After generating the polished version, immediately replace the entire document content with the polished version (before presenting the menu).
 
 ## SUCCESS METRICS:
 
@@ -203,8 +205,7 @@ When user selects 'C', replace the entire document content with the polished ver
 ❌ Changing content instead of improving presentation
 ❌ Not ensuring ## Level 2 headers for main sections
 ❌ Making arbitrary style changes instead of coherence improvements
-❌ Not presenting A/P/C menu for user approval
-❌ Saving polished document without user selecting 'C'
+❌ Not presenting A/P/C/R menu after writing polished document to file
 
 ❌ **CRITICAL**: Reading only partial step file - leads to incomplete understanding and poor decisions
 ❌ **CRITICAL**: Proceeding with 'C' without fully reading and understanding the next step file
@@ -214,4 +215,4 @@ When user selects 'C', replace the entire document content with the polished ver
 
 After user selects 'C' and polished document is saved, load `{project-root}/_evo/bmm/workflows/2-plan-workflows/create-prd/steps-c/step-12-complete.md` to complete the workflow.
 
-Remember: Do NOT proceed to step-12 until user explicitly selects 'C' from the A/P/C menu and polished document is saved!
+Remember: Write polished document to file immediately after generation. Do NOT proceed to step-12 until user explicitly selects 'C' from the menu.

@@ -15,11 +15,9 @@
 ## EXECUTION PROTOCOLS:
 
 - 🎯 Show web search analysis before presenting findings
-- ⚠️ Present [C] continue option after customer behavior content generation
 - 📝 WRITE CUSTOMER BEHAVIOR ANALYSIS TO DOCUMENT IMMEDIATELY
-- 💾 ONLY proceed when user chooses C (Continue)
 - 📖 Update frontmatter `stepsCompleted: [1, 2]` before loading next step
-- 🚫 FORBIDDEN to load next step until C is selected
+- ⚠️ Present [C] continue option after writing content to document
 
 ## CONTEXT BOUNDARIES:
 

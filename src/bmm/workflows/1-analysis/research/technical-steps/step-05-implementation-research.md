@@ -15,10 +15,9 @@
 ## EXECUTION PROTOCOLS:
 
 - 🎯 Show web search analysis before presenting findings
-- ⚠️ Present [C] complete option after implementation research content generation
-- 💾 ONLY save when user chooses C (Complete)
-- 📖 Update frontmatter `stepsCompleted: [1, 2, 3, 4, 5]` before completing workflow
-- 🚫 FORBIDDEN to complete workflow until C is selected
+- 📝 WRITE IMPLEMENTATION RESEARCH TO DOCUMENT IMMEDIATELY
+- 📖 Update frontmatter `stepsCompleted: [1, 2, 3, 4, 5]` before loading next step
+- ⚠️ Present [C] continue option after writing content to document
 
 ## CONTEXT BOUNDARIES:
 
@@ -177,13 +176,13 @@ Show the generated implementation research and present continue option:
 
 #### If 'C' (Continue):
 
-- Append the final content to the research document
+- **CONTENT ALREADY WRITTEN TO DOCUMENT**
 - Update frontmatter: `stepsCompleted: [1, 2, 3, 4, 5]`
 - Load: `{project-root}/_evo/bmm/workflows/1-analysis/research/technical-steps/step-06-research-synthesis.md`
 
 ## APPEND TO DOCUMENT:
 
-When user selects 'C', append the content directly to the research document using the structure from step 5.
+Content is already written to document when generated. No additional append needed.
 
 ## SUCCESS METRICS:
 
@@ -192,8 +191,8 @@ When user selects 'C', append the content directly to the research document usin
 ✅ Testing and deployment practices clearly documented
 ✅ Team organization and skill requirements mapped
 ✅ Cost optimization and risk mitigation strategies provided
+✅ Content written immediately to document
 ✅ [C] continue option presented and handled correctly
-✅ Content properly appended to document when C selected
 ✅ Proper routing to synthesis step (step-06)
 
 ## FAILURE MODES:
@@ -203,8 +202,8 @@ When user selects 'C', append the content directly to the research document usin
 ❌ Missing critical technology adoption strategies
 ❌ Not providing practical implementation guidance
 ❌ Incomplete development workflows or operational practices analysis
+❌ Not writing content immediately to document
 ❌ Not presenting continue option to synthesis step
-❌ Appending content without user selecting 'C'
 ❌ Not routing to step-06-research-synthesis.md
 
 ❌ **CRITICAL**: Reading only partial step file - leads to incomplete understanding and poor decisions

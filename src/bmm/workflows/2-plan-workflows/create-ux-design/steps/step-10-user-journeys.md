@@ -15,24 +15,24 @@
 ## EXECUTION PROTOCOLS:
 
 - 🎯 Show your analysis before taking any action
-- ⚠️ Present A/P/C menu after generating user journey content
-- 💾 ONLY save when user chooses C (Continue)
+- 💾 Write content directly to output file after generation
 - 📖 Update output file frontmatter, adding this step to the end of the list of stepsCompleted.
-- 🚫 FORBIDDEN to load next step until C is selected
+- ⚠️ Present A/P/C/R menu after writing to file
 
-## COLLABORATION MENUS (A/P/C):
+## COLLABORATION MENUS (A/P/C/R):
 
 This step will generate content and present choices:
 
 - **A (Advanced Elicitation)**: Use discovery protocols to develop deeper journey insights
 - **P (Party Mode)**: Bring multiple perspectives to design user flows
-- **C (Continue)**: Save the content to the document and proceed to next step
+- **C (Continue)**: Accept the content and proceed to next step
+- **R (Rewrite)**: Rewrite this section from scratch based on user feedback
 
 ## PROTOCOL INTEGRATION:
 
 - When 'A' selected: Read fully and follow: {project-root}/_evo/core/workflows/advanced-elicitation/workflow.md
 - When 'P' selected: Read fully and follow: {project-root}/_evo/core/workflows/party-mode/workflow.md
-- PROTOCOLS always return to this step's A/P/C menu
+- PROTOCOLS always return to this step's A/P/C/R menu
 - User accepts/rejects protocol changes before proceeding
 
 ## CONTEXT BOUNDARIES:
@@ -141,13 +141,13 @@ Across these flows, I'm seeing some common patterns we can standardize:
 
 These patterns will ensure consistency across all user experiences."
 
-### 6. Generate User Journey Content
+### 6. Generate User Journey Content and Write to File
 
-Prepare the content to append to the document:
+Generate the content and immediately append to the document:
 
 #### Content Structure:
 
-When saving to document, append these Level 2 and Level 3 sections:
+After generation, immediately append these Level 2 and Level 3 sections to the output file (before presenting the menu):
 
 ```markdown
 ## User Journey Flows
@@ -169,19 +169,16 @@ When saving to document, append these Level 2 and Level 3 sections:
 [Flow optimization principles based on conversation]
 ```
 
-### 7. Present Content and Menu
+### 7. Present Menu
 
-Show the generated user journey content and present choices:
-"I've designed detailed user journey flows for {{project_name}}. These flows will guide the detailed design of each user interaction.
-
-**Here's what I'll add to the document:**
-
-[Show the complete markdown content from step 6]
+Content has been written to the document. Present choices:
+"I've designed detailed user journey flows for {{project_name}} and written them to the document. These flows will guide the detailed design of each user interaction.
 
 **What would you like to do?**
 [A] Advanced Elicitation - Let's refine our user journey designs
 [P] Party Mode - Bring different perspectives on user flows
-[C] Continue - Save this to the document and move to component strategy
+[C] Continue - Move to component strategy
+[R] Rewrite - Rewrite this section from scratch based on feedback
 
 ### 8. Handle Menu Selection
 
@@ -190,26 +187,29 @@ Show the generated user journey content and present choices:
 - Read fully and follow: {project-root}/_evo/core/workflows/advanced-elicitation/workflow.md with the current user journey content
 - Process the enhanced journey insights that come back
 - Ask user: "Accept these improvements to the user journeys? (y/n)"
-- If yes: Update content with improvements, then return to A/P/C menu
-- If no: Keep original content, then return to A/P/C menu
+- If yes: Update content with improvements and overwrite in file, then return to A/P/C/R menu
+- If no: Keep original content, then return to A/P/C/R menu
 
 #### If 'P' (Party Mode):
 
 - Read fully and follow: {project-root}/_evo/core/workflows/party-mode/workflow.md with the current user journeys
 - Process the collaborative journey insights that come back
 - Ask user: "Accept these changes to the user journeys? (y/n)"
-- If yes: Update content with improvements, then return to A/P/C menu
-- If no: Keep original content, then return to A/P/C menu
+- If yes: Update content with improvements and overwrite in file, then return to A/P/C/R menu
+- If no: Keep original content, then return to A/P/C/R menu
 
 #### If 'C' (Continue):
 
-- Append the final content to `{planning_artifacts}/{active_feature}/ux-design-specification.md`
 - Update frontmatter: append step to end of stepsCompleted array
 - Load `{project-root}/_evo/bmm/workflows/2-plan-workflows/create-ux-design/steps/step-11-component-strategy.md`
 
+#### If 'R' (Rewrite):
+
+- Rewrite the section from scratch based on user feedback, overwrite in file, then redisplay menu
+
 ## APPEND TO DOCUMENT:
 
-When user selects 'C', append the content directly to the document using the structure from step 6.
+After generation, immediately append the content to the document using the structure from step 6 (before presenting the menu).
 
 ## SUCCESS METRICS:
 
@@ -217,8 +217,8 @@ When user selects 'C', append the content directly to the document using the str
 ✅ Detailed flow diagrams created for each journey
 ✅ Flows optimized for efficiency and user delight
 ✅ Common journey patterns extracted and documented
-✅ A/P/C menu presented and handled correctly
-✅ Content properly appended to document when C selected
+✅ Content written to document immediately after generation
+✅ A/P/C/R menu presented and handled correctly
 
 ## FAILURE MODES:
 
@@ -227,8 +227,7 @@ When user selects 'C', append the content directly to the document using the str
 ❌ Missing error recovery paths
 ❌ Not extracting reusable patterns across journeys
 ❌ Flow diagrams unclear or incomplete
-❌ Not presenting A/P/C menu after content generation
-❌ Appending content without user selecting 'C'
+❌ Not presenting A/P/C/R menu after writing content to file
 
 ❌ **CRITICAL**: Reading only partial step file - leads to incomplete understanding and poor decisions
 ❌ **CRITICAL**: Proceeding with 'C' without fully reading and understanding the next step file
@@ -236,6 +235,6 @@ When user selects 'C', append the content directly to the document using the str
 
 ## NEXT STEP:
 
-After user selects 'C' and content is saved to document, load `{project-root}/_evo/bmm/workflows/2-plan-workflows/create-ux-design/steps/step-11-component-strategy.md` to define component library strategy.
+Write content to file immediately after generation. Load `{project-root}/_evo/bmm/workflows/2-plan-workflows/create-ux-design/steps/step-11-component-strategy.md` to define component library strategy.
 
-Remember: Do NOT proceed to step-11 until user explicitly selects 'C' from the A/P/C menu and content is saved!
+Remember: Write content to file immediately after generation. Do NOT proceed to step-11 until user explicitly selects 'C' from the menu.

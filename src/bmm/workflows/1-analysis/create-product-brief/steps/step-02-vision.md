@@ -45,9 +45,9 @@ Conduct comprehensive product vision discovery to define the core problem, solut
 ## EXECUTION PROTOCOLS:
 
 - 🎯 Show your analysis before taking any action
-- 💾 Generate vision content collaboratively with user
+- 💾 Write content directly to {outputFile} after generation
 - 📖 Update frontmatter `stepsCompleted: [1, 2]` before loading next step
-- 🚫 FORBIDDEN to proceed without user confirmation through menu
+- ⚠️ Present A/P/C/R menu after writing to file
 
 ## CONTEXT BOUNDARIES:
 
@@ -144,22 +144,24 @@ Prepare the following structure for document append:
 [Key differentiators based on conversation]
 ```
 
-### 7. Present MENU OPTIONS
+### 7. Write to File and Present Menu
 
-**Content Presentation:**
-"I've drafted the executive summary and core vision based on our conversation. This captures the essence of {{project_name}} and what makes it special.
+After generating the vision content:
 
-**Here's what I'll add to the document:**
-[Show the complete markdown content from step 6]
+1. Save content to `{outputFile}` using the structure from step 6
+2. Update frontmatter with stepsCompleted: [1, 2]
 
-**Select an Option:** [A] Advanced Elicitation [P] Party Mode [C] Continue"
+Then display menu:
+
+Display: "**Select:** [A] Advanced Elicitation [P] Party Mode [C] Continue to Target Users (Step 3) [R] Rewrite this section"
 
 #### Menu Handling Logic:
 
-- IF A: Read fully and follow: {advancedElicitationTask} with current vision content to dive deeper and refine
-- IF P: Read fully and follow: {partyModeWorkflow} to bring different perspectives to positioning and differentiation
-- IF C: Save content to {outputFile}, update frontmatter with stepsCompleted: [1, 2], then read fully and follow: {nextStepFile}
-- IF Any other comments or queries: help user respond then [Redisplay Menu Options](#7-present-menu-options)
+- IF A: Read fully and follow: {advancedElicitationTask} with current vision content, ask user "Accept improvements? (y/n)", if yes overwrite section in {outputFile}, then redisplay menu
+- IF P: Read fully and follow: {partyModeWorkflow}, ask user "Accept changes? (y/n)", if yes overwrite section in {outputFile}, then redisplay menu
+- IF C: Read fully and follow: {nextStepFile}
+- IF R: Rewrite the section from scratch based on user feedback, overwrite in {outputFile}, then redisplay menu
+- IF Any other comments or queries: help user respond then redisplay menu
 
 #### EXECUTION RULES:
 
@@ -170,7 +172,7 @@ Prepare the following structure for document append:
 
 ## CRITICAL STEP COMPLETION NOTE
 
-ONLY WHEN [C continue option] is selected and [vision content finalized and saved to document with frontmatter updated], will you then read fully and follow: `{nextStepFile}` to begin target user discovery.
+Content is written to document immediately after generation. ONLY WHEN [C continue option] is selected will you then read fully and follow: `{nextStepFile}` to begin target user discovery.
 
 ---
 
@@ -192,8 +194,7 @@ ONLY WHEN [C continue option] is selected and [vision content finalized and save
 - Creating solution vision without fully understanding the problem
 - Missing unique differentiators or competitive insights
 - Generating vision without real user input and collaboration
-- Not presenting standard A/P/C menu after content generation
-- Appending content without user selecting 'C'
+- Not presenting standard A/P/C/R menu after writing content to file
 - Not updating frontmatter properly
 
 **Master Rule:** Skipping steps, optimizing sequences, or not following exact instructions is FORBIDDEN and constitutes SYSTEM FAILURE.

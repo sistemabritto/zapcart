@@ -30,10 +30,9 @@ partyModeWorkflow: '{project-root}/_evo/core/workflows/party-mode/workflow.md'
 ## EXECUTION PROTOCOLS:
 
 - 🎯 Show your analysis before taking any action
-- ⚠️ Present A/P/C menu after generating functional requirements
-- 💾 ONLY save when user chooses C (Continue)
+- 💾 Write content directly to {outputFile} after generation
 - 📖 Update output file frontmatter, adding this step name to the end of the list of stepsCompleted
-- 🚫 FORBIDDEN to load next step until C is selected
+- ⚠️ Present A/P/C/R menu after writing to file
 
 
 ## CONTEXT BOUNDARIES:
@@ -167,23 +166,22 @@ When saving to document, append these Level 2 and Level 3 sections:
 [Continue for all capability areas discovered in conversation]
 ```
 
-### 7. Present MENU OPTIONS
+### 7. Write to File and Present Menu
 
-Present the functional requirements for review, then display menu:
-- Show synthesized functional requirements (using structure from step 6)
-- Emphasize this is the capability contract for all downstream work
-- Highlight that every feature must trace back to these requirements
-- Ask if they'd like to refine further, get other perspectives, or proceed
-- Present menu options naturally as part of conversation
+After generating the functional requirements:
 
-**What would you like to do?**"
+1. Append the content to `{outputFile}` using the structure from step 6
+2. Update frontmatter by adding this step name to the end of the stepsCompleted array
 
-Display: "**Select:** [A] Advanced Elicitation [P] Party Mode [C] Continue to Non-Functional Requirements (Step 10 of 11)"
+Then display menu:
+
+Display: "**Select:** [A] Advanced Elicitation [P] Party Mode [C] Continue to Non-Functional Requirements (Step 10 of 11) [R] Rewrite this section"
 
 #### Menu Handling Logic:
-- IF A: Read fully and follow: {advancedElicitationTask} with the current FR list, process the enhanced capability coverage that comes back, ask user if they accept the additions, if yes update content then redisplay menu, if no keep original content then redisplay menu
-- IF P: Read fully and follow: {partyModeWorkflow} with the current FR list, process the collaborative capability validation and additions, ask user if they accept the changes, if yes update content then redisplay menu, if no keep original content then redisplay menu
-- IF C: Append the final content to {outputFile}, update frontmatter by adding this step name to the end of the stepsCompleted array, then read fully and follow: {nextStepFile}
+- IF A: Read fully and follow: {advancedElicitationTask} with the current FR list, process the enhanced capability coverage, ask user if they accept the additions, if yes overwrite section in {outputFile} with improvements then redisplay menu, if no keep original then redisplay menu
+- IF P: Read fully and follow: {partyModeWorkflow} with the current FR list, process the collaborative validation, ask user if they accept the changes, if yes overwrite section in {outputFile} with improvements then redisplay menu, if no keep original then redisplay menu
+- IF C: Read fully and follow: {nextStepFile}
+- IF R: Rewrite the section from scratch based on user feedback, overwrite in {outputFile}, then redisplay menu
 - IF Any other: help user respond, then redisplay menu
 
 #### EXECUTION RULES:
@@ -193,7 +191,7 @@ Display: "**Select:** [A] Advanced Elicitation [P] Party Mode [C] Continue to No
 
 ## APPEND TO DOCUMENT:
 
-When user selects 'C', append the content directly to the document using the structure from step 6.
+After generation, immediately append the content directly to the document using the structure from step 6 (before presenting the menu).
 
 ## SUCCESS METRICS:
 
@@ -213,8 +211,7 @@ When user selects 'C', append the content directly to the document using the str
 ❌ Including implementation details or UI specifics in FRs
 ❌ Not achieving comprehensive coverage of discussed capabilities
 ❌ Using vague terms instead of testable capabilities
-❌ Not presenting A/P/C menu after content generation
-❌ Appending content without user selecting 'C'
+❌ Not presenting A/P/C/R menu after writing content to file
 
 ❌ **CRITICAL**: Reading only partial step file - leads to incomplete understanding and poor decisions
 ❌ **CRITICAL**: Proceeding with 'C' without fully reading and understanding the next step file
@@ -228,4 +225,4 @@ Emphasize to user: "This FR list is now binding. Any feature not listed here wil
 
 After user selects 'C' and content is saved to document, load {nextStepFile} to define non-functional requirements.
 
-Remember: Do NOT proceed to step-10 until user explicitly selects 'C' from the A/P/C menu and content is saved!
+Remember: Write content to file immediately after generation. Do NOT proceed to step-10 until user explicitly selects 'C' from the menu.

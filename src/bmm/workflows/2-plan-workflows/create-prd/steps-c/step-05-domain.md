@@ -48,10 +48,9 @@ For complex domains only that have a mapping in {domainComplexityCSV}, explore d
 
 - 🎯 Check domain complexity from step-02 classification first
 - ⚠️ If complexity is "low", offer to skip this step
-- ⚠️ Present A/P/C menu after domain requirements defined (or skipped)
-- 💾 ONLY save when user chooses C (Continue)
+- 💾 Write content directly to {outputFile} after generation (or skip if low complexity)
 - 📖 Update output file frontmatter, adding this step name to the end of the list of stepsCompleted
-- 🚫 FORBIDDEN to load next step until C is selected
+- ⚠️ Present A/P/C/R menu after writing to file
 
 ## CONTEXT BOUNDARIES:
 
@@ -149,15 +148,23 @@ Acknowledge the domain and explore what makes it complex:
 
 "Are there other domain-specific concerns we should consider? For [this domain], what typically gets overlooked?"
 
-### N. Present MENU OPTIONS
+### N. Write to File and Present Menu
 
-Display: "**Select:** [A] Advanced Elicitation [P] Party Mode [C] Continue - Save and Proceed to Innovation (Step 6 of 13)"
+After generating domain requirements:
+
+1. Save content to `{outputFile}` (or skip if low complexity)
+2. Update frontmatter by adding this step name to the end of the stepsCompleted array
+
+Then display menu:
+
+Display: "**Select:** [A] Advanced Elicitation [P] Party Mode [C] Continue to Innovation (Step 6 of 13) [R] Rewrite this section"
 
 #### Menu Handling Logic:
-- IF A: Read fully and follow: {advancedElicitationTask}, and when finished redisplay the menu
-- IF P: Read fully and follow: {partyModeWorkflow}, and when finished redisplay the menu
-- IF C: Save content to {outputFile}, update frontmatter, then read fully and follow: {nextStepFile}
-- IF Any other comments or queries: help user respond then [Redisplay Menu Options](#n-present-menu-options)
+- IF A: Read fully and follow: {advancedElicitationTask}, and when finished overwrite section in {outputFile}, then redisplay menu
+- IF P: Read fully and follow: {partyModeWorkflow}, and when finished overwrite section in {outputFile}, then redisplay menu
+- IF C: Read fully and follow: {nextStepFile}
+- IF R: Rewrite the section from scratch based on user feedback, overwrite in {outputFile}, then redisplay menu
+- IF Any other comments or queries: help user respond then redisplay menu
 
 #### EXECUTION RULES:
 - ALWAYS halt and wait for user input after presenting menu
@@ -166,7 +173,7 @@ Display: "**Select:** [A] Advanced Elicitation [P] Party Mode [C] Continue - Sav
 
 ## APPEND TO DOCUMENT
 
-When user selects 'C', append to `{outputFile}`:
+After generation, immediately append to `{outputFile}` (before presenting the menu):
 
 ```markdown
 ## Domain-Specific Requirements
@@ -178,7 +185,7 @@ If step was skipped, append nothing and proceed.
 
 ## CRITICAL STEP COMPLETION NOTE
 
-ONLY WHEN [C continue option] is selected and [content saved or skipped], will you then read fully and follow: `{nextStepFile}` to explore innovation.
+Content is written to document immediately after generation. ONLY WHEN [C continue option] is selected will you then read fully and follow: `{nextStepFile}` to explore innovation.
 
 ---
 

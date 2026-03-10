@@ -15,10 +15,9 @@
 ## EXECUTION PROTOCOLS:
 
 - 🎯 Show your analysis before taking any action
-- ⚠️ Present A/P/C menu after generating inspiration analysis content
-- 💾 ONLY save when user chooses C (Continue)
-- 📖 Update output file frontmatter, adding this step to the end of the list of stepsCompleted.
-- 🚫 FORBIDDEN to load next step until C is selected
+- 💾 Write content directly to output file after generation
+- 📖 Update output file frontmatter, adding this step to the end of the list of stepsCompleted
+- ⚠️ Present A/P/C/R menu after writing to file
 
 ## COLLABORATION MENUS (A/P/C):
 
@@ -161,47 +160,28 @@ When saving to document, append these Level 2 and Level 3 sections:
 [Strategy for using inspiration based on conversation]
 ```
 
-### 7. Present Content and Menu
+### 7. Write to File and Present Menu
 
-Show the generated inspiration analysis content and present choices:
-"I've analyzed inspiring UX patterns and products to inform our design strategy for {{project_name}}. This gives us a solid foundation of proven patterns to build upon.
+After generating the inspiration analysis content:
 
-**Here's what I'll add to the document:**
+1. Append the content to `{planning_artifacts}/{active_feature}/ux-design-specification.md` using the structure from step 6
+2. Update frontmatter: append step to end of stepsCompleted array
 
-[Show the complete markdown content from step 6]
+Then display menu:
 
-**What would you like to do?**
-[A] Advanced Elicitation - Let's deepen our UX pattern analysis
-[P] Party Mode - Bring different perspectives on inspiration sources
-[C] Continue - Save this to the document and move to design system choice"
+Display: "**Select:** [A] Advanced Elicitation [P] Party Mode [C] Continue to Design System Choice (Step 6) [R] Rewrite this section"
 
 ### 8. Handle Menu Selection
 
-#### If 'A' (Advanced Elicitation):
-
-- Read fully and follow: {project-root}/_evo/core/workflows/advanced-elicitation/workflow.md with the current inspiration analysis content
-- Process the enhanced pattern insights that come back
-- Ask user: "Accept these improvements to the inspiration analysis? (y/n)"
-- If yes: Update content with improvements, then return to A/P/C menu
-- If no: Keep original content, then return to A/P/C menu
-
-#### If 'P' (Party Mode):
-
-- Read fully and follow: {project-root}/_evo/core/workflows/party-mode/workflow.md with the current inspiration analysis
-- Process the collaborative pattern insights that come back
-- Ask user: "Accept these changes to the inspiration analysis? (y/n)"
-- If yes: Update content with improvements, then return to A/P/C menu
-- If no: Keep original content, then return to A/P/C menu
-
-#### If 'C' (Continue):
-
-- Append the final content to `{planning_artifacts}/{active_feature}/ux-design-specification.md`
-- Update frontmatter: append step to end of stepsCompleted array
-- Read fully and follow: `{project-root}/_evo/bmm/workflows/2-plan-workflows/create-ux-design/steps/step-06-design-system.md`
+- IF A: Read fully and follow: {project-root}/_evo/core/workflows/advanced-elicitation/workflow.md, ask user "Accept improvements? (y/n)", if yes overwrite section in file, then redisplay menu
+- IF P: Read fully and follow: {project-root}/_evo/core/workflows/party-mode/workflow.md, ask user "Accept changes? (y/n)", if yes overwrite section in file, then redisplay menu
+- IF C: Read fully and follow: `{project-root}/_evo/bmm/workflows/2-plan-workflows/create-ux-design/steps/step-06-design-system.md`
+- IF R: Rewrite the section from scratch based on user feedback, overwrite in file, then redisplay menu
+- IF Any other: help user respond, then redisplay menu
 
 ## APPEND TO DOCUMENT:
 
-When user selects 'C', append the content directly to the document using the structure from step 6.
+After generation, immediately append the content directly to the document using the structure from step 6 (before presenting the menu).
 
 ## SUCCESS METRICS:
 
@@ -220,8 +200,7 @@ When user selects 'C', append the content directly to the document using the str
 ❌ Missing opportunities for pattern adaptation
 ❌ Not identifying relevant anti-patterns to avoid
 ❌ Strategy too generic or not actionable
-❌ Not presenting A/P/C menu after content generation
-❌ Appending content without user selecting 'C'
+❌ Not presenting A/P/C/R menu after writing content to file
 
 ❌ **CRITICAL**: Reading only partial step file - leads to incomplete understanding and poor decisions
 ❌ **CRITICAL**: Proceeding with 'C' without fully reading and understanding the next step file
@@ -231,4 +210,4 @@ When user selects 'C', append the content directly to the document using the str
 
 After user selects 'C' and content is saved to document, load `{project-root}/_evo/bmm/workflows/2-plan-workflows/create-ux-design/steps/step-06-design-system.md` to choose the appropriate design system approach.
 
-Remember: Do NOT proceed to step-06 until user explicitly selects 'C' from the A/P/C menu and content is saved!
+Remember: Write content to file immediately after generation. Do NOT proceed to step-06 until user explicitly selects 'C' from the menu.

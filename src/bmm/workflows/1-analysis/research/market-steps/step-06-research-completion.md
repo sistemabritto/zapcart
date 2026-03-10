@@ -15,10 +15,9 @@
 ## EXECUTION PROTOCOLS:
 
 - 🎯 Show web search analysis before presenting findings
-- ⚠️ Present [C] complete option after completion content generation
-- 💾 ONLY save when user chooses C (Complete)
+- 📝 WRITE COMPLETION CONTENT TO DOCUMENT IMMEDIATELY
 - 📖 Update frontmatter `stepsCompleted: [1, 2, 3, 4, 5, 6]` before completing workflow
-- 🚫 FORBIDDEN to complete workflow until C is selected
+- ⚠️ Present [C] complete option after writing content to document
 - 📚 GENERATE COMPLETE DOCUMENT STRUCTURE with intro, TOC, and summary
 
 ## CONTEXT BOUNDARIES:
@@ -389,14 +388,14 @@ _This comprehensive market research document serves as an authoritative market r
 
 #### If 'C' (Complete Research):
 
+- **CONTENT ALREADY WRITTEN TO DOCUMENT**
 - **Replace** the template placeholder `[Research overview and methodology will be appended here]` in the `## Research Overview` section near the top of the document with a concise 2-3 paragraph overview summarizing the research scope, key findings, and a pointer to the full executive summary in the Research Synthesis section
-- Append the final content to the research document
-- Update frontmatter: `stepsCompleted: [1, 2, 3, 4]`
+- Update frontmatter: `stepsCompleted: [1, 2, 3, 4, 5, 6]`
 - Complete the market research workflow
 
 ## APPEND TO DOCUMENT:
 
-When user selects 'C', append the content directly to the research document using the structure from step 4. Also replace the `[Research overview and methodology will be appended here]` placeholder in the Research Overview section at the top of the document.
+Content is already written to document when generated in step 4. Also replace the `[Research overview and methodology will be appended here]` placeholder in the Research Overview section at the top of the document when C is selected.
 
 ## SUCCESS METRICS:
 

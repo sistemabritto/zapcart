@@ -17,24 +17,24 @@
 
 - 🎯 Show your analysis before taking any action
 - 🌐 Search the web to verify technology versions and options
-- ⚠️ Present A/P/C menu after each major decision category
-- 💾 ONLY save when user chooses C (Continue)
+- 💾 Write content directly to output file after generation
 - 📖 Update frontmatter `stepsCompleted: [1, 2, 3, 4]` before loading next step
-- 🚫 FORBIDDEN to load next step until C is selected
+- ⚠️ Present A/P/C/R menu after writing to file
 
-## COLLABORATION MENUS (A/P/C):
+## COLLABORATION MENUS (A/P/C/R):
 
 This step will generate content and present choices for each decision category:
 
 - **A (Advanced Elicitation)**: Use discovery protocols to explore innovative approaches to specific decisions
 - **P (Party Mode)**: Bring multiple perspectives to evaluate decision trade-offs
-- **C (Continue)**: Save the current decisions and proceed to next decision category
+- **C (Continue)**: Accept the content and proceed to next step
+- **R (Rewrite)**: Rewrite this section from scratch based on user feedback
 
 ## PROTOCOL INTEGRATION:
 
 - When 'A' selected: Read fully and follow: {project-root}/_evo/core/workflows/advanced-elicitation/workflow.md
 - When 'P' selected: Read fully and follow: {project-root}/_evo/core/workflows/party-mode/workflow.md
-- PROTOCOLS always return to display this step's A/P/C menu after the A or P have completed
+- PROTOCOLS always return to display this step's A/P/C/R menu after the A or P have completed
 - User accepts/rejects protocol changes before proceeding
 
 ## CONTEXT BOUNDARIES:
@@ -196,11 +196,13 @@ After each major decision, identify related decisions:
 - {{related_decision_1}}
 - {{related_decision_2}}"
 
-### 5. Generate Decisions Content
+### 5. Generate Decisions Content and Write to File
 
-After facilitating all decision categories, prepare the content to append:
+After facilitating all decision categories, generate the content and immediately append to the document:
 
 #### Content Structure:
+
+After generation, immediately append this content to the output file (before presenting the menu):
 
 ```markdown
 ## Core Architectural Decisions
@@ -245,20 +247,17 @@ After facilitating all decision categories, prepare the content to append:
 {{how_decisions_affect_each_other}}
 ```
 
-### 6. Present Content and Menu
+### 6. Present Menu
 
-Show the generated decisions content and present choices:
+Content has been written to the document. Present choices:
 
-"I've documented all the core architectural decisions we've made together.
-
-**Here's what I'll add to the document:**
-
-[Show the complete markdown content from step 5]
+"I've documented all the core architectural decisions we've made together and written them to the document.
 
 **What would you like to do?**
 [A] Advanced Elicitation - Explore innovative approaches to any specific decisions
 [P] Party Mode - Review decisions from multiple perspectives
-[C] Continue - Save these decisions and move to implementation patterns"
+[C] Continue - Accept these decisions and move to implementation patterns
+[R] Rewrite - Rewrite this section from scratch based on feedback"
 
 ### 7. Handle Menu Selection
 
@@ -267,26 +266,29 @@ Show the generated decisions content and present choices:
 - Read fully and follow: {project-root}/_evo/core/workflows/advanced-elicitation/workflow.md with specific decision categories
 - Process enhanced insights about particular decisions
 - Ask user: "Accept these enhancements to the architectural decisions? (y/n)"
-- If yes: Update content, then return to A/P/C menu
-- If no: Keep original content, then return to A/P/C menu
+- If yes: Update content with improvements and overwrite in file, then return to A/P/C/R menu
+- If no: Keep original content, then return to A/P/C/R menu
 
 #### If 'P' (Party Mode):
 
 - Read fully and follow: {project-root}/_evo/core/workflows/party-mode/workflow.md with architectural decisions context
 - Process collaborative insights about decision trade-offs
 - Ask user: "Accept these changes to the architectural decisions? (y/n)"
-- If yes: Update content, then return to A/P/C menu
-- If no: Keep original content, then return to A/P/C menu
+- If yes: Update content with improvements and overwrite in file, then return to A/P/C/R menu
+- If no: Keep original content, then return to A/P/C/R menu
 
 #### If 'C' (Continue):
 
-- Append the final content to `{planning_artifacts}/{active_feature}/architecture.md`
 - Update frontmatter: `stepsCompleted: [1, 2, 3, 4]`
 - Load `{project-root}/_evo/bmm/workflows/3-solutioning/create-architecture/steps/step-05-patterns.md`
 
+#### If 'R' (Rewrite):
+
+- Rewrite the section from scratch based on user feedback, overwrite in file, then redisplay menu
+
 ## APPEND TO DOCUMENT:
 
-When user selects 'C', append the content directly to the document using the structure from step 5.
+After generation, immediately append the content to the document using the structure from step 5 (before presenting the menu).
 
 ## SUCCESS METRICS:
 
@@ -295,8 +297,8 @@ When user selects 'C', append the content directly to the document using the str
 ✅ Decision rationale clearly documented
 ✅ Cascading implications identified and addressed
 ✅ User provided appropriate level of explanation for skill level
-✅ A/P/C menu presented and handled correctly for each category
-✅ Content properly appended to document when C selected
+✅ Content written to document immediately after generation
+✅ A/P/C/R menu presented and handled correctly
 
 ## FAILURE MODES:
 
@@ -305,7 +307,7 @@ When user selects 'C', append the content directly to the document using the str
 ❌ Missing cascading implications between decisions
 ❌ Not adapting explanations to user skill level
 ❌ Forgetting to document decisions made by starter template
-❌ Not presenting A/P/C menu after content generation
+❌ Not presenting A/P/C/R menu after writing content to file
 
 ❌ **CRITICAL**: Reading only partial step file - leads to incomplete understanding and poor decisions
 ❌ **CRITICAL**: Proceeding with 'C' without fully reading and understanding the next step file
@@ -313,6 +315,6 @@ When user selects 'C', append the content directly to the document using the str
 
 ## NEXT STEP:
 
-After user selects 'C' and content is saved to document, load `{project-root}/_evo/bmm/workflows/3-solutioning/create-architecture/steps/step-05-patterns.md` to define implementation patterns that ensure consistency across AI agents.
+Write content to file immediately after generation. Load `{project-root}/_evo/bmm/workflows/3-solutioning/create-architecture/steps/step-05-patterns.md` to define implementation patterns that ensure consistency across AI agents.
 
-Remember: Do NOT proceed to step-05 until user explicitly selects 'C' from the A/P/C menu and content is saved!
+Remember: Write content to file immediately after generation. Do NOT proceed to step-05 until user explicitly selects 'C' from the menu.

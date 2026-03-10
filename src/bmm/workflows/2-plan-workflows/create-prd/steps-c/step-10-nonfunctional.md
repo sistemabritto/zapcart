@@ -30,10 +30,9 @@ partyModeWorkflow: '{project-root}/_evo/core/workflows/party-mode/workflow.md'
 ## EXECUTION PROTOCOLS:
 
 - 🎯 Show your analysis before taking any action
-- ⚠️ Present A/P/C menu after generating NFR content
-- 💾 ONLY save when user chooses C (Continue)
+- 💾 Write content directly to {outputFile} after generation
 - 📖 Update output file frontmatter, adding this step name to the end of the list of stepsCompleted
-- 🚫 FORBIDDEN to load next step until C is selected
+- ⚠️ Present A/P/C/R menu after writing to file
 
 
 ## CONTEXT BOUNDARIES:
@@ -156,21 +155,22 @@ When saving to document, append these Level 2 and Level 3 sections (only include
 [Integration requirements based on conversation - only include if relevant]
 ```
 
-### 6. Present MENU OPTIONS
+### 6. Write to File and Present Menu
 
-Present the non-functional requirements for review, then display menu:
-- Show defined NFRs (using structure from step 5)
-- Note that only relevant categories were included
-- Emphasize NFRs specify how well the system needs to perform
-- Ask if they'd like to refine further, get other perspectives, or proceed
-- Present menu options naturally as part of conversation
+After generating the NFR content:
 
-Display: "**Select:** [A] Advanced Elicitation [P] Party Mode [C] Continue to Polish Document (Step 11 of 12)"
+1. Append the content to `{outputFile}` using the structure from step 5
+2. Update frontmatter by adding this step name to the end of the stepsCompleted array
+
+Then display menu:
+
+Display: "**Select:** [A] Advanced Elicitation [P] Party Mode [C] Continue to Polish Document (Step 11 of 12) [R] Rewrite this section"
 
 #### Menu Handling Logic:
-- IF A: Read fully and follow: {advancedElicitationTask} with the current NFR content, process the enhanced quality attribute insights that come back, ask user if they accept the improvements, if yes update content then redisplay menu, if no keep original content then redisplay menu
-- IF P: Read fully and follow: {partyModeWorkflow} with the current NFR list, process the collaborative technical validation and additions, ask user if they accept the changes, if yes update content then redisplay menu, if no keep original content then redisplay menu
-- IF C: Append the final content to {outputFile}, update frontmatter by adding this step name to the end of the stepsCompleted array, then read fully and follow: {nextStepFile}
+- IF A: Read fully and follow: {advancedElicitationTask} with the current NFR content, process the enhanced quality attribute insights, ask user if they accept the improvements, if yes overwrite section in {outputFile} with improvements then redisplay menu, if no keep original then redisplay menu
+- IF P: Read fully and follow: {partyModeWorkflow} with the current NFR list, process the collaborative validation, ask user if they accept the changes, if yes overwrite section in {outputFile} with improvements then redisplay menu, if no keep original then redisplay menu
+- IF C: Read fully and follow: {nextStepFile}
+- IF R: Rewrite the section from scratch based on user feedback, overwrite in {outputFile}, then redisplay menu
 - IF Any other: help user respond, then redisplay menu
 
 #### EXECUTION RULES:
@@ -180,7 +180,7 @@ Display: "**Select:** [A] Advanced Elicitation [P] Party Mode [C] Continue to Po
 
 ## APPEND TO DOCUMENT:
 
-When user selects 'C', append the content directly to the document using the structure from step 5.
+After generation, immediately append the content directly to the document using the structure from step 5 (before presenting the menu).
 
 ## SUCCESS METRICS:
 
@@ -199,8 +199,7 @@ When user selects 'C', append the content directly to the document using the str
 ❌ Not connecting NFRs to actual user or business needs
 ❌ Missing domain-specific compliance requirements
 ❌ Creating overly prescriptive technical requirements
-❌ Not presenting A/P/C menu after content generation
-❌ Appending content without user selecting 'C'
+❌ Not presenting A/P/C/R menu after writing content to file
 
 ❌ **CRITICAL**: Reading only partial step file - leads to incomplete understanding and poor decisions
 ❌ **CRITICAL**: Proceeding with 'C' without fully reading and understanding the next step file
@@ -239,4 +238,4 @@ When user selects 'C', append the content directly to the document using the str
 
 After user selects 'C' and content is saved to document, load {nextStepFile} to finalize the PRD and complete the workflow.
 
-Remember: Do NOT proceed to step-11 until user explicitly selects 'C' from the A/P/C menu and content is saved!
+Remember: Write content to file immediately after generation. Do NOT proceed to step-11 until user explicitly selects 'C' from the menu.

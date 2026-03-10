@@ -33,10 +33,9 @@ partyModeWorkflow: '{project-root}/_evo/core/workflows/party-mode/workflow.md'
 ## EXECUTION PROTOCOLS:
 
 - 🎯 Show your analysis before taking any action
-- ⚠️ Present A/P/C menu after generating innovation content
-- 💾 ONLY save when user chooses C (Continue)
+- 💾 Write content directly to {outputFile} after generation (if innovation detected)
 - 📖 Update output file frontmatter, adding this step name to the end of the list of stepsCompleted
-- 🚫 FORBIDDEN to load next step until C is selected
+- ⚠️ Present A/P/C/R menu after writing to file
 
 ## CONTEXT BOUNDARIES:
 
@@ -144,20 +143,22 @@ When saving to document, append these Level 2 and Level 3 sections:
 [Innovation risks and fallbacks based on conversation]
 ```
 
-### 6. Present MENU OPTIONS (Only if Innovation Detected)
+### 6. Write to File and Present Menu (Only if Innovation Detected)
 
-Present the innovation content for review, then display menu:
-- Show identified innovative aspects (using structure from section 5)
-- Highlight differentiation from existing solutions
-- Ask if they'd like to refine further, get other perspectives, or proceed
-- Present menu options naturally as part of conversation
+After generating the innovation content:
 
-Display: "**Select:** [A] Advanced Elicitation [P] Party Mode [C] Continue to Project Type Analysis (Step 7 of 11)"
+1. Append the content to `{outputFile}` using the structure from section 5
+2. Update frontmatter by adding this step name to the end of the stepsCompleted array
+
+Then display menu:
+
+Display: "**Select:** [A] Advanced Elicitation [P] Party Mode [C] Continue to Project Type Analysis (Step 7 of 11) [R] Rewrite this section"
 
 #### Menu Handling Logic:
-- IF A: Read fully and follow: {advancedElicitationTask} with the current innovation content, process the enhanced innovation insights that come back, ask user "Accept these improvements to the innovation analysis? (y/n)", if yes update content with improvements then redisplay menu, if no keep original content then redisplay menu
-- IF P: Read fully and follow: {partyModeWorkflow} with the current innovation content, process the collaborative innovation exploration and ideation, ask user "Accept these changes to the innovation analysis? (y/n)", if yes update content with improvements then redisplay menu, if no keep original content then redisplay menu
-- IF C: Append the final content to {outputFile}, update frontmatter by adding this step name to the end of the stepsCompleted array, then read fully and follow: {nextStepFile}
+- IF A: Read fully and follow: {advancedElicitationTask} with the current innovation content, process the enhanced insights, ask user "Accept these improvements? (y/n)", if yes overwrite section in {outputFile} with improvements then redisplay menu, if no keep original then redisplay menu
+- IF P: Read fully and follow: {partyModeWorkflow} with the current innovation content, process the collaborative insights, ask user "Accept these changes? (y/n)", if yes overwrite section in {outputFile} with improvements then redisplay menu, if no keep original then redisplay menu
+- IF C: Read fully and follow: {nextStepFile}
+- IF R: Rewrite the section from scratch based on user feedback, overwrite in {outputFile}, then redisplay menu
 - IF Any other: help user respond, then redisplay menu
 
 #### EXECUTION RULES:
@@ -184,7 +185,7 @@ Display: "**Select:** [A] Advanced Elicitation - Let's try to find innovative an
 
 ## APPEND TO DOCUMENT:
 
-When user selects 'C', append the content directly to the document using the structure from step 5.
+After generation, immediately append the content directly to the document using the structure from step 5 (before presenting the menu).
 
 ## SUCCESS METRICS:
 
@@ -203,8 +204,7 @@ When user selects 'C', append the content directly to the document using the str
 ❌ Missing market context research for novel concepts
 ❌ Not addressing validation approach for innovative features
 ❌ Creating innovation theater without real innovative aspects
-❌ Not presenting A/P/C menu after content generation
-❌ Appending content without user selecting 'C'
+❌ Not presenting A/P/C/R menu after writing content to file
 
 ❌ **CRITICAL**: Reading only partial step file - leads to incomplete understanding and poor decisions
 ❌ **CRITICAL**: Proceeding with 'C' without fully reading and understanding the next step file
@@ -223,4 +223,4 @@ Skip this step and load `{nextStepFile}` if:
 
 After user selects 'C' and content is saved to document (or step is skipped), load `{nextStepFile}`.
 
-Remember: Do NOT proceed to step-07 until user explicitly selects 'C' from the A/P/C menu (or confirms step skip)!
+Remember: Write content to file immediately after generation. Do NOT proceed to step-07 until user explicitly selects 'C' from the menu (or confirms step skip).

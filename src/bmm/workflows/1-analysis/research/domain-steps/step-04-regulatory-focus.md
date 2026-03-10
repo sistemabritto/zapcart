@@ -16,11 +16,9 @@
 ## EXECUTION PROTOCOLS:
 
 - 🎯 Show web search analysis before presenting findings
-- ⚠️ Present [C] continue option after regulatory content generation
 - 📝 WRITE REGULATORY ANALYSIS TO DOCUMENT IMMEDIATELY
-- 💾 ONLY save when user chooses C (Continue)
 - 📖 Update frontmatter `stepsCompleted: [1, 2, 3, 4]` before loading next step
-- 🚫 FORBIDDEN to load next step until C is selected
+- ⚠️ Present [C] continue option after writing content to document
 
 ## CONTEXT BOUNDARIES:
 
@@ -168,8 +166,8 @@ Content is already written to document when generated in step 5. No additional a
 ✅ Compliance frameworks clearly mapped
 ✅ Data protection requirements analyzed
 ✅ Implementation considerations provided
+✅ Content written immediately to document
 ✅ [C] continue option presented and handled correctly
-✅ Content properly appended to document when C selected
 
 ## FAILURE MODES:
 
@@ -177,8 +175,8 @@ Content is already written to document when generated in step 5. No additional a
 ❌ Missing critical regulatory requirements for the domain
 ❌ Not providing implementation considerations for compliance
 ❌ Not completing risk assessment for regulatory compliance
+❌ Not writing content immediately to document
 ❌ Not presenting [C] continue option after content generation
-❌ Appending content without user selecting 'C'
 
 ❌ **CRITICAL**: Reading only partial step file - leads to incomplete understanding and poor decisions
 ❌ **CRITICAL**: Proceeding with 'C' without fully reading and understanding the next step file

@@ -15,10 +15,9 @@
 ## EXECUTION PROTOCOLS:
 
 - 🎯 Show your analysis before taking any action
-- ⚠️ Present A/P/C menu after generating project understanding content
-- 💾 ONLY save when user chooses C (Continue)
-- 📖 Update output file frontmatter, adding this step to the end of the list of stepsCompleted.
-- 🚫 FORBIDDEN to load next step until C is selected
+- 💾 Write content directly to output file after generation
+- 📖 Update output file frontmatter, adding this step to the end of the list of stepsCompleted
+- ⚠️ Present A/P/C/R menu after writing to file
 
 ## COLLABORATION MENUS (A/P/C):
 
@@ -137,29 +136,28 @@ When saving to document, append these Level 2 and Level 3 sections:
 [Design opportunities identified based on conversation]
 ```
 
-### 6. Present Content and Menu
+### 6. Write to File and Present Menu
 
-Show the generated project understanding content and present choices:
-"I've documented our understanding of {{project_name}} from a UX perspective. This will guide all our design decisions moving forward.
+After generating the project understanding content:
 
-**Here's what I'll add to the document:**
+1. Append the content to `{planning_artifacts}/{active_feature}/ux-design-specification.md` using the structure from step 5
+2. Update frontmatter: append this step to end of stepsCompleted array
 
-[Show the complete markdown content from step 5]
+Then display menu:
 
-**What would you like to do?**
-[C] Continue - Save this to the document and move to core experience definition"
+Display: "**Select:** [A] Advanced Elicitation [P] Party Mode [C] Continue to Core Experience (Step 3) [R] Rewrite this section"
 
 ### 7. Handle Menu Selection
 
-#### If 'C' (Continue):
-
-- Append the final content to `{planning_artifacts}/{active_feature}/ux-design-specification.md`
-- Update frontmatter: `stepsCompleted: [1, 2]`
-- Load `{project-root}/_evo/bmm/workflows/2-plan-workflows/create-ux-design/steps/step-03-core-experience.md`
+- IF A: Read fully and follow: {project-root}/_evo/core/workflows/advanced-elicitation/workflow.md, process results, ask user "Accept improvements? (y/n)", if yes overwrite section in file, then redisplay menu
+- IF P: Read fully and follow: {project-root}/_evo/core/workflows/party-mode/workflow.md, process results, ask user "Accept changes? (y/n)", if yes overwrite section in file, then redisplay menu
+- IF C: Read fully and follow: `{project-root}/_evo/bmm/workflows/2-plan-workflows/create-ux-design/steps/step-03-core-experience.md`
+- IF R: Rewrite the section from scratch based on user feedback, overwrite in file, then redisplay menu
+- IF Any other: help user respond, then redisplay menu
 
 ## APPEND TO DOCUMENT:
 
-When user selects 'C', append the content directly to the document. Only after the content is saved to document, read fully and follow: `{project-root}/_evo/bmm/workflows/2-plan-workflows/create-ux-design/steps/step-03-core-experience.md`.
+After generation, immediately append the content directly to the document using the structure from step 5 (before presenting the menu).
 
 ## SUCCESS METRICS:
 
@@ -178,8 +176,7 @@ When user selects 'C', append the content directly to the document. Only after t
 ❌ Missing key UX challenges that will impact design
 ❌ Not identifying design opportunities
 ❌ Generating generic content without real project insight
-❌ Not presenting A/P/C menu after content generation
-❌ Appending content without user selecting 'C'
+❌ Not presenting A/P/C/R menu after writing content to file
 
 ❌ **CRITICAL**: Reading only partial step file - leads to incomplete understanding and poor decisions
 ❌ **CRITICAL**: Proceeding with 'C' without fully reading and understanding the next step file
@@ -187,4 +184,4 @@ When user selects 'C', append the content directly to the document. Only after t
 
 ## NEXT STEP:
 
-Remember: Do NOT proceed to step-03 until user explicitly selects 'C' from the menu and content is saved!
+Remember: Write content to file immediately after generation. Do NOT proceed to step-03 until user explicitly selects 'C' from the menu.

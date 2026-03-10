@@ -33,10 +33,9 @@ partyModeWorkflow: '{project-root}/_evo/core/workflows/party-mode/workflow.md'
 ## EXECUTION PROTOCOLS:
 
 - 🎯 Show your analysis before taking any action
-- ⚠️ Present A/P/C menu after generating project-type content
-- 💾 ONLY save when user chooses C (Continue)
+- 💾 Write content directly to {outputFile} after generation
 - 📖 Update output file frontmatter, adding this step name to the end of the list of stepsCompleted
-- 🚫 FORBIDDEN to load next step until C is selected
+- ⚠️ Present A/P/C/R menu after writing to file
 
 ## CONTEXT BOUNDARIES:
 
@@ -157,24 +156,22 @@ When saving to document, append these Level 2 and Level 3 sections:
 [Implementation specific requirements based on conversation]
 ```
 
-### 6. Present MENU OPTIONS
+### 6. Write to File and Present Menu
 
-Present the project-type content for review, then display menu:
+After generating the project-type content:
 
-"Based on our conversation and best practices for this product type, I've documented the {project_type}-specific requirements for {{project_name}}.
+1. Append the content to `{outputFile}` using the structure from section 5
+2. Update frontmatter by adding this step name to the end of the stepsCompleted array
 
-**Here's what I'll add to the document:**
+Then display menu:
 
-[Show the complete markdown content from section 5]
-
-**What would you like to do?**"
-
-Display: "**Select:** [A] Advanced Elicitation [P] Party Mode [C] Continue to Scoping (Step 8 of 11)"
+Display: "**Select:** [A] Advanced Elicitation [P] Party Mode [C] Continue to Scoping (Step 8 of 11) [R] Rewrite this section"
 
 #### Menu Handling Logic:
-- IF A: Read fully and follow: {advancedElicitationTask} with the current project-type content, process the enhanced technical insights that come back, ask user "Accept these improvements to the technical requirements? (y/n)", if yes update content with improvements then redisplay menu, if no keep original content then redisplay menu
-- IF P: Read fully and follow: {partyModeWorkflow} with the current project-type requirements, process the collaborative technical expertise and validation, ask user "Accept these changes to the technical requirements? (y/n)", if yes update content with improvements then redisplay menu, if no keep original content then redisplay menu
-- IF C: Append the final content to {outputFile}, update frontmatter by adding this step name to the end of the stepsCompleted array, then read fully and follow: {nextStepFile}
+- IF A: Read fully and follow: {advancedElicitationTask} with the current project-type content, process the enhanced technical insights, ask user "Accept these improvements? (y/n)", if yes overwrite section in {outputFile} with improvements then redisplay menu, if no keep original then redisplay menu
+- IF P: Read fully and follow: {partyModeWorkflow} with the current project-type requirements, process the collaborative insights, ask user "Accept these changes? (y/n)", if yes overwrite section in {outputFile} with improvements then redisplay menu, if no keep original then redisplay menu
+- IF C: Read fully and follow: {nextStepFile}
+- IF R: Rewrite the section from scratch based on user feedback, overwrite in {outputFile}, then redisplay menu
 - IF Any other: help user respond, then redisplay menu
 
 #### EXECUTION RULES:
@@ -184,7 +181,7 @@ Display: "**Select:** [A] Advanced Elicitation [P] Party Mode [C] Continue to Sc
 
 ## APPEND TO DOCUMENT:
 
-When user selects 'C', append the content directly to the document using the structure from previous steps.
+After generation, immediately append the content directly to the document using the structure from section 5 (before presenting the menu).
 
 ## SUCCESS METRICS:
 
@@ -203,8 +200,7 @@ When user selects 'C', append the content directly to the document using the str
 ❌ Not generating required sections per CSV configuration
 ❌ Documenting sections that should be skipped per CSV
 ❌ Creating generic content without project-type specificity
-❌ Not presenting A/P/C menu after content generation
-❌ Appending content without user selecting 'C'
+❌ Not presenting A/P/C/R menu after writing content to file
 
 ❌ **CRITICAL**: Reading only partial step file - leads to incomplete understanding and poor decisions
 ❌ **CRITICAL**: Proceeding with 'C' without fully reading and understanding the next step file
@@ -234,4 +230,4 @@ When user selects 'C', append the content directly to the document using the str
 
 After user selects 'C' and content is saved to document, load `{nextStepFile}` to define project scope.
 
-Remember: Do NOT proceed to step-08 (Scoping) until user explicitly selects 'C' from the A/P/C menu and content is saved!
+Remember: Write content to file immediately after generation. Do NOT proceed to step-08 (Scoping) until user explicitly selects 'C' from the menu.

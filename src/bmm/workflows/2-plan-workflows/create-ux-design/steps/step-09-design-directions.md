@@ -15,24 +15,25 @@
 ## EXECUTION PROTOCOLS:
 
 - 🎯 Show your analysis before taking any action
-- ⚠️ Present A/P/C menu after generating design direction content
+- 💾 Write content directly to output file after generation
 - 💾 Generate HTML visualizer for design directions
 - 📖 Update output file frontmatter, adding this step to the end of the list of stepsCompleted.
-- 🚫 FORBIDDEN to load next step until C is selected
+- ⚠️ Present A/P/C/R menu after writing to file
 
-## COLLABORATION MENUS (A/P/C):
+## COLLABORATION MENUS (A/P/C/R):
 
 This step will generate content and present choices:
 
 - **A (Advanced Elicitation)**: Use discovery protocols to develop deeper design insights
 - **P (Party Mode)**: Bring multiple perspectives to evaluate design directions
-- **C (Continue)**: Save the content to the document and proceed to next step
+- **C (Continue)**: Accept the content and proceed to next step
+- **R (Rewrite)**: Rewrite this section from scratch based on user feedback
 
 ## PROTOCOL INTEGRATION:
 
 - When 'A' selected: Read fully and follow: {project-root}/_evo/core/workflows/advanced-elicitation/workflow.md
 - When 'P' selected: Read fully and follow: {project-root}/_evo/core/workflows/party-mode/workflow.md
-- PROTOCOLS always return to this step's A/P/C menu
+- PROTOCOLS always return to this step's A/P/C/R menu
 - User accepts/rejects protocol changes before proceeding
 
 ## CONTEXT BOUNDARIES:
@@ -123,13 +124,13 @@ Capture the chosen approach:
 
 This will become our design foundation moving forward. Are we ready to lock this in, or do you want to explore variations?"
 
-### 6. Generate Design Direction Content
+### 6. Generate Design Direction Content and Write to File
 
-Prepare the content to append to the document:
+Generate the content and immediately append to the document:
 
 #### Content Structure:
 
-When saving to document, append these Level 2 and Level 3 sections:
+After generation, immediately append these Level 2 and Level 3 sections to the output file (before presenting the menu):
 
 ```markdown
 ## Design Direction Decision
@@ -151,19 +152,16 @@ When saving to document, append these Level 2 and Level 3 sections:
 [Implementation approach based on chosen direction]
 ```
 
-### 7. Present Content and Menu
+### 7. Present Menu
 
-Show the generated design direction content and present choices:
-"I've documented our design direction decision for {{project_name}}. This visual approach will guide all our detailed design work.
-
-**Here's what I'll add to the document:**
-
-[Show the complete markdown content from step 6]
+Content has been written to the document. Present choices:
+"I've documented our design direction decision for {{project_name}} and written it to the document. This visual approach will guide all our detailed design work.
 
 **What would you like to do?**
 [A] Advanced Elicitation - Let's refine our design direction
 [P] Party Mode - Bring different perspectives on visual choices
-[C] Continue - Save this to the document and move to user journey flows
+[C] Continue - Move to user journey flows
+[R] Rewrite - Rewrite this section from scratch based on feedback
 
 ### 8. Handle Menu Selection
 
@@ -172,26 +170,29 @@ Show the generated design direction content and present choices:
 - Read fully and follow: {project-root}/_evo/core/workflows/advanced-elicitation/workflow.md with the current design direction content
 - Process the enhanced design insights that come back
 - Ask user: "Accept these improvements to the design direction? (y/n)"
-- If yes: Update content with improvements, then return to A/P/C menu
-- If no: Keep original content, then return to A/P/C menu
+- If yes: Update content with improvements and overwrite in file, then return to A/P/C/R menu
+- If no: Keep original content, then return to A/P/C/R menu
 
 #### If 'P' (Party Mode):
 
 - Read fully and follow: {project-root}/_evo/core/workflows/party-mode/workflow.md with the current design direction
 - Process the collaborative design insights that come back
 - Ask user: "Accept these changes to the design direction? (y/n)"
-- If yes: Update content with improvements, then return to A/P/C menu
-- If no: Keep original content, then return to A/P/C menu
+- If yes: Update content with improvements and overwrite in file, then return to A/P/C/R menu
+- If no: Keep original content, then return to A/P/C/R menu
 
 #### If 'C' (Continue):
 
-- Append the final content to `{planning_artifacts}/{active_feature}/ux-design-specification.md`
 - Update frontmatter: append step to end of stepsCompleted array
 - Load `{project-root}/_evo/bmm/workflows/2-plan-workflows/create-ux-design/steps/step-10-user-journeys.md`
 
+#### If 'R' (Rewrite):
+
+- Rewrite the section from scratch based on user feedback, overwrite in file, then redisplay menu
+
 ## APPEND TO DOCUMENT:
 
-When user selects 'C', append the content directly to the document using the structure from step 6.
+After generation, immediately append the content to the document using the structure from step 6 (before presenting the menu).
 
 ## SUCCESS METRICS:
 
@@ -200,8 +201,8 @@ When user selects 'C', append the content directly to the document using the str
 ✅ Design evaluation criteria clearly established
 ✅ User able to explore and compare directions effectively
 ✅ Design direction decision made with clear rationale
-✅ A/P/C menu presented and handled correctly
-✅ Content properly appended to document when C selected
+✅ Content written to document immediately after generation
+✅ A/P/C/R menu presented and handled correctly
 
 ## FAILURE MODES:
 
@@ -210,8 +211,7 @@ When user selects 'C', append the content directly to the document using the str
 ❌ Missing interactive elements in HTML showcase
 ❌ Not providing clear evaluation criteria
 ❌ Rushing decision without thorough exploration
-❌ Not presenting A/P/C menu after content generation
-❌ Appending content without user selecting 'C'
+❌ Not presenting A/P/C/R menu after writing content to file
 
 ❌ **CRITICAL**: Reading only partial step file - leads to incomplete understanding and poor decisions
 ❌ **CRITICAL**: Proceeding with 'C' without fully reading and understanding the next step file
@@ -219,6 +219,6 @@ When user selects 'C', append the content directly to the document using the str
 
 ## NEXT STEP:
 
-After user selects 'C' and content is saved to document, load `{project-root}/_evo/bmm/workflows/2-plan-workflows/create-ux-design/steps/step-10-user-journeys.md` to design user journey flows.
+Write content to file immediately after generation. Load `{project-root}/_evo/bmm/workflows/2-plan-workflows/create-ux-design/steps/step-10-user-journeys.md` to design user journey flows.
 
-Remember: Do NOT proceed to step-10 until user explicitly selects 'C' from the A/P/C menu and content is saved!
+Remember: Write content to file immediately after generation. Do NOT proceed to step-10 until user explicitly selects 'C' from the menu.

@@ -17,24 +17,24 @@
 
 - 🎯 Show your analysis before taking any action
 - 🗺️ Create complete project tree, not generic placeholders
-- ⚠️ Present A/P/C menu after generating project structure
-- 💾 ONLY save when user chooses C (Continue)
+- 💾 Write content directly to output file after generation
 - 📖 Update frontmatter `stepsCompleted: [1, 2, 3, 4, 5, 6]` before loading next step
-- 🚫 FORBIDDEN to load next step until C is selected
+- ⚠️ Present A/P/C/R menu after writing to file
 
-## COLLABORATION MENUS (A/P/C):
+## COLLABORATION MENUS (A/P/C/R):
 
 This step will generate content and present choices:
 
 - **A (Advanced Elicitation)**: Use discovery protocols to explore innovative project organization approaches
 - **P (Party Mode)**: Bring multiple perspectives to evaluate project structure trade-offs
-- **C (Continue)**: Save the project structure and proceed to validation
+- **C (Continue)**: Accept the content and proceed to next step
+- **R (Rewrite)**: Rewrite this section from scratch based on user feedback
 
 ## PROTOCOL INTEGRATION:
 
 - When 'A' selected: Read fully and follow: {project-root}/_evo/core/workflows/advanced-elicitation/workflow.md
 - When 'P' selected: Read fully and follow: {project-root}/_evo/core/workflows/party-mode/workflow.md
-- PROTOCOLS always return to display this step's A/P/C menu after the A or P have completed
+- PROTOCOLS always return to display this step's A/P/C/R menu after the A or P have completed
 - User accepts/rejects protocol changes before proceeding
 
 ## CONTEXT BOUNDARIES:
@@ -231,11 +231,13 @@ Create explicit mapping from project requirements to specific files/directories:
 - Guards: src/guards/auth.guard.ts
 - Tests: tests/auth/"
 
-### 6. Generate Structure Content
+### 6. Generate Structure Content and Write to File
 
-Prepare the content to append to the document:
+Generate the content and immediately append to the document:
 
 #### Content Structure:
+
+After generation, immediately append this content to the output file (before presenting the menu):
 
 ```markdown
 ## Project Structure & Boundaries
@@ -306,20 +308,17 @@ Prepare the content to append to the document:
 {{how_the_project_structure_supports_deployment}}
 ```
 
-### 7. Present Content and Menu
+### 7. Present Menu
 
-Show the generated project structure content and present choices:
+Content has been written to the document. Present choices:
 
-"I've created a complete project structure based on all our architectural decisions.
-
-**Here's what I'll add to the document:**
-
-[Show the complete markdown content from step 6]
+"I've created a complete project structure based on all our architectural decisions and written it to the document.
 
 **What would you like to do?**
 [A] Advanced Elicitation - Explore innovative project organization approaches
 [P] Party Mode - Review structure from different development perspectives
-[C] Continue - Save this structure and move to architecture validation"
+[C] Continue - Accept this structure and move to architecture validation
+[R] Rewrite - Rewrite this section from scratch based on feedback"
 
 ### 8. Handle Menu Selection
 
@@ -328,26 +327,29 @@ Show the generated project structure content and present choices:
 - Read fully and follow: {project-root}/_evo/core/workflows/advanced-elicitation/workflow.md with current project structure
 - Process enhanced organizational insights that come back
 - Ask user: "Accept these changes to the project structure? (y/n)"
-- If yes: Update content, then return to A/P/C menu
-- If no: Keep original content, then return to A/P/C menu
+- If yes: Update content with improvements and overwrite in file, then return to A/P/C/R menu
+- If no: Keep original content, then return to A/P/C/R menu
 
 #### If 'P' (Party Mode):
 
 - Read fully and follow: {project-root}/_evo/core/workflows/party-mode/workflow.md with project structure context
 - Process collaborative insights about organization trade-offs
 - Ask user: "Accept these changes to the project structure? (y/n)"
-- If yes: Update content, then return to A/P/C menu
-- If no: Keep original content, then return to A/P/C menu
+- If yes: Update content with improvements and overwrite in file, then return to A/P/C/R menu
+- If no: Keep original content, then return to A/P/C/R menu
 
 #### If 'C' (Continue):
 
-- Append the final content to `{planning_artifacts}/{active_feature}/architecture.md`
 - Update frontmatter: `stepsCompleted: [1, 2, 3, 4, 5, 6]`
 - Load `{project-root}/_evo/bmm/workflows/3-solutioning/create-architecture/steps/step-07-validation.md`
 
+#### If 'R' (Rewrite):
+
+- Rewrite the section from scratch based on user feedback, overwrite in file, then redisplay menu
+
 ## APPEND TO DOCUMENT:
 
-When user selects 'C', append the content directly to the document using the structure from step 6.
+After generation, immediately append the content to the document using the structure from step 6 (before presenting the menu).
 
 ## SUCCESS METRICS:
 
@@ -356,8 +358,8 @@ When user selects 'C', append the content directly to the document using the str
 ✅ Requirements/epics mapped to specific locations
 ✅ Integration points and communication patterns defined
 ✅ Project structure aligned with chosen technology stack
-✅ A/P/C menu presented and handled correctly
-✅ Content properly appended to document when C selected
+✅ Content written to document immediately after generation
+✅ A/P/C/R menu presented and handled correctly
 
 ## FAILURE MODES:
 
@@ -366,7 +368,7 @@ When user selects 'C', append the content directly to the document using the str
 ❌ Missing important integration boundaries
 ❌ Not considering the chosen technology stack in structure design
 ❌ Not defining how components communicate across boundaries
-❌ Not presenting A/P/C menu after content generation
+❌ Not presenting A/P/C/R menu after writing content to file
 
 ❌ **CRITICAL**: Reading only partial step file - leads to incomplete understanding and poor decisions
 ❌ **CRITICAL**: Proceeding with 'C' without fully reading and understanding the next step file
@@ -374,6 +376,6 @@ When user selects 'C', append the content directly to the document using the str
 
 ## NEXT STEP:
 
-After user selects 'C' and content is saved to document, load `{project-root}/_evo/bmm/workflows/3-solutioning/create-architecture/steps/step-07-validation.md` to validate architectural coherence and completeness.
+Write content to file immediately after generation. Load `{project-root}/_evo/bmm/workflows/3-solutioning/create-architecture/steps/step-07-validation.md` to validate architectural coherence and completeness.
 
-Remember: Do NOT proceed to step-07 until user explicitly selects 'C' from the A/P/C menu and content is saved!
+Remember: Write content to file immediately after generation. Do NOT proceed to step-07 until user explicitly selects 'C' from the menu.

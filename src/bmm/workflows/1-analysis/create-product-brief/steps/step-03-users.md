@@ -45,9 +45,9 @@ Define target users with rich personas and map their key interactions with the p
 ## EXECUTION PROTOCOLS:
 
 - 🎯 Show your analysis before taking any action
-- 💾 Generate user personas and journeys collaboratively with user
+- 💾 Write content directly to {outputFile} after generation
 - 📖 Update frontmatter `stepsCompleted: [1, 2, 3]` before loading next step
-- 🚫 FORBIDDEN to proceed without user confirmation through menu
+- ⚠️ Present A/P/C/R menu after writing to file
 
 ## CONTEXT BOUNDARIES:
 
@@ -147,22 +147,24 @@ Prepare the following structure for document append:
 [User journey content based on conversation, or N/A if not discussed]
 ```
 
-### 6. Present MENU OPTIONS
+### 6. Write to File and Present Menu
 
-**Content Presentation:**
-"I've mapped out who {{project_name}} serves and how they'll interact with it. This helps us ensure we're building something that real people will love to use.
+After generating the target users content:
 
-**Here's what I'll add to the document:**
-[Show the complete markdown content from step 5]
+1. Save content to `{outputFile}` using the structure from step 5
+2. Update frontmatter with stepsCompleted: [1, 2, 3]
 
-**Select an Option:** [A] Advanced Elicitation [P] Party Mode [C] Continue"
+Then display menu:
+
+Display: "**Select:** [A] Advanced Elicitation [P] Party Mode [C] Continue to Success Metrics (Step 4) [R] Rewrite this section"
 
 #### Menu Handling Logic:
 
-- IF A: Read fully and follow: {advancedElicitationTask} with current user content to dive deeper into personas and journeys
-- IF P: Read fully and follow: {partyModeWorkflow} to bring different perspectives to validate user understanding
-- IF C: Save content to {outputFile}, update frontmatter with stepsCompleted: [1, 2, 3], then read fully and follow: {nextStepFile}
-- IF Any other comments or queries: help user respond then [Redisplay Menu Options](#6-present-menu-options)
+- IF A: Read fully and follow: {advancedElicitationTask} with current user content, ask user "Accept improvements? (y/n)", if yes overwrite section in {outputFile}, then redisplay menu
+- IF P: Read fully and follow: {partyModeWorkflow}, ask user "Accept changes? (y/n)", if yes overwrite section in {outputFile}, then redisplay menu
+- IF C: Read fully and follow: {nextStepFile}
+- IF R: Rewrite the section from scratch based on user feedback, overwrite in {outputFile}, then redisplay menu
+- IF Any other comments or queries: help user respond then redisplay menu
 
 #### EXECUTION RULES:
 
@@ -173,7 +175,7 @@ Prepare the following structure for document append:
 
 ## CRITICAL STEP COMPLETION NOTE
 
-ONLY WHEN [C continue option] is selected and [user personas finalized and saved to document with frontmatter updated], will you then read fully and follow: `{nextStepFile}` to begin success metrics definition.
+Content is written to document immediately after generation. ONLY WHEN [C continue option] is selected will you then read fully and follow: `{nextStepFile}` to begin success metrics definition.
 
 ---
 
@@ -195,8 +197,7 @@ ONLY WHEN [C continue option] is selected and [user personas finalized and saved
 - Missing key user segments that are important to success
 - User journeys that don't show how the product creates value
 - Not connecting user needs back to the problem statement
-- Not presenting standard A/P/C menu after content generation
-- Appending content without user selecting 'C'
+- Not presenting standard A/P/C/R menu after writing content to file
 - Not updating frontmatter properly
 
 **Master Rule:** Skipping steps, optimizing sequences, or not following exact instructions is FORBIDDEN and constitutes SYSTEM FAILURE.

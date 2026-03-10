@@ -15,10 +15,9 @@
 ## EXECUTION PROTOCOLS:
 
 - 🎯 Show web search analysis before presenting findings
-- ⚠️ Present [C] complete option after competitive analysis content generation
-- 💾 ONLY save when user chooses C (Complete)
+- 📝 WRITE COMPETITIVE ANALYSIS TO DOCUMENT IMMEDIATELY
 - 📖 Update frontmatter `stepsCompleted: [1, 2, 3, 4, 5]` before completing workflow
-- 🚫 FORBIDDEN to complete workflow until C is selected
+- ⚠️ Present [C] complete option after writing content to document
 
 ## CONTEXT BOUNDARIES:
 
@@ -54,7 +53,7 @@ Prepare competitive analysis with web search citations:
 
 #### Content Structure:
 
-When saving to document, append these Level 2 and Level 3 sections:
+After generation, immediately append these Level 2 and Level 3 sections to the output file (before presenting the menu):
 
 ```markdown
 ## Competitive Landscape
@@ -115,13 +114,13 @@ Show the generated competitive analysis and present complete option:
 
 #### If 'C' (Complete Research):
 
-- Append the final content to the research document
-- Update frontmatter: `stepsCompleted: [1, 2, 3]`
+- **CONTENT ALREADY WRITTEN TO DOCUMENT**
+- Update frontmatter: `stepsCompleted: [1, 2, 3, 4, 5]`
 - Complete the market research workflow
 
 ## APPEND TO DOCUMENT:
 
-When user selects 'C', append the content directly to the research document using the structure from step 2.
+Content is already written to document when generated in step 2. No additional append needed.
 
 ## SUCCESS METRICS:
 
@@ -130,8 +129,8 @@ When user selects 'C', append the content directly to the research document usin
 ✅ Competitive positioning strategies clearly mapped
 ✅ Strengths and weaknesses thoroughly analyzed
 ✅ Market differentiation opportunities identified
+✅ Content written immediately to document
 ✅ [C] complete option presented and handled correctly
-✅ Content properly appended to document when C selected
 ✅ Market research workflow completed successfully
 
 ## FAILURE MODES:
@@ -141,8 +140,8 @@ When user selects 'C', append the content directly to the research document usin
 ❌ Missing key market players or market share data
 ❌ Incomplete competitive positioning analysis
 ❌ Not identifying market differentiation opportunities
+❌ Not writing content immediately to document
 ❌ Not presenting completion option for research workflow
-❌ Appending content without user selecting 'C'
 
 ❌ **CRITICAL**: Reading only partial step file - leads to incomplete understanding and poor decisions
 ❌ **CRITICAL**: Proceeding with 'C' without fully reading and understanding the next step file

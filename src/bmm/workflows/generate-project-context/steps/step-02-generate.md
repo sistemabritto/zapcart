@@ -14,24 +14,24 @@
 
 - 🎯 Show your analysis before taking any action
 - 📝 Focus on specific, actionable rules rather than general advice
-- ⚠️ Present A/P/C menu after each major rule category
-- 💾 ONLY save when user chooses C (Continue)
+- 💾 Write content directly to output file after generation
 - 📖 Update frontmatter with completed sections
-- 🚫 FORBIDDEN to load next step until all sections are complete
+- ⚠️ Present A/P/C/R menu after writing to file
 
-## COLLABORATION MENUS (A/P/C):
+## COLLABORATION MENUS (A/P/C/R):
 
 This step will generate content and present choices for each rule category:
 
 - **A (Advanced Elicitation)**: Use discovery protocols to explore nuanced implementation rules
 - **P (Party Mode)**: Bring multiple perspectives to identify critical edge cases
-- **C (Continue)**: Save the current rules and proceed to next category
+- **C (Continue)**: Accept the content and proceed to next category
+- **R (Rewrite)**: Rewrite this section from scratch based on user feedback
 
 ## PROTOCOL INTEGRATION:
 
 - When 'A' selected: Execute {project-root}/_evo/core/workflows/advanced-elicitation/workflow.md
 - When 'P' selected: Execute {project-root}/_evo/core/workflows/party-mode
-- PROTOCOLS always return to display this step's A/P/C menu after the A or P have completed
+- PROTOCOLS always return to display this step's A/P/C/R menu after the A or P have completed
 - User accepts/rejects protocol changes before proceeding
 
 ## CONTEXT BOUNDARIES:
@@ -248,20 +248,17 @@ For each category, prepare lean content for the project context file:
 {{bullet_points_of_anti_patterns_and_edge_cases}}
 ```
 
-### 9. Present Content and Menu
+### 9. Present Menu
 
-After each category, show the generated rules and present choices:
+Content has been written to the project context file. After each category, present choices:
 
-"I've drafted the {{category_name}} rules for your project context.
-
-**Here's what I'll add:**
-
-[Show the complete markdown content for this category]
+"I've drafted the {{category_name}} rules for your project context and written them to the file.
 
 **What would you like to do?**
 [A] Advanced Elicitation - Explore nuanced rules for this category
 [P] Party Mode - Review from different implementation perspectives
-[C] Continue - Save these rules and move to next category"
+[C] Continue - Accept these rules and move to next category
+[R] Rewrite - Rewrite this section from scratch based on feedback"
 
 ### 10. Handle Menu Selection
 
@@ -270,26 +267,29 @@ After each category, show the generated rules and present choices:
 - Execute {project-root}/_evo/core/workflows/advanced-elicitation/workflow.md with current category rules
 - Process enhanced rules that come back
 - Ask user: "Accept these enhanced rules for {{category}}? (y/n)"
-- If yes: Update content, then return to A/P/C menu
-- If no: Keep original content, then return to A/P/C menu
+- If yes: Update content with improvements and overwrite in file, then return to A/P/C/R menu
+- If no: Keep original content, then return to A/P/C/R menu
 
 #### If 'P' (Party Mode):
 
 - Execute party-mode workflow with category rules context
 - Process collaborative insights on implementation patterns
 - Ask user: "Accept these changes to {{category}} rules? (y/n)"
-- If yes: Update content, then return to A/P/C menu
-- If no: Keep original content, then return to A/P/C menu
+- If yes: Update content with improvements and overwrite in file, then return to A/P/C/R menu
+- If no: Keep original content, then return to A/P/C/R menu
 
 #### If 'C' (Continue):
 
-- Save the current category content to project context file
 - Update frontmatter: `sections_completed: [...]`
 - Proceed to next category or step-03 if complete
 
+#### If 'R' (Rewrite):
+
+- Rewrite the section from scratch based on user feedback, overwrite in file, then redisplay menu
+
 ## APPEND TO PROJECT CONTEXT:
 
-When user selects 'C' for a category, append the content directly to `{output_folder}/project-context.md` using the structure from step 8.
+After generation for each category, immediately append the content to `{output_folder}/project-context.md` using the structure from step 8 (before presenting the menu).
 
 ## SUCCESS METRICS:
 
@@ -300,7 +300,8 @@ When user selects 'C' for a category, append the content directly to `{output_fo
 ✅ Code quality rules maintain project standards
 ✅ Workflow rules prevent implementation conflicts
 ✅ Content is lean and optimized for LLM context
-✅ A/P/C menu presented and handled correctly for each category
+✅ Content written to file immediately after generation for each category
+✅ A/P/C/R menu presented and handled correctly for each category
 
 ## FAILURE MODES:
 
@@ -309,10 +310,11 @@ When user selects 'C' for a category, append the content directly to `{output_fo
 ❌ Missing critical anti-patterns or edge cases
 ❌ Not getting user validation for each rule category
 ❌ Not documenting exact versions and configurations
-❌ Not presenting A/P/C menu after content generation
+❌ Not writing content to file immediately after generation
+❌ Not presenting A/P/C/R menu after writing content to file
 
 ## NEXT STEP:
 
-After completing all rule categories and user selects 'C' for the final category, load `{project-root}/_evo/bmm/workflows/generate-project-context/steps/step-03-complete.md` to finalize the project context file.
+Write content to file immediately after generation for each category. Load `{project-root}/_evo/bmm/workflows/generate-project-context/steps/step-03-complete.md` to finalize the project context file after all categories are complete.
 
-Remember: Do NOT proceed to step-03 until all categories are complete and user explicitly selects 'C' for each!
+Remember: Write content to file immediately after generation. Do NOT proceed to step-03 until all categories are complete and user explicitly selects 'C' for each!

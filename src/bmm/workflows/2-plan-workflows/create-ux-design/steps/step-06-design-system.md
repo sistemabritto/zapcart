@@ -15,10 +15,9 @@
 ## EXECUTION PROTOCOLS:
 
 - 🎯 Show your analysis before taking any action
-- ⚠️ Present A/P/C menu after generating design system decision content
-- 💾 ONLY save when user chooses C (Continue)
-- 📖 Update output file frontmatter, adding this step to the end of the list of stepsCompleted.
-- 🚫 FORBIDDEN to load next step until C is selected
+- 💾 Write content directly to output file after generation
+- 📖 Update output file frontmatter, adding this step to the end of the list of stepsCompleted
+- ⚠️ Present A/P/C/R menu after writing to file
 
 ## COLLABORATION MENUS (A/P/C):
 
@@ -179,47 +178,28 @@ When saving to document, append these Level 2 and Level 3 sections:
 [Customization strategy based on project needs]
 ```
 
-### 7. Present Content and Menu
+### 7. Write to File and Present Menu
 
-Show the generated design system content and present choices:
-"I've documented our design system choice for {{project_name}}. This foundation will ensure consistency and speed up development.
+After generating the design system content:
 
-**Here's what I'll add to the document:**
+1. Append the content to `{planning_artifacts}/{active_feature}/ux-design-specification.md` using the structure from step 6
+2. Update frontmatter: append step to end of stepsCompleted array
 
-[Show the complete markdown content from step 6]
+Then display menu:
 
-**What would you like to do?**
-[A] Advanced Elicitation - Let's refine our design system decision
-[P] Party Mode - Bring technical perspectives on design systems
-[C] Continue - Save this to the document and move to defining experience
+Display: "**Select:** [A] Advanced Elicitation [P] Party Mode [C] Continue to Defining Experience (Step 7) [R] Rewrite this section"
 
 ### 8. Handle Menu Selection
 
-#### If 'A' (Advanced Elicitation):
-
-- Read fully and follow: {project-root}/_evo/core/workflows/advanced-elicitation/workflow.md with the current design system content
-- Process the enhanced design system insights that come back
-- Ask user: "Accept these improvements to the design system decision? (y/n)"
-- If yes: Update content with improvements, then return to A/P/C menu
-- If no: Keep original content, then return to A/P/C menu
-
-#### If 'P' (Party Mode):
-
-- Read fully and follow: {project-root}/_evo/core/workflows/party-mode/workflow.md with the current design system choice
-- Process the collaborative design system insights that come back
-- Ask user: "Accept these changes to the design system decision? (y/n)"
-- If yes: Update content with improvements, then return to A/P/C menu
-- If no: Keep original content, then return to A/P/C menu
-
-#### If 'C' (Continue):
-
-- Append the final content to `{planning_artifacts}/{active_feature}/ux-design-specification.md`
-- Update frontmatter: append step to end of stepsCompleted array
-- Load `{project-root}/_evo/bmm/workflows/2-plan-workflows/create-ux-design/steps/step-07-defining-experience.md`
+- IF A: Read fully and follow: {project-root}/_evo/core/workflows/advanced-elicitation/workflow.md, ask user "Accept improvements? (y/n)", if yes overwrite section in file, then redisplay menu
+- IF P: Read fully and follow: {project-root}/_evo/core/workflows/party-mode/workflow.md, ask user "Accept changes? (y/n)", if yes overwrite section in file, then redisplay menu
+- IF C: Load `{project-root}/_evo/bmm/workflows/2-plan-workflows/create-ux-design/steps/step-07-defining-experience.md`
+- IF R: Rewrite the section from scratch based on user feedback, overwrite in file, then redisplay menu
+- IF Any other: help user respond, then redisplay menu
 
 ## APPEND TO DOCUMENT:
 
-When user selects 'C', append the content directly to the document using the structure from step 6.
+After generation, immediately append the content directly to the document using the structure from step 6 (before presenting the menu).
 
 ## SUCCESS METRICS:
 
@@ -238,8 +218,7 @@ When user selects 'C', append the content directly to the document using the str
 ❌ Not considering technical constraints or team capabilities
 ❌ Choosing design system without clear rationale
 ❌ Not planning implementation approach
-❌ Not presenting A/P/C menu after content generation
-❌ Appending content without user selecting 'C'
+❌ Not presenting A/P/C/R menu after writing content to file
 
 ❌ **CRITICAL**: Reading only partial step file - leads to incomplete understanding and poor decisions
 ❌ **CRITICAL**: Proceeding with 'C' without fully reading and understanding the next step file
@@ -249,4 +228,4 @@ When user selects 'C', append the content directly to the document using the str
 
 After user selects 'C' and content is saved to document, load `{project-root}/_evo/bmm/workflows/2-plan-workflows/create-ux-design/steps/step-07-defining-experience.md` to define the core user interaction.
 
-Remember: Do NOT proceed to step-07 until user explicitly selects 'C' from the A/P/C menu and content is saved!
+Remember: Write content to file immediately after generation. Do NOT proceed to step-07 until user explicitly selects 'C' from the menu.

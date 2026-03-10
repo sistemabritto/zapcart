@@ -45,9 +45,9 @@ Define MVP scope with clear boundaries and outline future vision through collabo
 ## EXECUTION PROTOCOLS:
 
 - 🎯 Show your analysis before taking any action
-- 💾 Generate MVP scope collaboratively with user
+- 💾 Write content directly to {outputFile} after generation
 - 📖 Update frontmatter `stepsCompleted: [1, 2, 3, 4, 5]` before loading next step
-- 🚫 FORBIDDEN to proceed without user confirmation through menu
+- ⚠️ Present A/P/C/R menu after writing to file
 
 ## CONTEXT BOUNDARIES:
 
@@ -164,22 +164,24 @@ Prepare the following structure for document append:
 [Future vision content based on conversation, or N/A if not discussed]
 ```
 
-### 7. Present MENU OPTIONS
+### 7. Write to File and Present Menu
 
-**Content Presentation:**
-"I've defined the MVP scope for {{project_name}} that balances delivering real value with realistic boundaries. This gives us a clear path forward while keeping our options open for future growth.
+After generating the MVP scope content:
 
-**Here's what I'll add to the document:**
-[Show the complete markdown content from step 6]
+1. Save content to `{outputFile}` using the structure from step 6
+2. Update frontmatter with stepsCompleted: [1, 2, 3, 4, 5]
 
-**Select an Option:** [A] Advanced Elicitation [P] Party Mode [C] Continue"
+Then display menu:
+
+Display: "**Select:** [A] Advanced Elicitation [P] Party Mode [C] Continue to Complete (Step 6) [R] Rewrite this section"
 
 #### Menu Handling Logic:
 
-- IF A: Read fully and follow: {advancedElicitationTask} with current scope content to optimize scope definition
-- IF P: Read fully and follow: {partyModeWorkflow} to bring different perspectives to validate MVP scope
-- IF C: Save content to {outputFile}, update frontmatter with stepsCompleted: [1, 2, 3, 4, 5], then read fully and follow: {nextStepFile}
-- IF Any other comments or queries: help user respond then [Redisplay Menu Options](#7-present-menu-options)
+- IF A: Read fully and follow: {advancedElicitationTask} with current scope content, ask user "Accept improvements? (y/n)", if yes overwrite section in {outputFile}, then redisplay menu
+- IF P: Read fully and follow: {partyModeWorkflow}, ask user "Accept changes? (y/n)", if yes overwrite section in {outputFile}, then redisplay menu
+- IF C: Read fully and follow: {nextStepFile}
+- IF R: Rewrite the section from scratch based on user feedback, overwrite in {outputFile}, then redisplay menu
+- IF Any other comments or queries: help user respond then redisplay menu
 
 #### EXECUTION RULES:
 
@@ -190,7 +192,7 @@ Prepare the following structure for document append:
 
 ## CRITICAL STEP COMPLETION NOTE
 
-ONLY WHEN [C continue option] is selected and [MVP scope finalized and saved to document with frontmatter updated], will you then read fully and follow: `{nextStepFile}` to complete the product brief workflow.
+Content is written to document immediately after generation. ONLY WHEN [C continue option] is selected will you then read fully and follow: `{nextStepFile}` to complete the product brief workflow.
 
 ---
 
@@ -212,8 +214,7 @@ ONLY WHEN [C continue option] is selected and [MVP scope finalized and saved to 
 - Missing clear boundaries leading to scope creep
 - No success criteria to validate MVP approach
 - Future vision disconnected from MVP foundation
-- Not presenting standard A/P/C menu after content generation
-- Appending content without user selecting 'C'
+- Not presenting standard A/P/C/R menu after writing content to file
 - Not updating frontmatter properly
 
 **Master Rule:** Skipping steps, optimizing sequences, or not following exact instructions is FORBIDDEN and constitutes SYSTEM FAILURE.

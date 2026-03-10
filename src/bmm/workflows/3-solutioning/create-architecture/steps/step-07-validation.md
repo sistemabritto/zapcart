@@ -17,24 +17,24 @@
 
 - 🎯 Show your analysis before taking any action
 - ✅ Run comprehensive validation checks on the complete architecture
-- ⚠️ Present A/P/C menu after generating validation results
-- 💾 ONLY save when user chooses C (Continue)
+- 💾 Write content directly to output file after generation
 - 📖 Update frontmatter `stepsCompleted: [1, 2, 3, 4, 5, 6, 7]` before loading next step
-- 🚫 FORBIDDEN to load next step until C is selected
+- ⚠️ Present A/P/C/R menu after writing to file
 
-## COLLABORATION MENUS (A/P/C):
+## COLLABORATION MENUS (A/P/C/R):
 
 This step will generate content and present choices:
 
 - **A (Advanced Elicitation)**: Use discovery protocols to address complex architectural issues found during validation
 - **P (Party Mode)**: Bring multiple perspectives to resolve validation concerns
-- **C (Continue)**: Save the validation results and complete the architecture
+- **C (Continue)**: Accept the content and complete the architecture
+- **R (Rewrite)**: Rewrite this section from scratch based on user feedback
 
 ## PROTOCOL INTEGRATION:
 
 - When 'A' selected: Read fully and follow: {project-root}/_evo/core/workflows/advanced-elicitation/workflow.md
 - When 'P' selected: Read fully and follow: {project-root}/_evo/core/workflows/party-mode/workflow.md
-- PROTOCOLS always return to display this step's A/P/C menu after the A or P have completed
+- PROTOCOLS always return to display this step's A/P/C/R menu after the A or P have completed
 - User accepts/rejects protocol changes before proceeding
 
 ## CONTEXT BOUNDARIES:
@@ -175,11 +175,13 @@ These aren't blocking, but addressing them would make implementation smoother. S
 
 These are optional refinements. Would you like to address any of these?"
 
-### 6. Generate Validation Content
+### 6. Generate Validation Content and Write to File
 
-Prepare the content to append to the document:
+Generate the content and immediately append to the document:
 
 #### Content Structure:
+
+After generation, immediately append this content to the output file (before presenting the menu):
 
 ```markdown
 ## Architecture Validation Results
@@ -280,11 +282,11 @@ Prepare the content to append to the document:
 {{starter_template_command_or_first_architectural_step}}
 ```
 
-### 7. Present Content and Menu
+### 7. Present Menu
 
-Show the validation results and present choices:
+Content has been written to the document. Present choices:
 
-"I've completed a comprehensive validation of your architecture.
+"I've completed a comprehensive validation of your architecture and written the results to the document.
 
 **Validation Summary:**
 
@@ -292,14 +294,11 @@ Show the validation results and present choices:
 - ✅ Coverage: All requirements are supported
 - ✅ Readiness: AI agents can implement consistently
 
-**Here's what I'll add to complete the architecture document:**
-
-[Show the complete markdown content from step 6]
-
 **What would you like to do?**
 [A] Advanced Elicitation - Address any complex architectural concerns
 [P] Party Mode - Review validation from different implementation perspectives
 [C] Continue - Complete the architecture and finish workflow
+[R] Rewrite - Rewrite this section from scratch based on feedback"
 
 ### 8. Handle Menu Selection
 
@@ -308,26 +307,29 @@ Show the validation results and present choices:
 - Read fully and follow: {project-root}/_evo/core/workflows/advanced-elicitation/workflow.md with validation issues
 - Process enhanced solutions for complex concerns
 - Ask user: "Accept these architectural improvements? (y/n)"
-- If yes: Update content, then return to A/P/C menu
-- If no: Keep original content, then return to A/P/C menu
+- If yes: Update content with improvements and overwrite in file, then return to A/P/C/R menu
+- If no: Keep original content, then return to A/P/C/R menu
 
 #### If 'P' (Party Mode):
 
 - Read fully and follow: {project-root}/_evo/core/workflows/party-mode/workflow.md with validation context
 - Process collaborative insights on implementation readiness
 - Ask user: "Accept these changes to the validation results? (y/n)"
-- If yes: Update content, then return to A/P/C menu
-- If no: Keep original content, then return to A/P/C menu
+- If yes: Update content with improvements and overwrite in file, then return to A/P/C/R menu
+- If no: Keep original content, then return to A/P/C/R menu
 
 #### If 'C' (Continue):
 
-- Append the final content to `{planning_artifacts}/{active_feature}/architecture.md`
 - Update frontmatter: `stepsCompleted: [1, 2, 3, 4, 5, 6, 7]`
 - Load `{project-root}/_evo/bmm/workflows/3-solutioning/create-architecture/steps/step-08-complete.md`
 
+#### If 'R' (Rewrite):
+
+- Rewrite the section from scratch based on user feedback, overwrite in file, then redisplay menu
+
 ## APPEND TO DOCUMENT:
 
-When user selects 'C', append the content directly to the document using the structure from step 6.
+After generation, immediately append the content to the document using the structure from step 6 (before presenting the menu).
 
 ## SUCCESS METRICS:
 
@@ -336,8 +338,8 @@ When user selects 'C', append the content directly to the document using the str
 ✅ Implementation readiness confirmed
 ✅ All gaps identified and addressed
 ✅ Comprehensive validation checklist completed
-✅ A/P/C menu presented and handled correctly
-✅ Content properly appended to document when C selected
+✅ Content written to document immediately after generation
+✅ A/P/C/R menu presented and handled correctly
 
 ## FAILURE MODES:
 
@@ -346,7 +348,7 @@ When user selects 'C', append the content directly to the document using the str
 ❌ Missing potential implementation conflicts
 ❌ Not addressing gaps found during validation
 ❌ Providing incomplete validation checklist
-❌ Not presenting A/P/C menu after content generation
+❌ Not presenting A/P/C/R menu after writing content to file
 
 ❌ **CRITICAL**: Reading only partial step file - leads to incomplete understanding and poor decisions
 ❌ **CRITICAL**: Proceeding with 'C' without fully reading and understanding the next step file
@@ -354,6 +356,6 @@ When user selects 'C', append the content directly to the document using the str
 
 ## NEXT STEP:
 
-After user selects 'C' and content is saved to document, load `{project-root}/_evo/bmm/workflows/3-solutioning/create-architecture/steps/step-08-complete.md` to complete the workflow and provide implementation guidance.
+Write content to file immediately after generation. Load `{project-root}/_evo/bmm/workflows/3-solutioning/create-architecture/steps/step-08-complete.md` to complete the workflow and provide implementation guidance.
 
-Remember: Do NOT proceed to step-08 until user explicitly selects 'C' from the A/P/C menu and content is saved!
+Remember: Write content to file immediately after generation. Do NOT proceed to step-08 until user explicitly selects 'C' from the menu.

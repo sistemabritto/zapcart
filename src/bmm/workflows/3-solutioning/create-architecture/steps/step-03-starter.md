@@ -16,24 +16,24 @@
 
 - 🎯 Show your analysis before taking any action
 - 🌐 Search the web to verify current versions and options
-- ⚠️ Present A/P/C menu after generating starter template analysis
-- 💾 ONLY save when user chooses C (Continue)
+- 💾 Write content directly to output file after generation
 - 📖 Update frontmatter `stepsCompleted: [1, 2, 3]` before loading next step
-- 🚫 FORBIDDEN to load next step until C is selected
+- ⚠️ Present A/P/C/R menu after writing to file
 
-## COLLABORATION MENUS (A/P/C):
+## COLLABORATION MENUS (A/P/C/R):
 
 This step will generate content and present choices:
 
 - **A (Advanced Elicitation)**: Use discovery protocols to explore unconventional starter options or custom approaches
 - **P (Party Mode)**: Bring multiple perspectives to evaluate starter trade-offs for different use cases
-- **C (Continue)**: Save the content to the document and proceed to next step
+- **C (Continue)**: Accept the content and proceed to next step
+- **R (Rewrite)**: Rewrite this section from scratch based on user feedback
 
 ## PROTOCOL INTEGRATION:
 
 - When 'A' selected: Read fully and follow: {project-root}/_evo/core/workflows/advanced-elicitation/workflow.md
 - When 'P' selected: Read fully and follow: {project-root}/_evo/core/workflows/party-mode/workflow.md
-- PROTOCOLS always return to display this step's A/P/C menu after the A or P have completed
+- PROTOCOLS always return to display this step's A/P/C/R menu after the A or P have completed
 - User accepts/rejects protocol changes before proceeding
 
 ## CONTEXT BOUNDARIES:
@@ -205,11 +205,13 @@ Search the web: "{{starter_name}} CLI command options flags latest"
 Search the web: "{{starter_name}} create new project command examples"
 ```
 
-### 8. Generate Starter Template Content
+### 8. Generate Starter Template Content and Write to File
 
-Prepare the content to append to the document:
+Generate the content and immediately append to the document:
 
 #### Content Structure:
+
+After generation, immediately append this content to the output file (before presenting the menu):
 
 ````markdown
 ## Starter Template Evaluation
@@ -257,20 +259,17 @@ Prepare the content to append to the document:
 
 ````
 
-### 9. Present Content and Menu
+### 9. Present Menu
 
-Show the generated content and present choices:
+Content has been written to the document. Present choices:
 
-"I've analyzed starter template options for {{project_type}} projects.
-
-**Here's what I'll add to the document:**
-
-[Show the complete markdown content from step 8]
+"I've analyzed starter template options for {{project_type}} projects and written the evaluation to the document.
 
 **What would you like to do?**
 [A] Advanced Elicitation - Explore custom approaches or unconventional starters
 [P] Party Mode - Evaluate trade-offs from different perspectives
-[C] Continue - Save this decision and move to architectural decisions"
+[C] Continue - Accept this decision and move to architectural decisions
+[R] Rewrite - Rewrite this section from scratch based on feedback"
 
 ### 10. Handle Menu Selection
 
@@ -279,26 +278,29 @@ Show the generated content and present choices:
 - Read fully and follow: {project-root}/_evo/core/workflows/advanced-elicitation/workflow.md with current starter analysis
 - Process enhanced insights about starter options or custom approaches
 - Ask user: "Accept these changes to the starter template evaluation? (y/n)"
-- If yes: Update content, then return to A/P/C menu
-- If no: Keep original content, then return to A/P/C menu
+- If yes: Update content with improvements and overwrite in file, then return to A/P/C/R menu
+- If no: Keep original content, then return to A/P/C/R menu
 
 #### If 'P' (Party Mode):
 
 - Read fully and follow: {project-root}/_evo/core/workflows/party-mode/workflow.md with starter evaluation context
 - Process collaborative insights about starter trade-offs
 - Ask user: "Accept these changes to the starter template evaluation? (y/n)"
-- If yes: Update content, then return to A/P/C menu
-- If no: Keep original content, then return to A/P/C menu
+- If yes: Update content with improvements and overwrite in file, then return to A/P/C/R menu
+- If no: Keep original content, then return to A/P/C/R menu
 
 #### If 'C' (Continue):
 
-- Append the final content to `{planning_artifacts}/{active_feature}/architecture.md`
 - Update frontmatter: `stepsCompleted: [1, 2, 3]`
 - Load `{project-root}/_evo/bmm/workflows/3-solutioning/create-architecture/steps/step-04-decisions.md`
 
+#### If 'R' (Rewrite):
+
+- Rewrite the section from scratch based on user feedback, overwrite in file, then redisplay menu
+
 ## APPEND TO DOCUMENT:
 
-When user selects 'C', append the content directly to the document using the structure from step 8.
+After generation, immediately append the content to the document using the structure from step 8 (before presenting the menu).
 
 ## SUCCESS METRICS:
 
@@ -307,8 +309,8 @@ When user selects 'C', append the content directly to the document using the str
 ✅ All versions verified using web search, not hardcoded
 ✅ Architectural implications of starter choice clearly documented
 ✅ User provided with clear rationale for starter selection
-✅ A/P/C menu presented and handled correctly
-✅ Content properly appended to document when C selected
+✅ Content written to document immediately after generation
+✅ A/P/C/R menu presented and handled correctly
 
 ## FAILURE MODES:
 
@@ -317,13 +319,13 @@ When user selects 'C', append the content directly to the document using the str
 ❌ Not documenting what architectural decisions the starter makes
 ❌ Failing to consider maintenance status of starter templates
 ❌ Not providing clear rationale for starter selection
-❌ Not presenting A/P/C menu after content generation
+❌ Not presenting A/P/C/R menu after writing content to file
 ❌ **CRITICAL**: Reading only partial step file - leads to incomplete understanding and poor decisions
 ❌ **CRITICAL**: Proceeding with 'C' without fully reading and understanding the next step file
 ❌ **CRITICAL**: Making decisions without complete understanding of step requirements and protocols
 
 ## NEXT STEP:
 
-After user selects 'C' and content is saved to document, load `{project-root}/_evo/bmm/workflows/3-solutioning/create-architecture/steps/step-04-decisions.md` to begin making specific architectural decisions.
+Write content to file immediately after generation. Load `{project-root}/_evo/bmm/workflows/3-solutioning/create-architecture/steps/step-04-decisions.md` to begin making specific architectural decisions.
 
-Remember: Do NOT proceed to step-04 until user explicitly selects 'C' from the A/P/C menu and content is saved!
+Remember: Write content to file immediately after generation. Do NOT proceed to step-04 until user explicitly selects 'C' from the menu.

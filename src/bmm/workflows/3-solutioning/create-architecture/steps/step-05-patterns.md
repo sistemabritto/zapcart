@@ -17,24 +17,24 @@
 
 - 🎯 Show your analysis before taking any action
 - 🎯 Focus on consistency, not implementation details
-- ⚠️ Present A/P/C menu after generating patterns content
-- 💾 ONLY save when user chooses C (Continue)
+- 💾 Write content directly to output file after generation
 - 📖 Update frontmatter `stepsCompleted: [1, 2, 3, 4, 5]` before loading next step
-- 🚫 FORBIDDEN to load next step until C is selected
+- ⚠️ Present A/P/C/R menu after writing to file
 
-## COLLABORATION MENUS (A/P/C):
+## COLLABORATION MENUS (A/P/C/R):
 
 This step will generate content and present choices:
 
 - **A (Advanced Elicitation)**: Use discovery protocols to develop comprehensive consistency patterns
 - **P (Party Mode)**: Bring multiple perspectives to identify potential conflict points
-- **C (Continue)**: Save the patterns and proceed to project structure
+- **C (Continue)**: Accept the content and proceed to next step
+- **R (Rewrite)**: Rewrite this section from scratch based on user feedback
 
 ## PROTOCOL INTEGRATION:
 
 - When 'A' selected: Read fully and follow: {project-root}/_evo/core/workflows/advanced-elicitation/workflow.md
 - When 'P' selected: Read fully and follow: {project-root}/_evo/core/workflows/party-mode/workflow.md
-- PROTOCOLS always return to display this step's A/P/C menu after the A or P have completed
+- PROTOCOLS always return to display this step's A/P/C/R menu after the A or P have completed
 - User accepts/rejects protocol changes before proceeding
 
 ## CONTEXT BOUNDARIES:
@@ -206,11 +206,13 @@ Which approach makes the most sense for our project?"
 - Loading state persistence
 - Loading UI patterns
 
-### 4. Generate Patterns Content
+### 4. Generate Patterns Content and Write to File
 
-Prepare the content to append to the document:
+Generate the content and immediately append to the document:
 
 #### Content Structure:
+
+After generation, immediately append this content to the output file (before presenting the menu):
 
 ```markdown
 ## Implementation Patterns & Consistency Rules
@@ -286,20 +288,17 @@ Prepare the content to append to the document:
 {{examples_of_what_to_avoid}}
 ```
 
-### 5. Present Content and Menu
+### 5. Present Menu
 
-Show the generated patterns content and present choices:
+Content has been written to the document. Present choices:
 
-"I've documented implementation patterns that will prevent conflicts between AI agents working on this project.
-
-**Here's what I'll add to the document:**
-
-[Show the complete markdown content from step 4]
+"I've documented implementation patterns that will prevent conflicts between AI agents working on this project and written them to the document.
 
 **What would you like to do?**
 [A] Advanced Elicitation - Explore additional consistency patterns
 [P] Party Mode - Review patterns from different implementation perspectives
-[C] Continue - Save these patterns and move to project structure"
+[C] Continue - Accept these patterns and move to project structure
+[R] Rewrite - Rewrite this section from scratch based on feedback"
 
 ### 6. Handle Menu Selection
 
@@ -308,26 +307,29 @@ Show the generated patterns content and present choices:
 - Read fully and follow: {project-root}/_evo/core/workflows/advanced-elicitation/workflow.md with current patterns
 - Process enhanced consistency rules that come back
 - Ask user: "Accept these additional pattern refinements? (y/n)"
-- If yes: Update content, then return to A/P/C menu
-- If no: Keep original content, then return to A/P/C menu
+- If yes: Update content with improvements and overwrite in file, then return to A/P/C/R menu
+- If no: Keep original content, then return to A/P/C/R menu
 
 #### If 'P' (Party Mode):
 
 - Read fully and follow: {project-root}/_evo/core/workflows/party-mode/workflow.md with implementation patterns context
 - Process collaborative insights about potential conflicts
 - Ask user: "Accept these changes to the implementation patterns? (y/n)"
-- If yes: Update content, then return to A/P/C menu
-- If no: Keep original content, then return to A/P/C menu
+- If yes: Update content with improvements and overwrite in file, then return to A/P/C/R menu
+- If no: Keep original content, then return to A/P/C/R menu
 
 #### If 'C' (Continue):
 
-- Append the final content to `{planning_artifacts}/{active_feature}/architecture.md`
 - Update frontmatter: `stepsCompleted: [1, 2, 3, 4, 5]`
 - Load `{project-root}/_evo/bmm/workflows/3-solutioning/create-architecture/steps/step-06-structure.md`
 
+#### If 'R' (Rewrite):
+
+- Rewrite the section from scratch based on user feedback, overwrite in file, then redisplay menu
+
 ## APPEND TO DOCUMENT:
 
-When user selects 'C', append the content directly to the document using the structure from step 4.
+After generation, immediately append the content to the document using the structure from step 4 (before presenting the menu).
 
 ## SUCCESS METRICS:
 
@@ -336,8 +338,8 @@ When user selects 'C', append the content directly to the document using the str
 ✅ Concrete examples provided for each pattern
 ✅ Enforcement guidelines clearly documented
 ✅ User collaborated on pattern decisions rather than receiving recommendations
-✅ A/P/C menu presented and handled correctly
-✅ Content properly appended to document when C selected
+✅ Content written to document immediately after generation
+✅ A/P/C/R menu presented and handled correctly
 
 ## FAILURE MODES:
 
@@ -346,7 +348,7 @@ When user selects 'C', append the content directly to the document using the str
 ❌ Not providing concrete examples for each pattern
 ❌ Failing to address cross-cutting concerns like error handling
 ❌ Not considering the chosen technology stack when defining patterns
-❌ Not presenting A/P/C menu after content generation
+❌ Not presenting A/P/C/R menu after writing content to file
 
 ❌ **CRITICAL**: Reading only partial step file - leads to incomplete understanding and poor decisions
 ❌ **CRITICAL**: Proceeding with 'C' without fully reading and understanding the next step file
@@ -354,6 +356,6 @@ When user selects 'C', append the content directly to the document using the str
 
 ## NEXT STEP:
 
-After user selects 'C' and content is saved to document, load `{project-root}/_evo/bmm/workflows/3-solutioning/create-architecture/steps/step-06-structure.md` to define the complete project structure.
+Write content to file immediately after generation. Load `{project-root}/_evo/bmm/workflows/3-solutioning/create-architecture/steps/step-06-structure.md` to define the complete project structure.
 
-Remember: Do NOT proceed to step-06 until user explicitly selects 'C' from the A/P/C menu and content is saved!
+Remember: Write content to file immediately after generation. Do NOT proceed to step-06 until user explicitly selects 'C' from the menu.
