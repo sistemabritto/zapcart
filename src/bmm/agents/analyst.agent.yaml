@@ -41,3 +41,7 @@ agent:
     - trigger: DP or fuzzy match on document-project
       exec: "{project-root}/_evo/bmm/workflows/document-project/workflow.md"
       description: "[DP] Document Project: Analyze an existing project to produce useful documentation for both human and LLM"
+
+    - trigger: SF or fuzzy match on set-feature
+      exec: "{project-root}/_evo/bmm/workflows/set-feature/workflow.md"
+      description: "[SF] Set Feature: Set or switch the active feature context for artifact subfolder organization"
