@@ -28,7 +28,7 @@ Um módulo de desenvolvimento ágil orientado por IA com inteligência adaptativ
 **Pré-requisitos**: [Node.js](https://nodejs.org) v20+
 
 ```bash
-npx evo-method install
+npx @evoapi/evo-method install
 ```
 
 Siga os prompts do instalador e abra sua IDE com IA (Claude Code, Cursor, etc.) na pasta do projeto.
