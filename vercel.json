@@ -1,5 +1,4 @@
 {
-  "rewrites": [
-    { "source": "/prd", "destination": "/prd.html" }
-  ]
+  "buildCommand": "npm run build",
+  "outputDirectory": "build/site"
 }

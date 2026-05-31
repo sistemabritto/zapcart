@@ -24,6 +24,7 @@
     "evo-method": "tools/evo-npx-wrapper.js"
   },
   "scripts": {
+    "build": "npm run docs:build",
     "docs:build": "node tools/build-docs.mjs",
     "docs:dev": "astro dev --root website",
     "docs:fix-links": "node tools/fix-doc-links.js",
