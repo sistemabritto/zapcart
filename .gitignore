@@ -72,3 +72,5 @@ _evo-output
 website/.astro/
 website/dist/
 build/
+.env.local
+.env.local

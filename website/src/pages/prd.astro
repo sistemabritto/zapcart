@@ -1,9 +1,8 @@
-// website/src/pages/PRD.astro
+// website/src/pages/prd.astro
 ---
 import fs from 'node:fs/promises';
 import path from 'node:path';
 
-// Resolve PRD markdown location relative to this file
 const prdPath = path.resolve(import.meta.url, '../../../_evo-output/planning/zapcart/prd.md');
 const markdown = await fs.readFile(prdPath, 'utf-8');
 ---
@@ -20,14 +19,8 @@ const markdown = await fs.readFile(prdPath, 'utf-8');
     <link rel="stylesheet" href="/styles/prd.css" />
   </head>
   <body class="prd-page">
-    <header class="header">
-      <h1>ZapCart – Product Requirements Document</h1>
-    </header>
-    <main class="content">
-      <article class="markdown" set:html={markdown} />
-    </main>
-    <footer class="footer">
-      <p>© 2026 ZapCart – 2MLAB</p>
-    </footer>
+    <header class="header"><h1>ZapCart – Product Requirements Document</h1></header>
+    <main class="content"><article class="markdown" set:html={markdown} /></main>
+    <footer class="footer"><p>© 2026 ZapCart – 2MLAB</p></footer>
   </body>
 </html>
