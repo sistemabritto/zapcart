@@ -1,0 +1,258 @@
+---
+import '../../styles/roadmap.css';
+---
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>2M LAB – Roadmap de Implementação</title>
+  <meta name="description" content="Roadmap de 4 semanas para o lançamento da nova vitrine inteligente e automatizada da 2M LAB" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400;500;600;700;800&family=Rubik:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+</head>
+<body class="roadmap-page">
+  <div class="glow-bg"></div>
+  <div class="grid-overlay"></div>
+
+  <!-- Header Section -->
+  <header class="header">
+    <div class="container header-container">
+      <div class="lab-badge">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="icon-spin"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
+        LABORATÓRIO 3D – 2M LAB
+      </div>
+      <h1>Roadmap de Implementação</h1>
+      <p class="subtitle">A transição do catálogo estático da InfinitePay para uma vitrine automatizada com Inteligência Artificial em até 4 semanas.</p>
+      
+      <div class="quick-links">
+        <a href="https://loja.infinitepay.io/heleno-maisk" target="_blank" rel="noopener noreferrer" class="link-btn">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+          Loja Atual InfinitePay
+        </a>
+        <a href="https://www.instagram.com/_2mlab_/" target="_blank" rel="noopener noreferrer" class="link-btn">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+          Instagram 2M LAB
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Project Goal Banner -->
+  <section class="goal-section container">
+    <div class="goal-card">
+      <div class="goal-content">
+        <h2>O Objetivo: Vendas Sem Fricção para o Heleno</h2>
+        <p>Atualmente, o Heleno gerencia a 2M LAB dividindo seu tempo entre o design/impressão 3D e o cadastro manual de novos modelos na vitrine. A proposta deste sistema é <strong>eliminar o cadastro burocrático</strong>:</p>
+        <ul>
+          <li>
+            <span class="bullet-glow"></span>
+            <strong>Cadastro Mágico via WhatsApp:</strong> Heleno tira fotos do produto recém-impresso na bancada, envia um áudio rápido citando o nome e o preço, e a IA (Whisper + Groq) formata e publica o produto instantaneamente no ar.
+          </li>
+          <li>
+            <span class="bullet-glow"></span>
+            <strong>Vitrine Ultrarrápida:</strong> Seus clientes no Instagram ganham acesso a um catálogo leve, moderno e otimizado com carrinho rápido de compras.
+          </li>
+          <li>
+            <span class="bullet-glow"></span>
+            <strong>Handoff de Fechamento:</strong> O cliente final monta o pedido no carrinho e é direcionado ao WhatsApp do Heleno com o pedido estruturado, pronto para receber o link de pagamento final da InfinitePay.
+          </li>
+        </ul>
+      </div>
+      <div class="goal-visual">
+        <div class="box-3d">
+          <div class="box-face front">2M LAB</div>
+          <div class="box-face back">AUTOMATION</div>
+          <div class="box-face right">WHATSAPP</div>
+          <div class="box-face left">AI</div>
+          <div class="box-face top">3D PRINT</div>
+          <div class="box-face bottom">CATALOG</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Timeline Roadmap -->
+  <main class="timeline-container container">
+    <h2 class="timeline-title">Fases da Jornada (4 Semanas)</h2>
+    
+    <div class="timeline">
+      
+      <!-- Week 1 -->
+      <div class="timeline-item active">
+        <div class="timeline-marker">
+          <div class="marker-glow"></div>
+          <span class="week-number">W1</span>
+        </div>
+        <div class="timeline-content">
+          <div class="badge-status in-progress">EM ANDAMENTO</div>
+          <h3>Semana 1: Infraestrutura & Modelagem</h3>
+          <p class="phase-desc">Mapeamento inicial do catálogo e preparação do banco de dados relacional para lidar com imagens de alta resolução e rascunhos estruturados.</p>
+          <div class="tasks-grid">
+            <div class="task-card done">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="check-icon"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span>Configuração do Supabase (tabelas e schemas)</span>
+            </div>
+            <div class="task-card done">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="check-icon"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span>Remoção das dependências legadas e testes de build</span>
+            </div>
+            <div class="task-card current">
+              <div class="spinner-task"></div>
+              <span>Estruturação do import automático de produtos do InfinitePay</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Week 2 -->
+      <div class="timeline-item">
+        <div class="timeline-marker">
+          <span class="week-number">W2</span>
+        </div>
+        <div class="timeline-content">
+          <div class="badge-status planned">PLANEJADO</div>
+          <h3>Semana 2: O Estagiário Virtual (WhatsApp Integration)</h3>
+          <p class="phase-desc">O coração do sistema. Integração de Webhooks do WhatsApp com processamento avançado de Linguagem Natural e Whisper para detecção de áudio e agrupamento de mídias.</p>
+          <div class="tasks-grid">
+            <div class="task-card">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="bullet-icon"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="1"></circle></svg>
+              <span>Conexão do webhook evoCRM para mensagens de entrada</span>
+            </div>
+            <div class="task-card">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="bullet-icon"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="1"></circle></svg>
+              <span>Lógica de resiliência e concorrência baseada em sessões de rascunhos</span>
+            </div>
+            <div class="task-card">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="bullet-icon"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="1"></circle></svg>
+              <span>Engine da IA (Groq) para triagem, refino de texto e perguntas assertivas</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Week 3 -->
+      <div class="timeline-item">
+        <div class="timeline-marker">
+          <span class="week-number">W3</span>
+        </div>
+        <div class="timeline-content">
+          <div class="badge-status planned">PLANEJADO</div>
+          <h3>Semana 3: Vitrine Responsiva & Carrinho</h3>
+          <p class="phase-desc">Desenvolvimento do frontend público premium. Uma experiência de navegação otimizada, extremamente polida, voltada para conversão direta das visitas vindas do Instagram.</p>
+          <div class="tasks-grid">
+            <div class="task-card">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="bullet-icon"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="1"></circle></svg>
+              <span>Interface da Vitrine de Produtos 2M LAB com grid fluida</span>
+            </div>
+            <div class="task-card">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="bullet-icon"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="1"></circle></svg>
+              <span>Sistema de Carrinho rápido com armazenamento no LocalStorage</span>
+            </div>
+            <div class="task-card">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="bullet-icon"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="1"></circle></svg>
+              <span>Handoff direto e estruturado para conversão de fechamento no WhatsApp</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Week 4 -->
+      <div class="timeline-item">
+        <div class="timeline-marker">
+          <span class="week-number">W4</span>
+        </div>
+        <div class="timeline-content">
+          <div class="badge-status planned">PLANEJADO</div>
+          <h3>Semana 4: Painel Administrativo & Lançamento</h3>
+          <p class="phase-desc">Fase final de polimento e controle operacional. Entrega da área administrativa para gerência rápida da loja física e onboarding completo do Heleno.</p>
+          <div class="tasks-grid">
+            <div class="task-card">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="bullet-icon"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="1"></circle></svg>
+              <span>Área logada `/admin` para ajustes manuais de estoque e preço</span>
+            </div>
+            <div class="task-card">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="bullet-icon"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="1"></circle></svg>
+              <span>Validação técnica final (QA e carga de requisições simultâneas)</span>
+            </div>
+            <div class="task-card">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="bullet-icon"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="1"></circle></svg>
+              <span>Virada de chaves e publicação final de produção</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+    </div>
+  </main>
+
+  <!-- Interactive Sandbox Simulator preview -->
+  <section class="simulator-section container">
+    <div class="glass-card">
+      <div class="simulator-header">
+        <span class="glow-indicator"></span>
+        <h3>Simulação do Cadastro Mágico (Demonstração Visual)</h3>
+      </div>
+      <p class="sim-intro">Veja abaixo um exemplo real de como a automação funciona. O Heleno envia a imagem de um produto impresso em 3D e um áudio pelo WhatsApp. A IA cuida de todo o resto.</p>
+      
+      <div class="sim-grid">
+        <!-- Message sent by Heleno -->
+        <div class="sim-block phone-view">
+          <div class="block-title">
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect><line x1="12" y1="18" x2="12.01" y2="18"></line></svg>
+            WhatsApp do Heleno
+          </div>
+          <div class="chat-bubbles">
+            <div class="bubble outgoing image-bubble">
+              <div class="img-preview-box">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+                <span>[ Foto do vaso de resina 3D ]</span>
+              </div>
+            </div>
+            <div class="bubble outgoing audio-bubble">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"></path><path d="M19 10v2a7 7 0 0 1-14 0v-2"></path><line x1="12" y1="19" x2="12" y2="23"></line><line x1="8" y1="23" x2="16" y2="23"></line></svg>
+              <span>Áudio enviado (0:06s)</span>
+            </div>
+            <div class="transcript-box">
+              <strong>Degravação da IA:</strong> "Esse vaso geométrico em filamento bronze tem 20 centímetros e o valor dele é R$ 89,00."
+            </div>
+          </div>
+        </div>
+
+        <!-- Connection animation arrow -->
+        <div class="sim-arrow">
+          <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="arrow-animate"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+        </div>
+
+        <!-- Catalog generated -->
+        <div class="sim-block product-view">
+          <div class="block-title">
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+            Publicado na Vitrine
+          </div>
+          <div class="product-preview-card">
+            <div class="badge-new">NOVO</div>
+            <div class="product-img">
+              <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path></svg>
+            </div>
+            <div class="product-details">
+              <h4>Vaso Geométrico Bronze (20cm)</h4>
+              <p class="price">R$ 89,00</p>
+              <span class="stock-status">✓ Cadastrado via WhatsApp</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer Section -->
+  <footer class="footer">
+    <div class="container footer-container">
+      <p>Roadmap oficial da nova plataforma 2M LAB</p>
+      <p class="copyright">© 2026 2M LAB • Planejamento e Execução Ágil</p>
+    </div>
+  </footer>
+</body>
+</html>
